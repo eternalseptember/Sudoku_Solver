@@ -7,6 +7,7 @@ HIDDEN SUBSET COL 1:
 
 HIDDEN SUBSET ROW 1:
 [4,7] can only be in (0,0) and (0,1).
+Can be solved by adding solve_queue() to functions.
 
 HIDDEN SUBSET BOX 1:
 [1,8] can only be in (4,3) and (4,5).

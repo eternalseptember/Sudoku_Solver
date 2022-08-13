@@ -27,6 +27,7 @@ def check_hidden_sub_col(self):
         """
 
         self.clean_hidden_subsets(possible_subsets, 'col')
+        self.solve_queue()
 
 
 def check_hidden_sub_row(self):
@@ -49,7 +50,7 @@ def check_hidden_sub_row(self):
         """
 
         self.clean_hidden_subsets(possible_subsets, 'row')
-
+        self.solve_queue()
 
 
 
@@ -123,11 +124,12 @@ def format_hidden_subset_info(self, missing_vals_info):
 
 
 def clean_hidden_subset(self, coord, subset_locs, subset_vals):
+    """
     print('clean hidden subset')
     print('coord: {0}'.format(coord))
     print('subset locs: {0}'.format(subset_locs))
     print('subset vals: {0}'.format(subset_vals))
-
+    """
 
     # Unsolved cell. Could be part of the subset or not.
     if coord in self.possible_values:
@@ -159,6 +161,7 @@ def check_hidden_sub_boxes(self):
         for j in [0, 3, 6]:
             box_coord = (i, j)
             self.check_hidden_sub_box(box_coord)
+            self.solve_queue()
 
 
 def check_hidden_sub_box(self, box_coord):
