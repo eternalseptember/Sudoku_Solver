@@ -27,7 +27,7 @@ def check_hidden_sub_col(self):
         """
 
         self.clean_hidden_subsets(possible_subsets, 'col')
-        self.solve_queue()
+        # self.solve_queue()
 
 
 def check_hidden_sub_row(self):
@@ -50,7 +50,7 @@ def check_hidden_sub_row(self):
         """
 
         self.clean_hidden_subsets(possible_subsets, 'row')
-        self.solve_queue()
+        # self.solve_queue()
 
 
 
@@ -161,7 +161,7 @@ def check_hidden_sub_boxes(self):
         for j in [0, 3, 6]:
             box_coord = (i, j)
             self.check_hidden_sub_box(box_coord)
-            self.solve_queue()
+            # self.solve_queue()
 
 
 def check_hidden_sub_box(self, box_coord):
