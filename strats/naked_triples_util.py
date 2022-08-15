@@ -33,7 +33,12 @@ def find_naked_triples(self, poss_trip_list, mode):
 
                 poss_trips_info[trip_str] = saved_info
 
-    return self.verify_triples_list(poss_trips_info, mode)
+
+    # Exit the process if possible triples list is empty.
+    if len(poss_trips_info) > 0:
+        return self.verify_triples_list(poss_trips_info, mode)
+    else:
+        return poss_trips_info
 
 
 
