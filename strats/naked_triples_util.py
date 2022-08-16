@@ -38,7 +38,7 @@ def find_naked_triples(self, poss_trip_list, mode):
     if len(poss_trips_info) > 0:
         return self.verify_triples_list(poss_trips_info, mode)
     else:
-        return poss_trips_info
+        return poss_trips_info  # an empty dict
 
 
 

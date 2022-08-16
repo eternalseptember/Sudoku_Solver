@@ -37,8 +37,10 @@ def check_naked_triples_row(self, row_num):
 
     # Analyze if triple exists.
     poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_row')
-    self.clean_triple_row(poss_trips_info, row_num)
-    self.solve_queue()
+
+    if len(poss_trips_info) > 0:
+        self.clean_triple_row(poss_trips_info, row_num)
+        self.solve_queue()
 
 
 
