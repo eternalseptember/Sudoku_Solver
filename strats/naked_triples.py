@@ -101,8 +101,10 @@ def check_naked_triples_col(self, col_num):
 
     # Analyze if triple exists.
     poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_col')
-    self.clean_triple_col(poss_trips_info, col_num)
-    self.solve_queue()
+
+    if len(poss_trips_info) > 0:
+        self.clean_triple_col(poss_trips_info, col_num)
+        self.solve_queue()
 
 
 
