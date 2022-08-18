@@ -34,8 +34,8 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/naked_triple_row_1.txt")
 # sudoku.import_board("test_boards/naked_triple_col_1.txt")
-sudoku.import_board("test_boards/naked_triple_row_2.txt")
-# sudoku.import_board("test_boards/naked_triple_col_2.txt")
+# sudoku.import_board("test_boards/naked_triple_row_2.txt")
+sudoku.import_board("test_boards/naked_triple_col_2.txt")
 sudoku.print_board()
 print('===============================')
 

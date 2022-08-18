@@ -43,8 +43,12 @@ def find_naked_triples(self, poss_trip_list, mode):
 
 
 def verify_triples_list(self, poss_trips_info, mode):
-    print('verify triples list. mode: {0} list: {1} '.format(mode, poss_trips_info))
     # 'mode' is 'check_row' or 'check_col'.
+
+
+    # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
+    print('\tverify triples list. mode: {0} list: {1} '.format(mode, poss_trips_info))
+
 
     # Remove entries from poss_trips_info if triple is not valid.
     entries_to_remove = []  # List of str keys.
@@ -126,6 +130,13 @@ def verify_triples_list(self, poss_trips_info, mode):
     entries_to_remove = list(set(entries_to_remove))
     for item in entries_to_remove:
         poss_trips_info.pop(item)
+
+
+    # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
+    print('check box: ', end=' ')
+    for trip_str in poss_trips_info.keys():
+        print('{0}: {1}'.format(trip_str, poss_trips_info[trip_str]))
+    print()
 
 
     # Triples have been verified. Check if they're in the same box.

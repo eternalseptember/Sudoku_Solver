@@ -7,8 +7,8 @@
 
 
 def check_naked_triples(self):
-    self.check_naked_triples_rows()
-    # self.check_naked_triples_cols()
+    # self.check_naked_triples_rows()
+    self.check_naked_triples_cols()
 
 
 
