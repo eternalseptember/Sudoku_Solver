@@ -36,6 +36,8 @@ def find_naked_triples(self, poss_trip_list, mode):
 
     # Exit the process if possible triples list is empty.
     if len(poss_trips_info) > 0:
+        # verify_triples_list could return an empty dict as well
+        # if no valid triple was found in that process.
         return self.verify_triples_list(poss_trips_info, mode)
     else:
         return poss_trips_info  # an empty dict
@@ -47,7 +49,7 @@ def verify_triples_list(self, poss_trips_info, mode):
 
 
     # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
-    print('\tverify triples list. mode: {0} list: {1} '.format(mode, poss_trips_info))
+    print('\tverify triples list mode: {0}\t\tinfo: {1} '.format(mode, poss_trips_info))
 
 
     # Remove entries from poss_trips_info if triple is not valid.
@@ -112,7 +114,7 @@ def verify_triples_list(self, poss_trips_info, mode):
 
 
     if len(vals_in_mult_trips) > 0:
-        # get coordinates and put them in entries_to_remove
+        # Get coordinates and put them in entries_to_remove.
         for trip_str in poss_trips_info.keys():
             trip_vals_list = list(map(int, trip_str))  # convert
 
@@ -126,23 +128,19 @@ def verify_triples_list(self, poss_trips_info, mode):
                     break
 
 
-    # Remove duplicates first, then remove triplet candidates.
+    # Remove duplicates and invalid triplet candidates.
     entries_to_remove = list(set(entries_to_remove))
     for item in entries_to_remove:
         poss_trips_info.pop(item)
 
 
-    # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
-    print('check box: ', end=' ')
-    for trip_str in poss_trips_info.keys():
-        print('{0}: {1}'.format(trip_str, poss_trips_info[trip_str]))
-    print()
-
-
     # Triples have been verified. Check if they're in the same box.
-    self.check_naked_triples_box(poss_trips_info, mode)
-
-    return poss_trips_info
+    # Exit the process if possible triples list is empty.
+    if len(poss_trips_info) > 0:
+        self.check_naked_triples_box(poss_trips_info, mode)
+        return poss_trips_info
+    else:
+        return poss_trips_info  # an empty dict
 
 
 
@@ -150,6 +148,11 @@ def check_naked_triples_box(self, poss_trips_info, mode):
     # Unlike the row and col versions of this function, this is called
     # from verify_triples_list.
     # 'mode' is 'check_row' or 'check_col'.
+
+
+    # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
+    print('check_naked_triples_box: {0}'.format(poss_trips_info))
+
 
     # poss_trips_info[trip_str] = [list of coords]
     triple_boxes = []  # store trip_str if coords are in the same box
@@ -190,6 +193,7 @@ def check_naked_triples_box(self, poss_trips_info, mode):
 
     # If there are any triples inside a box, clean them.
     if len(triple_boxes) > 0:
+        print('clean triple box: {0}\tcoords: {1}'.format(poss_trips_info, triple_boxes))
         self.clean_triple_boxes(poss_trips_info, triple_boxes)
 
 
@@ -199,7 +203,6 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
     for trip_box in trip_box_info:
         trip_coords = poss_trips_info[trip_box]
-        print('clean triple box: {0}\tcoords: {1}'.format(trip_box, trip_coords))
         self.clean_triple_box(trip_box, trip_coords)
 
 
