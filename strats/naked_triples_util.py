@@ -160,35 +160,19 @@ def check_naked_triples_box(self, poss_trips_info, mode):
     for trip_vals in poss_trips_info.keys():
         trip_coords = poss_trips_info[trip_vals]
 
-        box_row = None
-        box_col = None
-        same_row = True
-        same_col = True
+        # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
+        print('trip_vals: {0}\ttrip_coords{1}'.format(trip_vals, trip_coords))
+
 
         # check this section
+        row_list = []
+        col_list = []
+
         for coord in trip_coords:
             this_row, this_col = (coord)
+            print('this_row: {0} this_col: {1}'.format(this_row, this_col))
 
-            # set row and col if they're unset
-            # compare if they match
-            if box_row is None:
-                box_row = this_row
-            elif box_row != this_row:
-                same_row = False
-                break  # go to the next trip_vals
 
-            if box_col is None: 
-                box_col = this_col
-            elif box_col != this_col:
-                same_col = False
-                break  # go to the next trip_vals
-
-        # IF GETTING CALLED FROM CHECK_ROW, THEN SAME_ROW CAN'T COUNT.
-        if (mode == 'check_row') and same_col:
-            triple_boxes.append(trip_vals)
-
-        if (mode == 'check_col') and same_row:
-            triple_boxes.append(trip_vals)
 
 
     # If there are any triples inside a box, clean them.
@@ -200,7 +184,6 @@ def check_naked_triples_box(self, poss_trips_info, mode):
 
 def clean_triple_boxes(self, poss_trips_info, trip_box_info):
     # Will be passed a list of keys of triple boxes.
-
     for trip_box in trip_box_info:
         trip_coords = poss_trips_info[trip_box]
         self.clean_triple_box(trip_box, trip_coords)
