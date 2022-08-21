@@ -31,7 +31,7 @@ print('===============================')
 
 # board values found and possible values list has been reduced
 print('Single-box block-level eliminations:')
-sudoku.check_within_boxes()
+sudoku.check_intersection_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
@@ -55,7 +55,7 @@ print('===============================')
 
 # poss vals list reduced for one location
 print('Single-box block-level eliminations:')
-sudoku.check_within_boxes()
+sudoku.check_intersection_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')

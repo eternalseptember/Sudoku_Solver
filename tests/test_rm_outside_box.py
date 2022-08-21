@@ -34,7 +34,7 @@ print('===============================')
 
 
 print('Check within box:')
-sudoku.check_within_a_box((4, 4))
+sudoku.check_intersection_box((4, 4))
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')

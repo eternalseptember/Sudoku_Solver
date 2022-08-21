@@ -10,38 +10,38 @@ class Sudoku_Solver():
         check_unique_col, check_unique_box, get_box_poss_vals, \
         set_lookup_table, solve_lookup_table
 
-    from strats.naked_subset import check_matching_sets, check_matching_cols, \
-        check_matching_rows, set_missing_val_table, find_matches, \
-        in_same_box, remove_in_box, remove_matching_sets
+    from strats.naked_subset import check_naked_sets, check_naked_cols, \
+        check_naked_rows, set_missing_val_table, find_matches, \
+        in_same_box, remove_in_box, clean_naked_sets
 
-    from strats.intersection_elim import check_within_boxes, check_within_a_box, \
-        in_which_rows, in_which_cols, \
-        remove_row_outside_box, remove_col_outside_box, \
-        remove_rows_in_box, remove_cols_in_box, check_block_elim
+    from strats.intersection_elim import check_intersection_boxes, \
+        check_intersection_box, in_which_rows, in_which_cols, \
+        clean_row_outside_box, clean_col_outside_box, clean_rows_in_box, \
+        clean_cols_in_box, check_block_elim
 
     from strats.hidden_subset import check_hidden_subsets, \
         check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
-        remove_hidden_col, remove_hidden_row, format_hidden_subset_info, \
+        clean_hidden_col, clean_hidden_row, format_hidden_subset_info, \
         clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
-        check_hidden_sub_boxes, remove_hidden_box
+        check_hidden_sub_boxes, clean_hidden_box
 
     from strats.naked_triples import check_naked_triples, \
-        check_naked_triples_rows, check_naked_triples_row, clean_triple_row, \
-        check_naked_triples_cols, check_naked_triples_col, clean_triple_col
+        check_naked_trips_rows, check_naked_trips_row, clean_trips_row, \
+        check_naked_trips_cols, check_naked_trips_col, clean_trips_col
 
     from strats.naked_triples_util import find_naked_triples, \
-        verify_triples_list, check_naked_triples_box, clean_triple_boxes, \
-        clean_triple_box
+        verify_triples_list, check_naked_trips_box, clean_trips_boxes, \
+        clean_trips_box
 
-    from strats.xwing_row import check_xwing, check_xwing_by_rows, \
-        check_xwing_cands, clean_xwing_list, check_xwing_is_same_cols, \
-        is_xwing_same_cols, clean_xwing_col
+    from strats.xwing_row import check_xwing, check_xw_by_rows, \
+        check_xw_cands, clean_xw_list, check_xw_is_same_cols, \
+        is_xwing_same_cols, clean_xw_col
 
-    from strats.xwing_col import check_xwing_by_cols, \
-        check_xwing_is_same_rows, is_xwing_same_rows, clean_xwing_row
+    from strats.xwing_col import check_xw_by_cols, check_xw_is_same_rows, \
+        is_xwing_same_rows, clean_xw_row
 
-    from strats.swordfish import check_swordfish, check_swordfish_cands, \
-        clean_swordfish_list, find_swordfish, clean_swordfish, intersection
+    from strats.swordfish import check_swordfish, check_sf_cands, \
+        clean_sf_list, find_swordfish, clean_swordfish, intersection
 
 
 
@@ -111,7 +111,7 @@ class Sudoku_Solver():
     def remove_num_in_row(self, coord, solved_value):
         # Remove solved_value from the list of possible values of
         # other unsolved cells in this row.
-        ref_row, ref_col = coord  # Reference cell
+        ref_row, ref_col = coord  # reference cell
 
         for i in range(9):
             if i != ref_col:
@@ -122,7 +122,7 @@ class Sudoku_Solver():
     def remove_num_in_col(self, coord, solved_value):
         # Remove solved_value from the list of possible values of
         # other unsolved cells in this col.
-        ref_row, ref_col = coord  # Reference cell
+        ref_row, ref_col = coord  # reference cell
 
         for j in range(9):
             if j != ref_row:
@@ -133,7 +133,7 @@ class Sudoku_Solver():
     def remove_num_in_box(self, coord, solved_value):
         # Remove solved_value from the list of possible values of
         # other unsolved cells in this box.
-        ref_row, ref_col = coord  # Reference cell
+        ref_row, ref_col = coord  # reference cell
 
         # Possible values: 0, 1, 2
         box_row = ref_row // 3

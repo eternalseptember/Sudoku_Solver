@@ -23,14 +23,14 @@ print('===============================')
 
 
 print('Check matching sets:')
-sudoku.check_matching_sets()
+sudoku.check_naked_sets()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
 
 
 print('Single-box block-level eliminations:')
-sudoku.check_within_boxes()
+sudoku.check_intersection_boxes()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')

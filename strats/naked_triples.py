@@ -7,24 +7,24 @@
 
 
 def check_naked_triples(self):
-    # self.check_naked_triples_rows()
-    self.check_naked_triples_cols()
+    # self.check_naked_trips_rows()
+    self.check_naked_trips_cols()
 
 
 
-def check_naked_triples_rows(self):
+def check_naked_trips_rows(self):
     # Iterate through each row to find naked triples.
-    for j in range(9):  # j is row number
-        self.check_naked_triples_row(j)
+    for j in range(9):  # j is row number.
+        self.check_naked_trips_row(j)
 
 
 
-def check_naked_triples_row(self, row_num):
+def check_naked_trips_row(self, row_num):
     # Collect candidate cells and their possibilities.
     poss_trip_list = []
 
     # Get a list of cells that can be part of a triple.
-    for i in range(9):  # i is col number
+    for i in range(9):  # i is col number.
         this_cell = (row_num, i)
 
         # Skip over solved cells.
@@ -39,12 +39,12 @@ def check_naked_triples_row(self, row_num):
     poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_row')
 
     if len(poss_trips_info) > 0:
-        self.clean_triple_row(poss_trips_info, row_num)
+        self.clean_trips_row(poss_trips_info, row_num)
         self.solve_queue()
 
 
 
-def clean_triple_row(self, poss_trips_info, row_num):
+def clean_trips_row(self, poss_trips_info, row_num):
     # Remove trip possibilities in cells that are not part of the triple.
     for item in poss_trips_info.keys():
 
@@ -53,7 +53,7 @@ def clean_triple_row(self, poss_trips_info, row_num):
         coords_set = poss_trips_info[item]
 
         # Remove trip values from cells not part of triple.
-        for i in range(9):  # i is col number
+        for i in range(9):  # i is col number.
             this_cell = (row_num, i)
 
             # Skip over cells that are part of this triple.
@@ -76,14 +76,14 @@ def clean_triple_row(self, poss_trips_info, row_num):
 
 
 
-def check_naked_triples_cols(self):
+def check_naked_trips_cols(self):
     # Iterate through each col to find naked triples.
-    for i in range(9):  # i is col number
-        self.check_naked_triples_col(i)
+    for i in range(9):  # i is col number.
+        self.check_naked_trips_col(i)
 
 
 
-def check_naked_triples_col(self, col_num):
+def check_naked_trips_col(self, col_num):
     # Collect candidate cells and their possibilities.
     poss_trip_list = []
 
@@ -103,12 +103,12 @@ def check_naked_triples_col(self, col_num):
     poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_col')
 
     if len(poss_trips_info) > 0:
-        self.clean_triple_col(poss_trips_info, col_num)
+        self.clean_trips_col(poss_trips_info, col_num)
         self.solve_queue()
 
 
 
-def clean_triple_col(self, poss_trips_info, col_num):
+def clean_trips_col(self, poss_trips_info, col_num):
     # Remove trip possibilities in cells that are not part of the triple.
     for item in poss_trips_info.keys():
 
@@ -117,7 +117,7 @@ def clean_triple_col(self, poss_trips_info, col_num):
         coords_set = poss_trips_info[item]
 
         # Remove trip values from cells not part of triple.
-        for j in range(9):  # j is row number
+        for j in range(9):  # j is row number.
             this_cell = (j, col_num)
 
             # Skip over cells that are part of this triple.

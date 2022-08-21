@@ -58,9 +58,9 @@ print('===============================')
 
 # preliminary cleaning of board candidates for hidden_sub_row_2.txt
 print('Getting to the point where the test follows the example:')
-sudoku.check_matching_sets()  # naked_subset
-sudoku.check_matching_sets()  # naked_subset
-sudoku.check_within_boxes()  # intersection elim
+sudoku.check_naked_sets()  # naked_subset
+sudoku.check_naked_sets()  # naked_subset
+sudoku.check_intersection_boxes()  # intersection elim
 
 sudoku.print_board()
 sudoku.print_possible_values()

@@ -3,7 +3,7 @@
 
 def find_naked_triples(self, poss_trip_list, mode):
     # Make a list of every possible merged triplet set.
-    # 'mode' is 'check_row' or 'check_col'. Pass to verify function.
+    # 'mode' is 'check_row' or 'check_col'. Pass to verify_triples_list.
     poss_trips_info = {}  # [trip_str] = [list of coords]
     number_of_cells = len(poss_trip_list)
 
@@ -45,6 +45,7 @@ def find_naked_triples(self, poss_trip_list, mode):
 
 
 def verify_triples_list(self, poss_trips_info, mode):
+    # Checks each entry of poss_trips_info for valid triples conditions.
     # 'mode' is 'check_row' or 'check_col'.
 
 
@@ -53,7 +54,7 @@ def verify_triples_list(self, poss_trips_info, mode):
 
 
     # Remove entries from poss_trips_info if triple is not valid.
-    entries_to_remove = []  # List of str keys.
+    entries_to_remove = []  # list of str keys
 
     # List of vals and coords in possible triplets.
     # Used for finding vals and coords in multiple possible trips.
@@ -69,7 +70,7 @@ def verify_triples_list(self, poss_trips_info, mode):
         coords_list = poss_trips_info[trip_str]
         trip_vals_list = list(map(int, trip_str))  # converted to list
 
-        # Length of list: Need 3 coords.
+        # Length of list: Need 3 coords (for now).
         if len(coords_list) != 3:
             entries_to_remove.append(trip_str)
 
@@ -80,8 +81,6 @@ def verify_triples_list(self, poss_trips_info, mode):
             else:
                 # print('coord in multiple trip: {0}'.format(coord))
                 entries_to_remove.append(trip_str)
-
-                # For finding the first occurance to remove.
                 coords_in_mult_trips.append(coord)
 
 
@@ -92,39 +91,34 @@ def verify_triples_list(self, poss_trips_info, mode):
             else:
                 # print('val in multiple trip: {0}'.format(trip_val))
                 entries_to_remove.append(trip_str)
-
-                # For finding the first occurance to remove.
                 vals_in_mult_trips.append(trip_val)
 
 
-    # Search through the list for the FIRST occurance.
     # Remove from triplet consideration: coords and vals in multiple trips.
+    # Search through poss_trips_info for the FIRST occurrence.
     if len(coords_in_mult_trips) > 0:
-        for entry in poss_trips_info.keys():
-            coords_list = poss_trips_info[entry]
+        for trip_str in poss_trips_info.keys():
+            coords_list = poss_trips_info[trip_str]
 
             # Check if coord is in multiple trips here.
+            # Once trip_str has been added to entries_to_remove,
+            # break to next trip_str.
             for coord in coords_in_mult_trips:
                 if coord in coords_list:
-                    entries_to_remove.append(entry)
-
-                    # Once entry has been added to entries_to_remove,
-                    # break to next entry.
+                    entries_to_remove.append(trip_str)
                     break
 
 
     if len(vals_in_mult_trips) > 0:
-        # Get coordinates and put them in entries_to_remove.
         for trip_str in poss_trips_info.keys():
             trip_vals_list = list(map(int, trip_str))  # convert
 
             # Check if val is in multiple trips here.
+            # Once trip_str has been added to entries_to_remove,
+            # break to next trip_str.
             for val in vals_in_mult_trips:
                 if val in trip_vals_list:
                     entries_to_remove.append(trip_str)
-
-                    # Once trip_str has been added to entries_to_remove,
-                    # break to next trip_str.
                     break
 
 
@@ -137,25 +131,24 @@ def verify_triples_list(self, poss_trips_info, mode):
     # Triples have been verified. Check if they're in the same box.
     # Exit the process if possible triples list is empty.
     if len(poss_trips_info) > 0:
-        self.check_naked_triples_box(poss_trips_info, mode)
+        self.check_naked_trips_box(poss_trips_info, mode)
         return poss_trips_info
     else:
         return poss_trips_info  # an empty dict
 
 
 
-def check_naked_triples_box(self, poss_trips_info, mode):
-    # Unlike the row and col versions of this function, this is called
-    # from verify_triples_list.
+def check_naked_trips_box(self, poss_trips_info, mode):
+    # This is called from verify_triples_list.
     # 'mode' is 'check_row' or 'check_col'.
+    # poss_trips_info[trip_str] = [list of coords]
 
 
     # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
-    print('check_naked_triples_box: {0}'.format(poss_trips_info))
+    print('check_naked_trips_box: {0}'.format(poss_trips_info))
 
-
-    # poss_trips_info[trip_str] = [list of coords]
-    triple_boxes = []  # store trip_str if coords are in the same box
+    # Check if the triples coordinates are in the same box.
+    triple_boxes = []  # Stores trip_str if coords are in the same box.
 
     for trip_vals in poss_trips_info.keys():
         trip_coords = poss_trips_info[trip_vals]
@@ -164,13 +157,20 @@ def check_naked_triples_box(self, poss_trips_info, mode):
         print('trip_vals: {0}\ttrip_coords{1}'.format(trip_vals, trip_coords))
 
 
-        # check this section
-        row_list = []
-        col_list = []
+        row_list = []  # One unique value if mode is 'check_row'.
+        col_list = []  # One unique value if mode is 'check_col'.
 
         for coord in trip_coords:
             this_row, this_col = (coord)
             print('this_row: {0} this_col: {1}'.format(this_row, this_col))
+
+            row_list.append(this_row)
+            col_list.append(this_col)
+
+        if mode == 'check_col':
+            print('check range of values in row_list')
+        elif mode == 'check_row':
+            print('check range of values in col_list')
 
 
 
@@ -178,19 +178,19 @@ def check_naked_triples_box(self, poss_trips_info, mode):
     # If there are any triples inside a box, clean them.
     if len(triple_boxes) > 0:
         print('clean triple box: {0}\tcoords: {1}'.format(poss_trips_info, triple_boxes))
-        self.clean_triple_boxes(poss_trips_info, triple_boxes)
+        self.clean_trips_boxes(poss_trips_info, triple_boxes)
 
 
 
-def clean_triple_boxes(self, poss_trips_info, trip_box_info):
+def clean_trips_boxes(self, poss_trips_info, trip_box_info):
     # Will be passed a list of keys of triple boxes.
     for trip_box in trip_box_info:
         trip_coords = poss_trips_info[trip_box]
-        self.clean_triple_box(trip_box, trip_coords)
+        self.clean_trips_box(trip_box, trip_coords)
 
 
 
-def clean_triple_box(self, trip_vals, trip_coords):
+def clean_trips_box(self, trip_vals, trip_coords):
     # Info for a single 3x3 box.
 
     # Determine box info.
