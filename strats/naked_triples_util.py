@@ -168,9 +168,9 @@ def check_naked_trips_box(self, poss_trips_info, mode):
             col_list.append(this_col)
 
         if mode == 'check_col':
-            print('check range of values in row_list')
+            row_count = list(set(row_list))
         elif mode == 'check_row':
-            print('check range of values in col_list')
+            col_count = list(set(col_list))
 
 
 
