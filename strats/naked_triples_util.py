@@ -159,6 +159,9 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
         row_list = []  # One unique value if mode is 'check_row'.
         col_list = []  # One unique value if mode is 'check_col'.
+        box_1 = [] # 0, 1, 2
+        box_2 = [] # 3, 4, 5
+        box_3 = [] # 6, 7, 8
 
         for coord in trip_coords:
             this_row, this_col = (coord)
@@ -169,6 +172,12 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
         if mode == 'check_col':
             row_count = list(set(row_list))
+
+
+
+
+
+
         elif mode == 'check_row':
             col_count = list(set(col_list))
 
