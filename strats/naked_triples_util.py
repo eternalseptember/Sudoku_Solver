@@ -173,6 +173,14 @@ def check_naked_trips_box(self, poss_trips_info, mode):
         if mode == 'check_col':
             row_count = list(set(row_list))
 
+            for this_row in row_count:
+                if this_row <= 2:
+                    box_1.append(this_row)
+                elif this_row <= 5:
+                    box_2.append(this_row)
+                elif this_row <= 8:
+                    box_3.append(this_row)
+
 
 
 
