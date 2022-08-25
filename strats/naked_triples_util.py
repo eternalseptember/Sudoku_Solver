@@ -143,10 +143,6 @@ def check_naked_trips_box(self, poss_trips_info, mode):
     # 'mode' is 'check_row' or 'check_col'.
     # poss_trips_info[trip_str] = [list of coords]
 
-
-    # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
-    print('check_naked_trips_box: {0}'.format(poss_trips_info))
-
     # Check if the triples coordinates are in the same box.
     triple_boxes = []  # Stores trip_str if coords are in the same box.
 
@@ -155,7 +151,6 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
         # TESTING: CLEAN TRIPLES FROM BOX NOT WORKING
         print('trip_vals: {0}\ttrip_coords{1}'.format(trip_vals, trip_coords))
-
 
         row_list = []  # One unique value if mode is 'check_row'.
         col_list = []  # One unique value if mode is 'check_col'.
@@ -181,8 +176,8 @@ def check_naked_trips_box(self, poss_trips_info, mode):
                 elif this_row <= 8:
                     box_3.append(this_row)
 
-
-
+            if (len(box_1) == 3) or (len(box_2) == 3) or (len(box_3) == 3):
+                triple_boxes.append(trip_vals)
 
 
 
@@ -194,8 +189,8 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
     # If there are any triples inside a box, clean them.
     if len(triple_boxes) > 0:
-        print('clean triple box: {0}\tcoords: {1}'.format(poss_trips_info, triple_boxes))
-        self.clean_trips_boxes(poss_trips_info, triple_boxes)
+        print('clean triple box: {0}'.format(triple_boxes))
+        # self.clean_trips_boxes(poss_trips_info, triple_boxes)
 
 
 
