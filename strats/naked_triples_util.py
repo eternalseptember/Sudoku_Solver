@@ -160,8 +160,6 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
         for coord in trip_coords:
             this_row, this_col = (coord)
-            print('this_row: {0} this_col: {1}'.format(this_row, this_col))
-
             row_list.append(this_row)
             col_list.append(this_col)
 
@@ -180,9 +178,19 @@ def check_naked_trips_box(self, poss_trips_info, mode):
                 triple_boxes.append(trip_vals)
 
 
-
         elif mode == 'check_row':
             col_count = list(set(col_list))
+
+            for this_col in col_count:
+                if this_col <= 2:
+                    box_1.append(this_col)
+                elif this_col <= 5:
+                    box_2.append(this_col)
+                elif this_col <= 8:
+                    box_3.append(this_col)
+
+            if (len(box_1) == 3) or (len(box_2) == 3) or (len(box_3) == 3):
+                triple_boxes.append(trip_vals)
 
 
 
@@ -190,7 +198,7 @@ def check_naked_trips_box(self, poss_trips_info, mode):
     # If there are any triples inside a box, clean them.
     if len(triple_boxes) > 0:
         print('clean triple box: {0}'.format(triple_boxes))
-        # self.clean_trips_boxes(poss_trips_info, triple_boxes)
+        self.clean_trips_boxes(poss_trips_info, triple_boxes)
 
 
 
