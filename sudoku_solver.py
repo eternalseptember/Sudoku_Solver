@@ -14,10 +14,10 @@ class Sudoku_Solver():
         check_naked_rows, set_missing_val_table, find_matches, \
         in_same_box, remove_in_box, clean_naked_sets
 
-    from strats.intersection_elim import check_intersection_boxes, \
-        check_intersection_box, in_which_rows, in_which_cols, \
-        clean_row_outside_box, clean_col_outside_box, clean_rows_in_box, \
-        clean_cols_in_box, check_block_elim
+    from strats.intersection_elim import check_intersections, \
+        check_intersection_boxes, check_intersection_box, in_which_rows, \
+        in_which_cols, clean_row_outside_box, clean_col_outside_box, \
+        clean_rows_in_box, clean_cols_in_box, check_block_elim
 
     from strats.hidden_subset import check_hidden_subsets, \
         check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \

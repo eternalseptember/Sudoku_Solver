@@ -2,7 +2,13 @@
 # Could put the single- and double-boxed elims within a single function.
 
 
+def check_intersections(self):
+    self.check_intersection_boxes()
+    self.check_block_elim()
+
+
 def check_intersection_boxes(self):
+    # Single-box, block-level eliminations.
     # Check all nine boxes for patterns to eliminate possibilities.
     # Within each 3x3 box, tally up whether unfilled values fit within row.
     # If so, then eliminate them as possibilities from neighboring boxes.
@@ -168,6 +174,7 @@ def clean_cols_in_box(self, block_info):
 
 
 def check_block_elim(self):
+    # Double-boxed, block-level eliminations.
     # Check all nine boxes for patterns to eliminate possibilities.
     # Within each 3x3 box,
     # tally up whether unfilled values fit within the same two rows/cols.

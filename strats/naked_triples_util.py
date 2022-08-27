@@ -193,8 +193,6 @@ def check_naked_trips_box(self, poss_trips_info, mode):
                 triple_boxes.append(trip_vals)
 
 
-
-
     # If there are any triples inside a box, clean them.
     if len(triple_boxes) > 0:
         print('clean triple box: {0}'.format(triple_boxes))

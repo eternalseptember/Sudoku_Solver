@@ -32,10 +32,10 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("test_boards/naked_triple_row_1.txt")
+sudoku.import_board("test_boards/naked_triple_row_1.txt")
 # sudoku.import_board("test_boards/naked_triple_col_1.txt")
 # sudoku.import_board("test_boards/naked_triple_row_2.txt")
-sudoku.import_board("test_boards/naked_triple_col_2.txt")
+# sudoku.import_board("test_boards/naked_triple_col_2.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -46,6 +46,10 @@ sudoku.solve_queue()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+
+
+# board prep for naked_triple_row_1
+
 
 
 print('Check for naked triples:')

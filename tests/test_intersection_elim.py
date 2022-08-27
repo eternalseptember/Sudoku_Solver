@@ -43,8 +43,7 @@ print('===============================')
 
 
 print('Intersection eliminations:')
-sudoku.check_intersection_boxes()
-sudoku.check_block_elim()
+sudoku.check_intersections()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
