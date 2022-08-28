@@ -153,7 +153,7 @@ def clean_naked_sets(self, coord, matched_set, label=''):
             # 	.format(label, matched_set, coord))
             return
         else:
-            # Remove any values in the matched set.
+            # Remove any values of the matched set.
             for val in matched_set:
                 if val in poss_values:
                     poss_values.remove(val)

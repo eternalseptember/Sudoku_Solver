@@ -8,7 +8,7 @@
 
 def check_naked_triples(self):
     self.check_naked_trips_rows()
-    # self.check_naked_trips_cols()
+    self.check_naked_trips_cols()
 
 
 

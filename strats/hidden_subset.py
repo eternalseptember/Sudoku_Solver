@@ -136,18 +136,18 @@ def clean_hidden_subset(self, coord, subset_locs, subset_vals):
         poss_values = self.possible_values[coord]
 
         if coord in subset_locs:
+            # coord IS part of the subset,
+            # so keep this coord's poss_vals that are in subset_vals.
             new_poss_vals = \
                 [poss_val for poss_val in poss_values if poss_val in subset_vals]
         else:
             # coord is NOT part of the subset,
-            # so remove subset_vals from poss_values.
+            # so remove subset_vals from this coord's poss_values.
             new_poss_vals = \
                 [poss_val for poss_val in poss_values if poss_val not in subset_vals]
 
         # new_poss_vals comes from the if/else statement.
         self.possible_values[coord] = new_poss_vals
-
-        # not sure if poss_vals or new_poss_vals
         self.check_if_solved(coord, new_poss_vals)
 
 

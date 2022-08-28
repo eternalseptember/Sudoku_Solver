@@ -18,7 +18,7 @@ def check_intersection_boxes(self):
             coord = (i, j)
             self.check_intersection_box(coord)
 
-    self.solve_queue()
+            self.solve_queue()
 
 
 def check_intersection_box(self, coord):
