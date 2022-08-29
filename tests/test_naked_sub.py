@@ -14,6 +14,10 @@ Remove [4,7] from the rest of the col, leaving
     [1] in (0,7);
     [2] in (0,3);
     [6] in (0,5)
+
+BOX:
+[4, 7] in (7, 1) and (8, 0).
+Remove [4, 7] from (7, 2) and (8, 2).
 """
 
 import sys
@@ -23,7 +27,8 @@ from sudoku_solver import *
 
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/naked_sub_col.txt")
-sudoku.import_board("test_boards/naked_sub_row.txt")
+# sudoku.import_board("test_boards/naked_sub_row.txt")
+sudoku.import_board("test_boards/naked_sub_box_1.txt")
 sudoku.print_board()
 print('===============================')
 
