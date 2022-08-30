@@ -164,6 +164,14 @@ def clean_naked_sets(self, coord, matched_set, label=''):
 
 
 
+def check_naked_boxes(self):
+    return
+
+
+def check_naked_box(self):
+    return
+
+
 
 
 
