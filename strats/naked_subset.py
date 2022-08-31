@@ -165,10 +165,14 @@ def clean_naked_sets(self, coord, matched_set, label=''):
 
 
 def check_naked_boxes(self):
-    return
+    for i in [0, 3, 6]:  # i goes down.
+        for j in [0, 3, 6]:  # j goes across.
+            coord = (i, j)
 
 
-def check_naked_box(self):
+
+
+def check_naked_box(self, coord):
     return
 
 
