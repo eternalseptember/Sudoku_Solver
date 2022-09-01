@@ -165,6 +165,7 @@ def clean_naked_sets(self, coord, matched_set, label=''):
 
 
 def check_naked_boxes(self):
+    # Search a box for naked pairs that are not on the same row or col.
     for i in [0, 3, 6]:  # i goes down.
         for j in [0, 3, 6]:  # j goes across.
             coord = (i, j)
@@ -173,7 +174,8 @@ def check_naked_boxes(self):
 
 
 def check_naked_box(self, coord):
-    return
+    # coord defines the 3x3 box.
+    poss_vals_in_box = self.get_box_poss_vals(coord)
 
 
 
