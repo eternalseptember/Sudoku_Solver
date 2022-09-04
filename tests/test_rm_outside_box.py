@@ -12,6 +12,7 @@ In the central box, 7 can only be in (4, 3) and (4, 5),
 so eliminate 7 as a possibility in the rest of (4, col).
 """
 
+
 import sys
 sys.path.append('../')
 from sudoku_solver import *

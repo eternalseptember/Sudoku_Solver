@@ -22,11 +22,8 @@ Eliminate 8 from (rows 6-8; col 3) and (rows 6-8; col 5).
 """
 
 
-import os, sys
-current_dir = os.path.dirname(os.path.realpath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
-
+import sys
+sys.path.append('../')
 from sudoku_solver import *
 
 

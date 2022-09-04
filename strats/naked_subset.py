@@ -5,8 +5,9 @@
 
 def check_naked_sets(self):
     # Run this if checking unique doesn't solve everything.
-    self.check_naked_cols()
-    self.check_naked_rows()
+    # self.check_naked_cols()
+    # self.check_naked_rows()
+    self.check_naked_boxes()
 
 
 def check_naked_cols(self):
