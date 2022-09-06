@@ -20,10 +20,11 @@ class Sudoku_Solver():
         in_which_cols, clean_row_outside_box, clean_col_outside_box, \
         clean_rows_in_box, clean_cols_in_box, check_block_elim
 
+    # clean up the order
     from strats.hidden_subset import check_hidden_subsets, \
-        check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
+        check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_box, \
         clean_hidden_col, clean_hidden_row, format_hidden_subset_info, \
-        clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
+        find_hidden_subset, clean_hidden_subset, find_hidden_sub_box, \
         check_hidden_sub_boxes, clean_hidden_box
 
     from strats.naked_triples import check_naked_triples, \
@@ -59,6 +60,9 @@ class Sudoku_Solver():
 
 
     def create_board(self):
+        """
+        Creates a blank board upon creation of class.
+        """
         board = [
             ['-' for col in range(9)] for row in range(9)
             ]
@@ -66,6 +70,9 @@ class Sudoku_Solver():
 
 
     def import_board(self, file_name):
+        """
+        Import sudoku puzzle from a text file, then update game states.
+        """
         board_file = open(file_name, 'r')
         board_import = board_file.readlines()
         board_file.close()
@@ -84,14 +91,18 @@ class Sudoku_Solver():
 
 
     def solve_queue(self):
-        # solved_value is a reduced list after the first pass.
+        """
+        solved_value is a reduced list after the first pass.
+        """
         while len(self.solved_queue) > 0:
             solved_cell = self.solved_queue.pop()
             self.resolve(solved_cell)
 
 
     def resolve(self, coord):
-        # Assign solved value to board and clean up lists.
+        """
+        Assign solved value to board and clean up lists.
+        """
         self.solved_list.append(coord)
 
         row, col = coord
@@ -102,16 +113,20 @@ class Sudoku_Solver():
 
 
     def remove_num(self, coord, solved_value):
-        # After a number on the board has been filled in, remove it as a
-        # possibility in all affected areas.
+        """
+        After a number on the board has been filled in, remove it as a
+        possibility in all affected areas.
+        """
         self.remove_num_in_row(coord, solved_value)
         self.remove_num_in_col(coord, solved_value)
         self.remove_num_in_box(coord, solved_value)
 
 
     def remove_num_in_row(self, coord, solved_value):
-        # Remove solved_value from the list of possible values of
-        # other unsolved cells in this row.
+        """
+        Remove solved_value from the list of possible values of
+        other unsolved cells in this row.
+        """
         ref_row, ref_col = coord  # reference cell
 
         for i in range(9):
@@ -121,8 +136,10 @@ class Sudoku_Solver():
 
 
     def remove_num_in_col(self, coord, solved_value):
-        # Remove solved_value from the list of possible values of
-        # other unsolved cells in this col.
+        """
+        Remove solved_value from the list of possible values of
+        other unsolved cells in this col.
+        """
         ref_row, ref_col = coord  # reference cell
 
         for j in range(9):
@@ -132,8 +149,10 @@ class Sudoku_Solver():
 
 
     def remove_num_in_box(self, coord, solved_value):
-        # Remove solved_value from the list of possible values of
-        # other unsolved cells in this box.
+        """
+        Remove solved_value from the list of possible values of
+        other unsolved cells in this box.
+        """
         ref_row, ref_col = coord  # reference cell
 
         # Possible values: 0, 1, 2
@@ -150,10 +169,12 @@ class Sudoku_Solver():
 
 
     def possible_vals_check(self, coord, solved_value):
-        # Check if there is a stored list of possible values in this coord.
-        # If there isn't, then this location has been solved.
-        # Otherwise, remove solved_value as a possible choice in this coord.
-        # Then check if this coord has been solved.
+        """
+        Check if there is a stored list of possible values in this coord.
+        If there isn't, then this location has been solved.
+        Otherwise, remove solved_value as a possible choice in this coord.
+        Then check if this coord has been solved.
+        """
         if coord in self.possible_values:
             poss_vals = self.possible_values[coord]
 
@@ -164,10 +185,12 @@ class Sudoku_Solver():
 
 
     def check_if_solved(self, coord, poss_vals):
-        # Check if this coord has been solved.
-        # It's assumed that this function is executed after doing some
-        # comparisons and assignments with poss_vals.
-        # Add to solved queue if only one possible value is remaining.
+        """
+        Check if this coord has been solved.
+        It's assumed that this function is executed after doing some
+        comparisons and assignments with poss_vals.
+        Add to solved queue if only one possible value is remaining.
+        """
         if len(poss_vals) == 1:
             if (coord not in self.solved_list) and \
                 (coord not in self.solved_queue):
@@ -177,7 +200,9 @@ class Sudoku_Solver():
 
 
     def solve(self, coord):
-        # To MANUALLY resolve one individual cell.
+        """
+        To MANUALLY resolve one individual cell.
+        """
         self.resolve(coord)
         self.solve_queue()
 

@@ -1,31 +1,32 @@
-# Functions that eliminate possibilities based on row/box/col interactions.
-# Could put the single- and double-boxed elims within a single function.
-
-
 def check_intersections(self):
+    """
+    Functions that eliminate possibilities based on row/box/col interactions.
+    Could put the single- and double-boxed elims within a single function.
+    """
     self.check_intersection_boxes()
     self.check_block_elim()
 
 
 def check_intersection_boxes(self):
-    # Single-box, block-level eliminations.
-    # Check all nine boxes for patterns to eliminate possibilities.
-    # Within each 3x3 box, tally up whether unfilled values fit within row.
-    # If so, then eliminate them as possibilities from neighboring boxes.
-
+    """
+    Single-box, block-level eliminations.
+    Check all nine boxes for patterns to eliminate possibilities.
+    Within each 3x3 box, tally up whether unfilled values fit within row.
+    If so, then eliminate them as possibilities from neighboring boxes.
+    """
     for i in [0, 3, 6]:  # i goes down.
         for j in [0, 3, 6]:  # j goes across.
             coord = (i, j)
             self.check_intersection_box(coord)
-
             self.solve_queue()
 
 
 def check_intersection_box(self, coord):
-    # coord defines the 3x3 box.
-    # Check within a single box to see whether missing values can be narrowed
-    # down to specific rows.
-
+    """
+    coord defines the 3x3 box.
+    Check within a single box to see whether missing values can be narrowed
+    down to specific rows.
+    """
     # Get the list of missing values and their possible locations in this box.
     poss_vals_in_box = self.get_box_poss_vals(coord)
 
@@ -52,7 +53,9 @@ def check_intersection_box(self, coord):
 
 
 def in_which_rows(self, coords_list):
-    # Which rows could the cells be in?
+    """
+    In which rows could the cells be in?
+    """
     rows = []
 
     # Unpack and tally rows here.
@@ -65,7 +68,9 @@ def in_which_rows(self, coords_list):
 
 
 def in_which_cols(self, coords_list):
-    # Which cols could the cells be in?
+    """
+    In which cols could the cells be in?
+    """
     cols = []
 
     # Unpack and tally cols here.
@@ -78,8 +83,10 @@ def in_which_cols(self, coords_list):
 
 
 def clean_row_outside_box(self, eliminated_val, ref_box, in_row):
-    # eliminated_val is the value to be removed.
-    # ref_box defines the 3x3 box.
+    """
+    eliminated_val is the value to be removed.
+    ref_box defines the 3x3 box.
+    """
     ref_row, ref_col = ref_box
     box_col = ref_col // 3  # Remove in row outside this box.
 
@@ -94,8 +101,10 @@ def clean_row_outside_box(self, eliminated_val, ref_box, in_row):
 
 
 def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
-    # eliminated_val is the value to be removed.
-    # ref_box defines the 3x3 box.
+    """
+    eliminated_val is the value to be removed.
+    ref_box defines the 3x3 box.
+    """
     ref_row, ref_col = ref_box
     box_row = ref_row // 3  # Remove in col outside this box.
 
@@ -110,9 +119,10 @@ def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
 
 
 def clean_rows_in_box(self, block_info):
-    # Given info about a missing value and which two rows of which two boxes
-    # they're in, remove those possibilities in the third box.
-
+    """
+    Given info about a missing value and which two rows of which two boxes
+    it's in, remove that possibility in the third box.
+    """
     # Unpack block_info.
     # Key for dict on missing vals in two boxes, leading to eliminating
     # those missing vals as possibilities in third box.
@@ -142,9 +152,10 @@ def clean_rows_in_box(self, block_info):
 
 
 def clean_cols_in_box(self, block_info):
-    # Given info about a missing value and which two cols of which two boxes
-    # they're in, remove those possibilities in the third box.
-
+    """
+    Given info about a missing value and which two cols of which two boxes
+    it's in, remove that possibility in the third box.
+    """
     # Unpack block_info.
     # Key for dict on missing vals in two boxes, leading to eliminating
     # those missing vals as possibilities in third box.
@@ -174,14 +185,15 @@ def clean_cols_in_box(self, block_info):
 
 
 def check_block_elim(self):
-    # Double-boxed, block-level eliminations.
-    # Check all nine boxes for patterns to eliminate possibilities.
-    # Within each 3x3 box,
-    # tally up whether unfilled values fit within the same two rows/cols.
-    # Then check neighboring boxes.
-    # By the process of elimination,
-    # deduce where that number is in the third row/col.
-
+    """
+    Double-boxed, block-level eliminations.
+    Check all nine boxes for patterns to eliminate possibilities.
+    Within each 3x3 box,
+    tally up whether unfilled values fit within the same two rows/cols.
+    Then check neighboring boxes.
+    By the process of elimination,
+    deduce where that number is in the third row/col.
+    """
     # keys: hashable string; value: dict containing info about missing vals
     # subdict keys: "num_missing", "in_cols" or "in_rows, "in_boxes"
     block_row_info = {}

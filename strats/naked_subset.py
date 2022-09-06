@@ -1,18 +1,18 @@
-# Functions that eliminate possibilities based on matching pairs (or triplets).
-# Focused on finding pairs. Triplets can be found incidentally.
-# Naked: EXACT list of candidates in EXACT cells.
-
-
 def check_naked_sets(self):
-    # Run this if checking unique doesn't solve everything.
+    """
+    Functions that eliminate possibilities based on matching pairs (or triplets).
+    Focused on finding pairs. Triplets can be found incidentally.
+    Naked: EXACT list of candidates in EXACT cells.
+    """
     # self.check_naked_cols()
     # self.check_naked_rows()
-    # self.check_naked_boxes()
-    self.check_naked_box((6, 0))
+    self.check_naked_boxes()
 
 
 def check_naked_cols(self):
-    # Search each col for matching pairs/triplets.
+    """
+    Search each col for matching pairs/triplets.
+    """
     for col in range(9):
         col_missing_vals = {}
 
@@ -41,7 +41,9 @@ def check_naked_cols(self):
 
 
 def check_naked_rows(self):
-    # Search each row for matching pairs/triplets.
+    """
+    Search each row for matching pairs/triplets.
+    """
     for row in range(9):
         row_missing_vals = {}
 
@@ -70,7 +72,9 @@ def check_naked_rows(self):
 
 
 def set_missing_val_table(self, coord, missing_val_dict):
-    # Tallies the combinations of missing values in each area.
+    """
+    Tallies the combinations of missing values in each area.
+    """
     if coord in self.possible_values:
         poss_values = self.possible_values[coord]
 
@@ -85,10 +89,12 @@ def set_missing_val_table(self, coord, missing_val_dict):
 
 
 def find_matches(self, missing_val_dict):
-    # Search the dictionary of missing values for matches between
-    # possible values in a cell and
-    # the number of cells with that exact list of possibilities.
-    # Also keep track of matches' locations.
+    """
+    Search the dictionary of missing values for matches between
+    possible values in a cell and
+    the number of cells with that exact list of possibilities.
+    Also keep track of matches' locations.
+    """
     matches_vals = []
     matches_locs = {}
 
@@ -103,11 +109,12 @@ def find_matches(self, missing_val_dict):
 
 
 def in_same_box(self, coords_list):
-    # Checks whether all values in match are in the same box.
-    # coords_list is all of the cells in the match, sharing the same
-    # list of possible values.
-    # box_loc = (box_row, box_col)
-    boxes = []
+    """
+    Checks whether all values in match are in the same box.
+    coords_list is all of the cells in the match, sharing the same
+    list of possible values.
+    """
+    boxes = []  # box_loc = (box_row, box_col)
 
     for coord in coords_list:
         ref_row, ref_col = coord
@@ -125,10 +132,12 @@ def in_same_box(self, coords_list):
 
 
 def remove_in_box(self, match, match_dict):
-    # match is the list of values in the pair/triplet/set.
-    # match_dict keeps track of where the match is with a hashable key.
-    # If cells of the match are in the same box, then remove those values
-    # as possibilities from the rest of the box.
+    """
+    match is the list of values in the pair/triplet/set.
+    match_dict keeps track of where the match is with a hashable key.
+    If cells of the match are in the same box, then remove those values
+    as possibilities from the rest of the box.
+    """
     match_str = ''.join(map(str, match))
     match_loc = match_dict[match_str]
     is_same_box, box_loc = self.in_same_box(match_loc)
@@ -145,7 +154,9 @@ def remove_in_box(self, match, match_dict):
 
 
 def clean_naked_sets(self, coord, matched_set, label=''):
-    # matched_set is a list of values in the pair/triplet/set.
+    """
+    matched_set is a list of values in the pair/triplet/set.
+    """
     if coord in self.possible_values:
         poss_values = self.possible_values[coord]
 
@@ -167,17 +178,31 @@ def clean_naked_sets(self, coord, matched_set, label=''):
 
 
 def check_naked_boxes(self):
-    # Search a box for naked pairs that are not on the same row or col.
+    """
+    Search a box for naked pairs that are not on the same row or col.
+    """
+
+    """
     for i in [0, 3, 6]:  # i goes down.
         for j in [0, 3, 6]:  # j goes across.
             coord = (i, j)
+    """
 
+    # testing
+    coord = (6, 0)
+    self.check_naked_box(coord)
 
 
 
 def check_naked_box(self, coord):
-    # coord defines the 3x3 box.
+    """
+    coord defines the 3x3 box.
+    """
+    box_missing_vals = {}
     poss_vals_in_box = self.get_box_poss_vals(coord)
+
+
+
 
 
 

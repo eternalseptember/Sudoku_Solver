@@ -1,8 +1,10 @@
-# Functions for finding unique possibilities.
 # Import into the main sudoku_solver class.
 
 
 def check_all_unique(self):
+    """
+    Look for unsolved values with only one possible location.
+    """
     beg_count = 0
     end_count = len(self.solved_list)
 
@@ -30,8 +32,10 @@ def check_all_unique(self):
 
 
 def check_unique_row(self, coord):
-    # Check for unsolved values with only one possible location
-    # within the row referenced by coord.
+    """
+    Check for unsolved values with only one possible location
+    within the row referenced by coord.
+    """
     ref_row, ref_col = coord  # reference cell
     val_lookup = {}  # {value: [(possible cells)]}
 
@@ -44,8 +48,10 @@ def check_unique_row(self, coord):
 
 
 def check_unique_col(self, coord):
-    # Check for unsolved values with only one possible location
-    # within the col referenced by coord.
+    """
+    Check for unsolved values with only one possible location
+    within the col referenced by coord.
+    """
     ref_row, ref_col = coord  # reference cell
     val_lookup = {}  # {value: [(possible cells)]}
 
@@ -58,15 +64,19 @@ def check_unique_col(self, coord):
 
 
 def check_unique_box(self, coord):
-    # Check for unsolved values with only one possible location
-    # within the 3x3 box referenced by coord.
+    """
+    Check for unsolved values with only one possible location
+    within the 3x3 box referenced by coord.
+    """
     val_lookup = self.get_box_poss_vals(coord)
     self.solve_lookup_table(val_lookup)
 
 
 def get_box_poss_vals(self, coord):
-    # Generate a lookup table of remaining unsolved values and all of their
-    # possible locations within a 3x3 box.
+    """
+    Generate a lookup table of remaining unsolved values and all of their
+    possible locations within a 3x3 box.
+    """
     ref_row, ref_col = coord  # reference cell
     val_lookup = {}  # {value: [(possible cells)]}
 
@@ -86,7 +96,9 @@ def get_box_poss_vals(self, coord):
 
 
 def set_lookup_table(self, coord, lookup_dict):
-    # List all possible locations for each missing values.
+    """
+    List all possible locations for each missing values.
+    """
     if coord in self.possible_values:
         poss_values = self.possible_values[coord]
 
@@ -98,7 +110,9 @@ def set_lookup_table(self, coord, lookup_dict):
 
 
 def solve_lookup_table(self, lookup_dict):
-    # Does any missing value have only one possible location?
+    """
+    Does any missing value have only one possible location?
+    """
     for poss_value in lookup_dict.keys():
         poss_locs = len(lookup_dict[poss_value])
 
