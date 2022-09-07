@@ -20,12 +20,11 @@ class Sudoku_Solver():
         in_which_cols, clean_row_outside_box, clean_col_outside_box, \
         clean_rows_in_box, clean_cols_in_box, check_block_elim
 
-    # clean up the order
     from strats.hidden_subset import check_hidden_subsets, \
-        check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_box, \
-        clean_hidden_col, clean_hidden_row, format_hidden_subset_info, \
-        find_hidden_subset, clean_hidden_subset, find_hidden_sub_box, \
-        check_hidden_sub_boxes, clean_hidden_box
+        check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_boxes, \
+        check_hidden_sub_box, clean_hidden_col, clean_hidden_row, \
+        clean_hidden_box, clean_hidden_subset, format_hidden_subset_info, \
+        find_hidden_subset
 
     from strats.naked_triples import check_naked_triples, \
         check_naked_trips_rows, check_naked_trips_row, clean_trips_row, \

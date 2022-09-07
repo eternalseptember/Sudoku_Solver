@@ -199,7 +199,7 @@ def check_naked_box(self, coord):
     coord defines the 3x3 box.
     """
     box_missing_vals = {}
-    poss_vals_in_box = self.get_box_poss_vals(coord)
+    self.set_missing_val_table(coord, box_missing_vals)
 
 
 

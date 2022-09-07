@@ -2,8 +2,10 @@
 
 
 def find_naked_triples(self, poss_trip_list, mode):
-    # Make a list of every possible merged triplet set.
-    # 'mode' is 'check_row' or 'check_col'. Pass to verify_triples_list.
+    """
+    Make a list of every possible merged triplet set.
+    'mode' is 'check_row' or 'check_col'. Pass to verify_triples_list.
+    """
     poss_trips_info = {}  # [trip_str] = [list of coords]
     number_of_cells = len(poss_trip_list)
 
@@ -45,9 +47,10 @@ def find_naked_triples(self, poss_trip_list, mode):
 
 
 def verify_triples_list(self, poss_trips_info, mode):
-    # Checks each entry of poss_trips_info for valid triples conditions.
-    # 'mode' is 'check_row' or 'check_col'.
-
+    """
+    Checks each entry of poss_trips_info for valid triples conditions.
+    'mode' is 'check_row' or 'check_col'.
+    """
     # Remove entries from poss_trips_info if triple is not valid.
     entries_to_remove = []  # list of str keys
 
@@ -134,10 +137,11 @@ def verify_triples_list(self, poss_trips_info, mode):
 
 
 def check_naked_trips_box(self, poss_trips_info, mode):
-    # This is called from verify_triples_list.
-    # 'mode' is 'check_row' or 'check_col'.
-    # poss_trips_info[trip_str] = [list of coords]
-
+    """
+    This is called from verify_triples_list.
+    'mode' is 'check_row' or 'check_col'.
+    poss_trips_info[trip_str] = [list of coords]
+    """
     # Check if the triples coordinates are in the same box.
     triple_boxes = []  # Stores trip_str if coords are in the same box.
 
@@ -193,7 +197,9 @@ def check_naked_trips_box(self, poss_trips_info, mode):
 
 
 def clean_trips_boxes(self, poss_trips_info, trip_box_info):
-    # trip_box_info is a list of str keys for poss_trips_info.
+    """
+    trip_box_info is a list of str keys for poss_trips_info.
+    """
     for trip_box in trip_box_info:
         trip_coords = poss_trips_info[trip_box]
         self.clean_trips_box(trip_box, trip_coords)
@@ -201,8 +207,9 @@ def clean_trips_boxes(self, poss_trips_info, trip_box_info):
 
 
 def clean_trips_box(self, trip_vals, trip_coords):
-    # Info for a single 3x3 box.
-
+    """
+    Info for a single 3x3 box.
+    """
     # Determine box info.
     ref_row, ref_col = trip_coords[0]
     box_vals = [int(trip_val) for trip_val in trip_vals]
