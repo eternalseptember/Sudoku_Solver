@@ -153,7 +153,7 @@ def remove_in_box(self, match, match_dict):
                 self.clean_naked_sets(this_cell, match, 'box')
 
 
-def clean_naked_sets(self, coord, matched_set, label=''):
+def clean_naked_sets(self, coord, matched_set, label):
     """
     matched_set is a list of values in the pair/triplet/set.
     """
@@ -190,6 +190,7 @@ def check_naked_boxes(self):
 
     # testing
     coord = (6, 0)
+    print('coord: {0}'.format(coord))
     self.check_naked_box(coord)
 
 
@@ -200,6 +201,10 @@ def check_naked_box(self, coord):
     """
     box_missing_vals = {}
     self.set_missing_val_table(coord, box_missing_vals)
+
+
+    for item in box_missing_vals.keys():
+        print('{0} - {1}'.format(item, box_missing_vals[item]))
 
 
 
