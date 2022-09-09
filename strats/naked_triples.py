@@ -15,8 +15,8 @@ def check_naked_trips_rows(self):
     """
     Iterate through each row to find naked triples.
     """
-    for j in range(9):  # j is row number.
-        self.check_naked_trips_row(j)
+    for row_step in range(9):
+        self.check_naked_trips_row(row_step)
 
 
 
@@ -27,8 +27,8 @@ def check_naked_trips_row(self, row_num):
     poss_trip_list = []
 
     # Get a list of cells that can be part of a triple.
-    for i in range(9):  # i is col number.
-        this_cell = (row_num, i)
+    for col_step in range(9):
+        this_cell = (row_num, col_step)
 
         # Skip over solved cells.
         if this_cell in self.possible_values:
@@ -58,8 +58,8 @@ def clean_trips_row(self, poss_trips_info, row_num):
         coords_set = poss_trips_info[item]
 
         # Remove trip values from cells not part of triple.
-        for i in range(9):  # i is col number.
-            this_cell = (row_num, i)
+        for col_step in range(9):
+            this_cell = (row_num, col_step)
 
             # Skip over cells that are part of this triple.
             if this_cell not in coords_set:
@@ -85,8 +85,8 @@ def check_naked_trips_cols(self):
     """
     Iterate through each col to find naked triples.
     """
-    for i in range(9):  # i is col number.
-        self.check_naked_trips_col(i)
+    for col_step in range(9):
+        self.check_naked_trips_col(col_step)
 
 
 
@@ -97,8 +97,8 @@ def check_naked_trips_col(self, col_num):
     poss_trip_list = []
 
     # Get a list of cells that can be part of a triple.
-    for j in range(9):
-        this_cell = (j, col_num)
+    for row_step in range(9):
+        this_cell = (row_step, col_num)
 
         # Skip over solved cells.
         if this_cell in self.possible_values:
@@ -128,8 +128,8 @@ def clean_trips_col(self, poss_trips_info, col_num):
         coords_set = poss_trips_info[item]
 
         # Remove trip values from cells not part of triple.
-        for j in range(9):  # j is row number.
-            this_cell = (j, col_num)
+        for row_step in range(9):
+            this_cell = (row_step, col_num)
 
             # Skip over cells that are part of this triple.
             if this_cell not in coords_set:

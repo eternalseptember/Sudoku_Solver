@@ -12,11 +12,11 @@ def check_hidden_sub_cols(self):
     Searches for hidden subsets in every col.
     """
     # Gets list of possible values for each location.
-    for i in range(9):  # iterate through cols.
+    for col_step in range(9):
         col_missing_vals = {}  # list of missing values in this col
 
-        for j in range(9):  # row/j goes down. col/i is constant.
-            this_cell = (j, i)
+        for row_step in range(9):  # row goes down. col is constant.
+            this_cell = (row_step, col_step)
             self.set_lookup_table(this_cell, col_missing_vals)
 
         # Find any subsets and then clean col.
@@ -30,11 +30,11 @@ def check_hidden_sub_rows(self):
     Searches for hidden subsets in every row.
     """
     # Gets list of possible values for each location.
-    for j in range(9):  # iterate down rows.
+    for row_step in range(9):  # iterate down rows.
         row_missing_vals = {}  # list of missing values in this row
 
-        for i in range(9):  # col/i goes across. row/j is constant.
-            this_cell = (j, i)
+        for col_step in range(9):  # col goes across. row is constant.
+            this_cell = (row_step, col_step)
             self.set_lookup_table(this_cell, row_missing_vals)
 
         # Find any subsets and then clean row.
@@ -50,9 +50,9 @@ def check_hidden_sub_boxes(self):
     Searches for hidden subsets throughout all 3x3 boxes.
     """
     # Gets list of possible values in each location.
-    for i in [0, 3, 6]:
-        for j in [0, 3, 6]:
-            box_coord = (i, j)
+    for row_step in [0, 3, 6]:
+        for col_step in [0, 3, 6]:
+            box_coord = (row_step, col_step)
             self.check_hidden_sub_box(box_coord)
 
 
@@ -63,9 +63,9 @@ def check_hidden_sub_box(self, box_coord):
     ref_row, ref_col = box_coord
     box_missing_vals = {}  # list of missing values in this box
 
-    for i in range(3):
-        for j in range(3):
-            this_cell = (ref_row + i, ref_col + j)
+    for row_step in range(3):
+        for col_step in range(3):
+            this_cell = (ref_row + row_step, ref_col + col_step)
             self.set_lookup_table(this_cell, box_missing_vals)
 
     # Find any subsets and then clean box.
@@ -106,8 +106,8 @@ def clean_hidden_col(self, subset_locs, subset_vals):
     coord_row, coord_col = first_coord
 
     # Clean up the column based on knowledge of subset.
-    for j in range(9):  # row/j goes down, col/i is constant
-        coord = (j, coord_col)
+    for row_step in range(9):  # row goes down. col is constant.
+        coord = (row_step, coord_col)
         self.clean_hidden_subset(coord, subset_locs, subset_vals)
 
 
@@ -121,8 +121,8 @@ def clean_hidden_row(self, subset_locs, subset_vals):
     coord_row, coord_col = first_coord
 
     # Clean up the row based on knowledge of subset.
-    for i in range(9):  # col/i goes down. row/j is constant.
-        coord = (coord_row, i)
+    for col_step in range(9):  # col goes down. row is constant.
+        coord = (coord_row, col_step)
         self.clean_hidden_subset(coord, subset_locs, subset_vals)
 
 

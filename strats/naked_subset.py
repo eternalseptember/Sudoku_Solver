@@ -17,8 +17,8 @@ def check_naked_cols(self):
         col_missing_vals = {}
 
         # Collect all the missing value combinations in this col.
-        for j in range(9):  # j goes down.
-            this_cell = (j, col)
+        for row_step in range(9):
+            this_cell = (row_step, col)
             self.set_missing_val_table(this_cell, col_missing_vals)
 
         # Search this col's tally for pair/triplet matches.
@@ -29,8 +29,8 @@ def check_naked_cols(self):
         if len(matches_vals) > 0:
             for match in matches_vals:
                 # Reduce within col.
-                for j in range(9):  # j goes down.
-                    this_cell = (j, col)
+                for row_step in range(9):
+                    this_cell = (row_step, col)
                     self.clean_naked_sets(this_cell, match, 'col')
 
                 # Reduce within box.
@@ -48,8 +48,8 @@ def check_naked_rows(self):
         row_missing_vals = {}
 
         # Collect all the missing value combinations in this row.
-        for i in range(9):  # i goes across.
-            this_cell = (row, i)
+        for col_step in range(9):
+            this_cell = (row, col_step)
             self.set_missing_val_table(this_cell, row_missing_vals)
 
         # Search this row's tally for pair/triplet matches.
@@ -60,8 +60,8 @@ def check_naked_rows(self):
         if len(matches_vals) > 0:
             for match in matches_vals:
                 # Reduce within row.
-                for i in range(9):  # i goes across.
-                    this_cell = (row, i)
+                for col_step in range(9):
+                    this_cell = (row, col_step)
                     self.clean_naked_sets(this_cell, match, 'row')
 
                 # Reduce within box.
@@ -145,10 +145,10 @@ def remove_in_box(self, match, match_dict):
     if is_same_box:
         box_row, box_col = box_loc
 
-        for i in range(3):
-            for j in range(3):
-                row = box_row * 3 + i
-                col = box_col * 3 + j
+        for row_step in range(3):
+            for col_step in range(3):
+                row = box_row * 3 + row_step
+                col = box_col * 3 + col_step
                 this_cell = (row, col)
                 self.clean_naked_sets(this_cell, match, 'box')
 
@@ -183,9 +183,9 @@ def check_naked_boxes(self):
     """
 
     """
-    for i in [0, 3, 6]:  # i goes down.
-        for j in [0, 3, 6]:  # j goes across.
-            coord = (i, j)
+    for row_step in [0, 3, 6]:
+        for col_step in [0, 3, 6]:
+            coord = (row_step, col_step)
     """
 
     # testing
@@ -199,7 +199,13 @@ def check_naked_box(self, coord):
     """
     coord defines the 3x3 box.
     """
+    ref_row, ref_col = coord
+    box_row = ref_row // 3
+    box_col = ref_col // 3
     box_missing_vals = {}
+
+
+
     self.set_missing_val_table(coord, box_missing_vals)
 
 

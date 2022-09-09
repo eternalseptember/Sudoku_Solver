@@ -128,9 +128,9 @@ class Sudoku_Solver():
         """
         ref_row, ref_col = coord  # reference cell
 
-        for i in range(9):
-            if i != ref_col:
-                this_cell = (ref_row, i)
+        for col_step in range(9):
+            if col_step != ref_col:
+                this_cell = (ref_row, col_step)
                 self.possible_vals_check(this_cell, solved_value)
 
 
@@ -141,9 +141,9 @@ class Sudoku_Solver():
         """
         ref_row, ref_col = coord  # reference cell
 
-        for j in range(9):
-            if j != ref_row:
-                this_cell = (j, ref_col)
+        for row_step in range(9):
+            if row_step != ref_row:
+                this_cell = (row_step, ref_col)
                 self.possible_vals_check(this_cell, solved_value)
 
 
@@ -159,10 +159,10 @@ class Sudoku_Solver():
         box_col = ref_col // 3
 
         # Iterate through one box.
-        for i in range(3):
-            for j in range(3):
-                row = box_row * 3 + i
-                col = box_col * 3 + j
+        for row_step in range(3):
+            for col_step in range(3):
+                row = box_row * 3 + row_step
+                col = box_col * 3 + col_step
                 this_cell = (row, col)
                 self.possible_vals_check(this_cell, solved_value)
 

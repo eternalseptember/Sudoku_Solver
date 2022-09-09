@@ -1,19 +1,15 @@
-# xwing is 2x2.
-# swordfish is 3x3.
-
-
-
 def check_swordfish(self):
-    # Row and col versions not necessary.
-
+    """
+    Row and col versions not necessary.
+    """
     # First, fill a dict of all possible coord pairs.
     swordfish_cands = {}  # for all rows
 
-    for i in range(9):  # i goes down.
-
+    for row_step in range(9):
         val_lookup_row = {}
-        for j in range(9):  # j goes across.
-            this_coord = (i, j)
+
+        for col_step in range(9):
+            this_coord = (row_step, col_step)
 
             if this_coord in self.possible_values:
                 self.set_lookup_table(this_coord, val_lookup_row)
@@ -46,7 +42,9 @@ def check_swordfish(self):
 # General swordfish functions
 # #######################################
 def check_sf_cands(self, lookup_dict):
-    # Conditions: at least 3 possible locations per row.
+    """
+    Conditions: at least 3 possible locations per row.
+    """
     remove_list = []
 
     for poss_val in lookup_dict.keys():
@@ -62,10 +60,11 @@ def check_sf_cands(self, lookup_dict):
 
 
 
-
 def clean_sf_list(self, swordfish_cands):
-    # Initial cleanup of swordfish_cands list.
-    # Conditions: at least 9 coordinates total; at least 3 coords in each col.
+    """
+    Initial cleanup of swordfish_cands list.
+    Conditions: at least 9 coordinates total; at least 3 coords in each col.
+    """
     remove_list = []  # store poss_vals
 
     for poss_val in swordfish_cands.keys():
@@ -110,13 +109,10 @@ def clean_sf_list(self, swordfish_cands):
 
 
 
-
-
-
-
-
 def find_swordfish(self, swordfish_cands):
-    # Check if there is a swordfish in the cleaned swordfish_cands list.
+    """
+    Check if there is a swordfish in the cleaned swordfish_cands list.
+    """
     swordfish_found = []  # stores dicts[poss_val] of swordfish coords
     
     # print('checking swordfish cands')
@@ -130,14 +126,19 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def intersection(self, list1, list2):
-    return list(set(list1) & set(list2))
+def intersection(self, list_1, list_2):
+    """
+    Returns the intersection of list1 and list2 in a list.
+    """
+    return list(set(list_1) & set(list_2))
 
 
 
 
 
 def clean_swordfish(self, poss_val, coords_list):
+    """
+    """
     return None
 
 

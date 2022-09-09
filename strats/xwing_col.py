@@ -1,23 +1,20 @@
-# Starts xwing check by looking for candidates in each *col*.
-
-# When there are
-# * only two possible cells for a value in each of two different cols,
-# * and these candidates lie also in the same rows,
-# then all other candidates for this value in the rows can be eliminated.
-
-
-
 def check_xw_by_cols(self):
+    """
+    When there are
+    * only two possible cells for a value in each of two different cols,
+    * and these candidates lie also in the same rows,
+    then all other candidates for this value in the rows can be eliminated.
+    """
     xwing_candidates = {}  # For all cols.
     xwings_found = []  # stores dicts of xwing coords
 
     # First, fill a dict of all possible coord pairs.
     # Then, initial cleanup of xwings cands list at the end of each col.
-    for j in range(0, 9):  # j goes across.
+    for col_step in range(0, 9):
 
         val_lookup_col = {}
-        for i in range(0, 9):  # i goes down.
-            this_coord = (i, j)
+        for row_step in range(0, 9):
+            this_coord = (row_step, col_step)
 
             if this_coord in self.possible_values:
                 self.set_lookup_table(this_coord, val_lookup_col)
@@ -64,8 +61,12 @@ def check_xw_by_cols(self):
 
 
 
-
 def check_xw_is_same_rows(self, poss_val, list_of_coords):
+    """
+    Matches are already in same cols. If they are also in same rows,
+    then an xwing is found.
+    Returns a list of lists of four coordinates.
+    """
     xwing_sets = []  # a list of a set
 
     # Check list_of_coords in groups of two.
@@ -103,8 +104,12 @@ def check_xw_is_same_rows(self, poss_val, list_of_coords):
     return xwing_sets
 
 
+
 def is_xwing_same_rows(self, coords_col_1, coords_col_2):
-    # coords_col_1 and coords_col_2 are lists.
+    """
+    coords_col_1 and coords_col_2 are lists.
+    Returns a boolean.
+    """
     coord_1, coord_2 = (coords_col_1)
     coord_3, coord_4 = (coords_col_2)
 
@@ -119,8 +124,11 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
         return False
 
 
+
 def clean_xw_row(self, poss_val, coords_list):
-    # Coords in coords_list is listed in a specific order.
+    """
+    Coords in coords_list is listed in a specific order.
+    """
     coord_1 = coords_list[0]
     coord_2 = coords_list[1]
     coord_3 = coords_list[2]
@@ -136,9 +144,9 @@ def clean_xw_row(self, poss_val, coords_list):
     coords_row_1 = [coord_1, coord_3]
     coords_row_2 = [coord_2, coord_4]
 
-    for j in range(9):  # j goes across.
-        clean_coord_1 = (clean_row_1, j)
-        clean_coord_2 = (clean_row_2, j)
+    for col_step in range(9):  # col_step goes across.
+        clean_coord_1 = (clean_row_1, col_step)
+        clean_coord_2 = (clean_row_2, col_step)
 
         # Remove poss_val in row outside of coords_row_1.
         if clean_coord_1 not in coords_row_1:

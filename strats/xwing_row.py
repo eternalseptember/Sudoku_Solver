@@ -1,13 +1,6 @@
-# Starts xwing check by looking for candidates in each *row*.
-
-# When there are
-# * only two possible cells for a value in each of two different rows,
-# * and these candidates lie also in the same columns,
-# then all other candidates for this value in the columns can be eliminated.
-
-
-
 def check_xwing(self):
+    """
+    """
     # print('check xwing by rows')
     self.check_xw_by_rows()
 
@@ -20,16 +13,22 @@ def check_xwing(self):
 
 
 def check_xw_by_rows(self):
+    """
+    When there are
+    * only two possible cells for a value in each of two different rows,
+    * and these candidates lie also in the same columns,
+    then all other candidates for this value in the columns can be eliminated.
+    """
     xwing_candidates = {}  # For all rows.
     xwings_found = []  # stores dicts[poss_val] of xwing coords
 
     # First, fill a dict of all possible coord pairs.
     # Then, initial cleanup of xwings cands list at the end of each row.
-    for i in range(0, 9):  # i goes down.
+    for row_step in range(0, 9):
 
         val_lookup_row = {}
-        for j in range(0, 9):  # j goes across.
-            this_coord = (i, j)
+        for col_step in range(0, 9):
+            this_coord = (row_step, col_step)
 
             if this_coord in self.possible_values:
                 self.set_lookup_table(this_coord, val_lookup_row)
@@ -78,7 +77,12 @@ def check_xw_by_rows(self):
 
 
 def check_xw_is_same_cols(self, poss_val, list_of_coords):
-    xwing_sets = []  # a list of a set
+    """
+    Matches are already in same rows. If they are also in same cols,
+    then an xwing is found.
+    Returns a list of lists of four coordinates.
+    """
+    xwing_sets = []  # each item a list of four coords
 
     # Check list_of_coords in groups of two.
     # Need to account for four coords at a time.
@@ -116,7 +120,10 @@ def check_xw_is_same_cols(self, poss_val, list_of_coords):
 
 
 def is_xwing_same_cols(self, coords_row_1, coords_row_2):
-    # coords_row_1 and coords_row_2 are lists.
+    """
+    coords_row_1 and coords_row_2 are lists.
+    Returns a boolean.
+    """
     coord_1, coord_2 = (coords_row_1)
     coord_3, coord_4 = (coords_row_2)
 
@@ -132,7 +139,9 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 def clean_xw_col(self, poss_val, coords_list):
-    # Coords in coords_list is listed in a specific order
+    """
+    Coords in coords_list is listed in a specific order.
+    """
     coord_1 = coords_list[0]
     coord_2 = coords_list[1]
     coord_3 = coords_list[2]
@@ -148,9 +157,9 @@ def clean_xw_col(self, poss_val, coords_list):
     coords_col_1 = [coord_1, coord_3]
     coords_col_2 = [coord_2, coord_4]
 
-    for i in range(9):  # i goes down.
-        clean_coord_1 = (i, clean_col_1)
-        clean_coord_2 = (i, clean_col_2)
+    for row_step in range(9):  # row_step goes down.
+        clean_coord_1 = (row_step, clean_col_1)
+        clean_coord_2 = (row_step, clean_col_2)
 
         # Remove poss_val in col outside of coords_col_1.
         if clean_coord_1 not in coords_col_1:
@@ -167,8 +176,10 @@ def clean_xw_col(self, poss_val, coords_list):
 # General xwing functions
 # #######################################
 def check_xw_cands(self, lookup_dict):
-    # Check this condition:
-    # Only two possible cells for a val in this row or col.
+    """
+    Check this condition:
+    Only two possible cells for a val in this row or col.
+    """
     remove_list = []
 
     for poss_val in lookup_dict.keys():
@@ -185,7 +196,9 @@ def check_xw_cands(self, lookup_dict):
 
 
 def clean_xw_list(self, xwing_candidates):
-    # Remove unsolved candidates that can't be part of an xwing.
+    """
+    Remove unsolved candidates that can't be part of an xwing.
+    """
     remove_list = []  # store poss_vals
 
     for poss_val in xwing_candidates.keys():

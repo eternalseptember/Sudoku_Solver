@@ -14,9 +14,9 @@ def check_intersection_boxes(self):
     Within each 3x3 box, tally up whether unfilled values fit within row.
     If so, then eliminate them as possibilities from neighboring boxes.
     """
-    for i in [0, 3, 6]:  # i goes down.
-        for j in [0, 3, 6]:  # j goes across.
-            coord = (i, j)
+    for row_step in [0, 3, 6]:
+        for col_step in [0, 3, 6]:
+            coord = (row_step, col_step)
             self.check_intersection_box(coord)
             self.solve_queue()
 
@@ -90,13 +90,13 @@ def clean_row_outside_box(self, eliminated_val, ref_box, in_row):
     ref_row, ref_col = ref_box
     box_col = ref_col // 3  # Remove in row outside this box.
 
-    for i in range(9):  # i goes across.
+    for col_step in range(9):
         # Skip the box with coord.
-        if i // 3 == box_col:
+        if col_step // 3 == box_col:
             continue
 
         # Remove eliminated_val as a possible val in this cell.
-        this_cell = (in_row, i)
+        this_cell = (in_row, col_step)
         self.possible_vals_check(this_cell, eliminated_val)
 
 
@@ -108,13 +108,13 @@ def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
     ref_row, ref_col = ref_box
     box_row = ref_row // 3  # Remove in col outside this box.
 
-    for j in range(9):  # j goes down.
+    for row_step in range(9):
         # Skip the box with coord.
-        if j // 3 == box_row:
+        if row_step // 3 == box_row:
             continue
 
         # Remove eliminated_val as a possible val in this cell.
-        this_cell = (j, in_col)
+        this_cell = (row_step, in_col)
         self.possible_vals_check(this_cell, eliminated_val)
 
 
@@ -143,8 +143,8 @@ def clean_rows_in_box(self, block_info):
         box_remaining = box_remaining[0]
 
         # Remove num_missing.
-        for i in range(3):
-            this_col = i + box_remaining
+        for col_step in range(3):
+            this_col = col_step + box_remaining
 
             for elim_val_in_this_row in in_rows:
                 this_coord = (elim_val_in_this_row, this_col)
@@ -176,8 +176,8 @@ def clean_cols_in_box(self, block_info):
         box_remaining = box_remaining[0]
 
         # Remove num_missing.
-        for j in range(3):
-            this_row = j + box_remaining
+        for row_step in range(3):
+            this_row = row_step + box_remaining
 
             for elim_val_in_this_col in in_cols:
                 this_coord = (this_row, elim_val_in_this_col)
@@ -199,10 +199,10 @@ def check_block_elim(self):
     block_row_info = {}
     block_col_info = {}
 
-    for i in [0, 3, 6]:  # i goes down.
+    for row_step in [0, 3, 6]:
 
-        for j in [0, 3, 6]:  # j goes across.
-            coord = (i, j)
+        for col_step in [0, 3, 6]:
+            coord = (row_step, col_step)
 
             # Get list of missing vals and their poss locs in this box.
             poss_vals_in_box = self.get_box_poss_vals(coord)
@@ -223,11 +223,11 @@ def check_block_elim(self):
                         block_row_info[rows_str] = {
                             'num_missing': missing_val,
                             'in_rows': in_rows_list,
-                            'in_boxes': [j]
+                            'in_boxes': [col_step]
                         }
                     else:
                         row_info = block_row_info[rows_str]
-                        row_info['in_boxes'].append(j)
+                        row_info['in_boxes'].append(col_step)
 
 
                 # Are they in the same cols?
@@ -242,11 +242,11 @@ def check_block_elim(self):
                         block_col_info[cols_str] = {
                             'num_missing': missing_val,
                             'in_cols': in_cols_list,
-                            'in_boxes': [i]
+                            'in_boxes': [row_step]
                         }
                     else:
                         col_info = block_col_info[cols_str]
-                        col_info['in_boxes'].append(i)
+                        col_info['in_boxes'].append(row_step)
 
 
     self.clean_rows_in_box(block_row_info)

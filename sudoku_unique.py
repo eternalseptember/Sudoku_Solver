@@ -23,9 +23,9 @@ def check_all_unique(self):
 
         # Check all boxes.
         if len(self.solved_list) < 81:
-            for i in [0, 3, 6]:
-                for j in [0, 3, 6]:
-                    coord = (i, j)
+            for row_step in [0, 3, 6]:
+                for col_step in [0, 3, 6]:
+                    coord = (row_step, col_step)
                     self.check_unique_box(coord)
 
         end_count = len(self.solved_list)
@@ -40,8 +40,8 @@ def check_unique_row(self, coord):
     val_lookup = {}  # {value: [(possible cells)]}
 
     # List all possible locations of all missing values.
-    for i in range(9):
-        this_cell = (ref_row, i)
+    for col_step in range(9):
+        this_cell = (ref_row, col_step)
         self.set_lookup_table(this_cell, val_lookup)
 
     self.solve_lookup_table(val_lookup)
@@ -56,8 +56,8 @@ def check_unique_col(self, coord):
     val_lookup = {}  # {value: [(possible cells)]}
 
     # List all possible locations of all missing values.
-    for j in range(9):
-        this_cell = (j, ref_col)
+    for row_step in range(9):
+        this_cell = (row_step, ref_col)
         self.set_lookup_table(this_cell, val_lookup)
 
     self.solve_lookup_table(val_lookup)
@@ -85,10 +85,10 @@ def get_box_poss_vals(self, coord):
     box_col = ref_col // 3
 
     # List all possible locations of all missing values.
-    for i in range(3):
-        for j in range(3):
-            row = box_row * 3 + i
-            col = box_col * 3 + j
+    for row_step in range(3):
+        for col_step in range(3):
+            row = box_row * 3 + row_step
+            col = box_col * 3 + col_step
             this_cell = (row, col)
             self.set_lookup_table(this_cell, val_lookup)
 

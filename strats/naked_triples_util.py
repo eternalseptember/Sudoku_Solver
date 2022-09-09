@@ -217,10 +217,10 @@ def clean_trips_box(self, trip_vals, trip_coords):
     box_col = ref_col // 3
 
     # Go through the box.
-    for i in range(3):
-        for j in range(3):
-            this_row = box_row * 3 + i
-            this_col = box_col * 3 + j
+    for row_step in range(3):
+        for col_step in range(3):
+            this_row = box_row * 3 + row_step
+            this_col = box_col * 3 + col_step
             this_cell = (this_row, this_col)
 
             # First, skip over solved cells.
