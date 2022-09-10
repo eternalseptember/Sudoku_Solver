@@ -204,14 +204,20 @@ def check_naked_box(self, coord):
     box_col = ref_col // 3
     box_missing_vals = {}
 
+    for row_step in range(3):
+        for col_step in range(3):
+            this_row = box_row * 3 + row_step
+            this_col = box_col * 3 + col_step
+            this_cell = (this_row, this_col)
+            print('this cell: {0}'.format(this_cell))
 
 
-    self.set_missing_val_table(coord, box_missing_vals)
+            self.set_missing_val_table(this_cell, box_missing_vals)
 
-
+    """
     for item in box_missing_vals.keys():
         print('{0} - {1}'.format(item, box_missing_vals[item]))
-
+    """
 
 
 
