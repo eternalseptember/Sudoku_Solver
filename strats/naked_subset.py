@@ -179,7 +179,7 @@ def clean_naked_sets(self, coord, matched_set, label):
 
 def check_naked_boxes(self):
     """
-    Search a box for naked pairs that are not on the same row or col.
+    Search a box for naked pairs that may not be on the same row or col.
     """
 
     """
@@ -197,6 +197,7 @@ def check_naked_boxes(self):
 
 def check_naked_box(self, coord):
     """
+    Search within box for a naked pair/triplet.
     coord defines the 3x3 box.
     """
     ref_row, ref_col = coord
@@ -204,6 +205,7 @@ def check_naked_box(self, coord):
     box_col = ref_col // 3
     box_missing_vals = {}
 
+    # Collect all the missing value combinations in this box.
     for row_step in range(3):
         for col_step in range(3):
             this_row = box_row * 3 + row_step
@@ -211,13 +213,15 @@ def check_naked_box(self, coord):
             this_cell = (this_row, this_col)
             print('this cell: {0}'.format(this_cell))
 
-
             self.set_missing_val_table(this_cell, box_missing_vals)
 
-    """
-    for item in box_missing_vals.keys():
-        print('{0} - {1}'.format(item, box_missing_vals[item]))
-    """
+    # for item in box_missing_vals.keys():
+    # 	print('{0} - {1}'.format(item, box_missing_vals[item]))
+
+    # Search for pair/triplet matches.
+    matches_vals, matches_locs = self.find_matches(box_missing_vals)
+
+
 
 
 
