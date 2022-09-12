@@ -100,7 +100,7 @@ class Sudoku_Solver():
 
     def resolve(self, coord):
         """
-        Assign solved value to board and clean up lists.
+        Assign solved_value to board and clean up lists.
         """
         self.solved_list.append(coord)
 

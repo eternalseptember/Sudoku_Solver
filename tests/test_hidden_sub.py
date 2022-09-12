@@ -39,9 +39,9 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/hidden_sub_col_1.txt")
 # sudoku.import_board("test_boards/hidden_sub_row_1.txt")
-# sudoku.import_board("test_boards/hidden_sub_box_1.txt")
+sudoku.import_board("test_boards/hidden_sub_box_1.txt")
 
-sudoku.import_board("test_boards/hidden_sub_col_2.txt")
+# sudoku.import_board("test_boards/hidden_sub_col_2.txt")
 # sudoku.import_board("test_boards/hidden_sub_row_2.txt")
 # sudoku.import_board("test_boards/hidden_sub_quad_1.txt")
 # sudoku.import_board("test_boards/hidden_sub_trip_1.txt")
@@ -56,7 +56,7 @@ sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
-
+"""
 # preliminary cleaning of board candidates for hidden_sub_row_2.txt
 print('Getting to the point where the test follows the example:')
 sudoku.check_naked_sets()  # naked_subset
@@ -66,7 +66,7 @@ sudoku.check_intersection_boxes()  # intersection elim
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-
+"""
 
 
 print('Find hidden subset:')

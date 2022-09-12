@@ -1,6 +1,6 @@
 def check_naked_sets(self):
     """
-    Functions that eliminate possibilities based on matching pairs (or triplets).
+    Eliminate possibilities based on matching pairs (or triplets).
     Focused on finding pairs. Triplets can be found incidentally.
     Naked: EXACT list of candidates in EXACT cells.
     """
@@ -215,11 +215,16 @@ def check_naked_box(self, coord):
 
             self.set_missing_val_table(this_cell, box_missing_vals)
 
-    # for item in box_missing_vals.keys():
-    # 	print('{0} - {1}'.format(item, box_missing_vals[item]))
+    print('missing val table:')
+    for item in box_missing_vals.keys():
+        print('{0} - {1}'.format(item, box_missing_vals[item]))
 
     # Search for pair/triplet matches.
     matches_vals, matches_locs = self.find_matches(box_missing_vals)
+
+    print('match vals: {0}'.format(matches_vals))
+    print('match locs: {0}'.format(matches_locs))
+    
 
 
 

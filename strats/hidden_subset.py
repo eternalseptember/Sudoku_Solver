@@ -22,7 +22,7 @@ def check_hidden_sub_cols(self):
         # Find any subsets and then clean col.
         possible_subsets = self.format_hidden_subset_info(col_missing_vals)
         self.find_hidden_subset(possible_subsets, 'col')
-        # self.solve_queue()
+        # self.solve_queue()  # uncomment after testing
 
 
 def check_hidden_sub_rows(self):
@@ -40,14 +40,14 @@ def check_hidden_sub_rows(self):
         # Find any subsets and then clean row.
         possible_subsets = self.format_hidden_subset_info(row_missing_vals)
         self.find_hidden_subset(possible_subsets, 'row')
-        # self.solve_queue()
+        # self.solve_queue()  # uncomment after testing
 
 
 
 
 def check_hidden_sub_boxes(self):
     """
-    Searches for hidden subsets throughout all 3x3 boxes.
+    Searches for hidden subsets in all 3x3 boxes.
     """
     # Gets list of possible values in each location.
     for row_step in [0, 3, 6]:
@@ -71,7 +71,7 @@ def check_hidden_sub_box(self, box_coord):
     # Find any subsets and then clean box.
     possible_subsets = self.format_hidden_subset_info(box_missing_vals)
     self.find_hidden_subset(possible_subsets, 'box', box_coord)
-    # self.solve_queue()
+    # self.solve_queue()  # uncomment after testing
 
 
 
