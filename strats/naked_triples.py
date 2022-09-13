@@ -63,21 +63,11 @@ def clean_trips_row(self, poss_trips_info, row_num):
 
             # Skip over cells that are part of this triple.
             if this_cell not in coords_set:
-                if this_cell in self.possible_values:
 
-                    # Remove vals in trip_set from this cell's possible vals.
-                    poss_vals = self.possible_values[this_cell]
-
-                    for trip_val in trip_set:
-                        if trip_val in poss_vals:
-                            poss_vals.remove(trip_val)
-
-                    # Then check if this_cell has been solved.
-                    self.check_if_solved(this_cell, poss_vals)
-
-
-
-
+                # Remove vals in trip_set from this_cell's possible vals.
+                # Then check if this_cell has been solved.
+                for trip_val in trip_set:
+                    self.possible_vals_check(this_cell, trip_val)
 
 
 
@@ -133,18 +123,11 @@ def clean_trips_col(self, poss_trips_info, col_num):
 
             # Skip over cells that are part of this triple.
             if this_cell not in coords_set:
-                if this_cell in self.possible_values:
 
-                    # Remove vals in trip_set from this cell's possible vals.
-                    poss_vals = self.possible_values[this_cell]
-
-                    for trip_val in trip_set:
-                        if trip_val in poss_vals:
-                            poss_vals.remove(trip_val)
-
-                    # Then check if this_cell has been solved.
-                    self.check_if_solved(this_cell, poss_vals)
-
+                # Remove vals in trip_set from this_cell's possible vals.
+                # Then check if this_cell has been solved.
+                for trip_val in trip_set:
+                    self.possible_vals_check(this_cell, trip_val)
 
 
 

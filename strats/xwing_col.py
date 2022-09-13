@@ -58,6 +58,8 @@ def check_xw_by_cols(self):
         poss_val = list(xwing_set.keys())[0]
         xwing_coords = xwing_set[poss_val]
         self.clean_xw_row(poss_val, xwing_coords)
+    
+    self.solve_queue()
 
 
 
