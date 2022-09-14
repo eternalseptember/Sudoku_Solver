@@ -1,6 +1,6 @@
 def check_hidden_subsets(self):
     """
-    Similar to naked subset, except there are other candidates in the same cells.
+    Like naked subset, except there are other candidates in the same cells.
     """
     self.check_hidden_sub_cols()
     self.check_hidden_sub_rows()
@@ -78,8 +78,9 @@ def check_hidden_sub_box(self, box_coord):
 
 def find_hidden_subset(self, subset_info, label, box_coord=None):
     """
-    Searches for hidden subsets from the info provided of single row, col, or box.
-    label mode is 'col', 'row', or 'box'.
+    Searches for hidden subsets within a single row, col, or box.
+    Then clean possibilities according to label mode.
+    label mode is 'row', 'col', or 'box'.
     """
     for poss_key in subset_info.keys():
         item = subset_info[poss_key]

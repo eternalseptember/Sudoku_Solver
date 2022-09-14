@@ -166,15 +166,10 @@ def clean_naked_sets(self, coord, matched_set, label):
             # 	.format(label, matched_set, coord))
             return
         else:
-            # Remove any values of the matched set.
+            # Otherwise, remove any values of the matched set.
+            # Then check if coord has been solved.
             for val in matched_set:
-                if val in poss_values:
-                    poss_values.remove(val)
-
-            # Check if solved.
-            self.check_if_solved(coord, poss_values)
-
-
+                self.possible_vals_check(coord, val)
 
 
 def check_naked_boxes(self):

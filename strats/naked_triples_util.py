@@ -232,14 +232,9 @@ def clean_trips_box(self, trip_vals, trip_coords):
                 continue
 
             # Otherwise, remove the values in trip_coords.
-            poss_vals_in_this_cell = self.possible_values[this_cell]
-
-            for trip_val in box_vals:
-                if trip_val in poss_vals_in_this_cell:
-                    poss_vals_in_this_cell.remove(trip_val)
-
             # Then check if this_cell has been solved.
-            self.check_if_solved(this_cell, poss_vals_in_this_cell)
+            for trip_val in box_vals:
+                self.possible_vals_check(this_cell, trip_val)
 
 
 

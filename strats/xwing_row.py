@@ -112,7 +112,8 @@ def check_xw_is_same_cols(self, poss_val, list_of_coords):
             is_same_cols = self.is_xwing_same_cols(row_1_coords, row_2_coords)
 
             if is_same_cols:
-                xwing_coords = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
+                xwing_coords = \
+                    [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
                 xwing_sets.append(xwing_coords)
 
 

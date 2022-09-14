@@ -98,7 +98,8 @@ def check_xw_is_same_rows(self, poss_val, list_of_coords):
             is_same_rows = self.is_xwing_same_rows(col_1_coords, col_2_coords)
 
             if is_same_rows:
-                xwing_coords = [col_1_coord_1, col_1_coord_2, col_2_coord_1, col_2_coord_2]
+                xwing_coords = \
+                    [col_1_coord_1, col_1_coord_2, col_2_coord_1, col_2_coord_2]
                 xwing_sets.append(xwing_coords)
 
 
