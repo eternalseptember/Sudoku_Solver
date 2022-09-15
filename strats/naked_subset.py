@@ -206,20 +206,30 @@ def check_naked_box(self, coord):
             this_row = box_row * 3 + row_step
             this_col = box_col * 3 + col_step
             this_cell = (this_row, this_col)
-            print('this cell: {0}'.format(this_cell))
 
             self.set_missing_val_table(this_cell, box_missing_vals)
 
+    """
     print('missing val table:')
     for item in box_missing_vals.keys():
         print('{0} - {1}'.format(item, box_missing_vals[item]))
+    """
 
     # Search for pair/triplet matches.
     matches_vals, matches_locs = self.find_matches(box_missing_vals)
 
+    """
     print('match vals: {0}'.format(matches_vals))
     print('match locs: {0}'.format(matches_locs))
-    
+    """
+
+    # If there are matching sets, remove those vals as poss_vals from the rest of the box.
+    if len(matches_vals) > 0:
+        for match in matches_vals:
+            self.remove_in_box(match, matches_locs)
+        
+        # Then check if cells have only one poss_val remaining.
+        self.solve_queue()
 
 
 
