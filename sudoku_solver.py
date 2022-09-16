@@ -11,9 +11,10 @@ class Sudoku_Solver():
         set_lookup_table, solve_lookup_table
 
     from strats.naked_subset import check_naked_sets, check_naked_cols, \
-        check_naked_rows, set_missing_val_table, find_matches, \
-        in_same_box, remove_in_box, clean_naked_sets, check_naked_boxes, \
-        check_naked_box
+        check_naked_rows, check_naked_boxes, check_naked_box, \
+        set_missing_val_table, find_matches, in_same_box, remove_in_box, \
+        clean_naked_sets
+
 
     from strats.intersection_elim import check_intersections, \
         check_intersection_boxes, check_intersection_box, in_which_rows, \

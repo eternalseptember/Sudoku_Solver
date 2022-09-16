@@ -71,6 +71,52 @@ def check_naked_rows(self):
             self.solve_queue()
 
 
+
+def check_naked_boxes(self):
+    """
+    Search a box for naked pairs that may not be on the same row or col.
+    """
+    for row_step in [0, 3, 6]:
+        for col_step in [0, 3, 6]:
+            coord = (row_step, col_step)
+            self.check_naked_box(coord)
+
+
+def check_naked_box(self, coord):
+    """
+    Search within box for a naked pair/triplet.
+    coord defines the 3x3 box.
+    """
+    ref_row, ref_col = coord
+    box_row = ref_row // 3
+    box_col = ref_col // 3
+    box_missing_vals = {}
+
+    # Collect all the missing value combinations in this box.
+    for row_step in range(3):
+        for col_step in range(3):
+            this_row = box_row * 3 + row_step
+            this_col = box_col * 3 + col_step
+            this_cell = (this_row, this_col)
+
+            self.set_missing_val_table(this_cell, box_missing_vals)
+
+    # Search for pair/triplet matches.
+    matches_vals, matches_locs = self.find_matches(box_missing_vals)
+
+    # If there are matching sets, remove those vals as poss_vals from the rest of the box.
+    if len(matches_vals) > 0:
+        for match in matches_vals:
+            self.remove_in_box(match, matches_locs)
+        
+        # Then check if cells have only one poss_val remaining.
+        self.solve_queue()
+
+
+
+# #######################################
+# General functions for naked subsets
+# #######################################
 def set_missing_val_table(self, coord, missing_val_dict):
     """
     Tallies the combinations of missing values in each area.
@@ -172,64 +218,8 @@ def clean_naked_sets(self, coord, matched_set, label):
                 self.possible_vals_check(coord, val)
 
 
-def check_naked_boxes(self):
-    """
-    Search a box for naked pairs that may not be on the same row or col.
-    """
-
-    """
-    for row_step in [0, 3, 6]:
-        for col_step in [0, 3, 6]:
-            coord = (row_step, col_step)
-    """
-
-    # testing
-    coord = (6, 0)
-    print('coord: {0}'.format(coord))
-    self.check_naked_box(coord)
 
 
-
-def check_naked_box(self, coord):
-    """
-    Search within box for a naked pair/triplet.
-    coord defines the 3x3 box.
-    """
-    ref_row, ref_col = coord
-    box_row = ref_row // 3
-    box_col = ref_col // 3
-    box_missing_vals = {}
-
-    # Collect all the missing value combinations in this box.
-    for row_step in range(3):
-        for col_step in range(3):
-            this_row = box_row * 3 + row_step
-            this_col = box_col * 3 + col_step
-            this_cell = (this_row, this_col)
-
-            self.set_missing_val_table(this_cell, box_missing_vals)
-
-    """
-    print('missing val table:')
-    for item in box_missing_vals.keys():
-        print('{0} - {1}'.format(item, box_missing_vals[item]))
-    """
-
-    # Search for pair/triplet matches.
-    matches_vals, matches_locs = self.find_matches(box_missing_vals)
-
-    """
-    print('match vals: {0}'.format(matches_vals))
-    print('match locs: {0}'.format(matches_locs))
-    """
-
-    # If there are matching sets, remove those vals as poss_vals from the rest of the box.
-    if len(matches_vals) > 0:
-        for match in matches_vals:
-            self.remove_in_box(match, matches_locs)
-        
-        # Then check if cells have only one poss_val remaining.
-        self.solve_queue()
 
 
 
