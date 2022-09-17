@@ -7,6 +7,7 @@ def check_intersections(self):
     self.check_block_elim()
 
 
+
 def check_intersection_boxes(self):
     """
     Single-box, block-level eliminations.
@@ -19,6 +20,7 @@ def check_intersection_boxes(self):
             coord = (row_step, col_step)
             self.check_intersection_box(coord)
             self.solve_queue()
+
 
 
 def check_intersection_box(self, coord):
@@ -52,6 +54,7 @@ def check_intersection_box(self, coord):
             self.clean_col_outside_box(missing_val, coord, in_cols_list[0])
 
 
+
 def in_which_rows(self, coords_list):
     """
     In which rows could the cells be in?
@@ -67,6 +70,7 @@ def in_which_rows(self, coords_list):
     return list(set(rows))
 
 
+
 def in_which_cols(self, coords_list):
     """
     In which cols could the cells be in?
@@ -80,6 +84,7 @@ def in_which_cols(self, coords_list):
 
     # Not useful if it returns 3.
     return list(set(cols))
+
 
 
 def clean_row_outside_box(self, eliminated_val, ref_box, in_row):
@@ -100,6 +105,7 @@ def clean_row_outside_box(self, eliminated_val, ref_box, in_row):
         self.possible_vals_check(this_cell, eliminated_val)
 
 
+
 def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
     """
     eliminated_val is the value to be removed.
@@ -116,6 +122,7 @@ def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
         # Remove eliminated_val as a possible val in this cell.
         this_cell = (row_step, in_col)
         self.possible_vals_check(this_cell, eliminated_val)
+
 
 
 def clean_rows_in_box(self, block_info):
@@ -151,6 +158,7 @@ def clean_rows_in_box(self, block_info):
                 self.possible_vals_check(this_coord, num_missing)
 
 
+
 def clean_cols_in_box(self, block_info):
     """
     Given info about a missing value and which two cols of which two boxes
@@ -182,6 +190,7 @@ def clean_cols_in_box(self, block_info):
             for elim_val_in_this_col in in_cols:
                 this_coord = (this_row, elim_val_in_this_col)
                 self.possible_vals_check(this_coord, num_missing)
+
 
 
 def check_block_elim(self):

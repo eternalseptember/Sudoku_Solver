@@ -1,14 +1,12 @@
 def check_xwing(self):
     """
+    X-wing: a candidate in four cells that form a rectangle.
     """
     # print('check xwing by rows')
     self.check_xw_by_rows()
 
     # print('check xwing by cols')
     self.check_xw_by_cols()
-
-
-
 
 
 
@@ -121,6 +119,7 @@ def check_xw_is_same_cols(self, poss_val, list_of_coords):
     return xwing_sets
 
 
+
 def is_xwing_same_cols(self, coords_row_1, coords_row_2):
     """
     coords_row_1 and coords_row_2 are lists.
@@ -138,6 +137,7 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
         return True
     else:
         return False
+
 
 
 def clean_xw_col(self, poss_val, coords_list):
@@ -169,8 +169,6 @@ def clean_xw_col(self, poss_val, coords_list):
 
         if clean_coord_2 not in coords_col_2:
             self.possible_vals_check(clean_coord_2, poss_val)
-
-
 
 
 

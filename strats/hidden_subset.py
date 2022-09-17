@@ -7,6 +7,7 @@ def check_hidden_subsets(self):
     self.check_hidden_sub_boxes()
 
 
+
 def check_hidden_sub_cols(self):
     """
     Searches for hidden subsets in every col.
@@ -23,6 +24,7 @@ def check_hidden_sub_cols(self):
         possible_subsets = self.format_hidden_subset_info(col_missing_vals)
         self.find_hidden_subset(possible_subsets, 'col')
         # self.solve_queue()  # uncomment after testing
+
 
 
 def check_hidden_sub_rows(self):
@@ -54,6 +56,7 @@ def check_hidden_sub_boxes(self):
         for col_step in [0, 3, 6]:
             box_coord = (row_step, col_step)
             self.check_hidden_sub_box(box_coord)
+
 
 
 def check_hidden_sub_box(self, box_coord):
@@ -97,6 +100,7 @@ def find_hidden_subset(self, subset_info, label, box_coord=None):
                 self.clean_hidden_box(subset_locs, missing_nums, box_coord)
 
 
+
 def clean_hidden_col(self, subset_locs, subset_vals):
     """
     A hidden subset has been identified.
@@ -112,6 +116,7 @@ def clean_hidden_col(self, subset_locs, subset_vals):
         self.clean_hidden_subset(coord, subset_locs, subset_vals)
 
 
+
 def clean_hidden_row(self, subset_locs, subset_vals):
     """
     A hidden subset has been identified.
@@ -125,6 +130,7 @@ def clean_hidden_row(self, subset_locs, subset_vals):
     for col_step in range(9):  # col goes down. row is constant.
         coord = (coord_row, col_step)
         self.clean_hidden_subset(coord, subset_locs, subset_vals)
+
 
 
 def clean_hidden_box(self, subset_locs, subset_vals, box_coord):
@@ -179,6 +185,7 @@ def format_hidden_subset_info(self, missing_vals_info):
             subset_info['missing_num'].append(missing_num)
 
     return possible_subsets
+
 
 
 def clean_hidden_subset(self, coord, subset_locs, subset_vals):

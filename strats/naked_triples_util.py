@@ -125,14 +125,13 @@ def verify_triples_list(self, poss_trips_info, mode):
     for item in entries_to_remove:
         poss_trips_info.pop(item)
 
-
     # Triples have been verified. Check if they're in the same box.
     # Exit the process if possible triples list is empty.
     if len(poss_trips_info) > 0:
         self.check_naked_trips_box(poss_trips_info, mode)
-        return poss_trips_info
-    else:
-        return poss_trips_info  # an empty dict
+
+    # Returns an empty dict if there are no possible triples.
+    return poss_trips_info
 
 
 

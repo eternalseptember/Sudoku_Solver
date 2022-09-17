@@ -9,6 +9,7 @@ def check_naked_sets(self):
     self.check_naked_boxes()
 
 
+
 def check_naked_cols(self):
     """
     Search each col for matching pairs/triplets.
@@ -38,6 +39,7 @@ def check_naked_cols(self):
 
             # If anything's been reduced to one possibility:
             self.solve_queue()
+
 
 
 def check_naked_rows(self):
@@ -82,6 +84,7 @@ def check_naked_boxes(self):
             self.check_naked_box(coord)
 
 
+
 def check_naked_box(self, coord):
     """
     Search within box for a naked pair/triplet.
@@ -107,6 +110,7 @@ def check_naked_box(self, coord):
     # If there are matching sets, remove those vals as poss_vals from the rest of the box.
     if len(matches_vals) > 0:
         for match in matches_vals:
+            print('naked set: {0} \tloc: {1}'.format(match, matches_locs))
             self.remove_in_box(match, matches_locs)
         
         # Then check if cells have only one poss_val remaining.
@@ -134,12 +138,13 @@ def set_missing_val_table(self, coord, missing_val_dict):
             missing_val_dict[poss_str].append(coord)
 
 
+
 def find_matches(self, missing_val_dict):
     """
     Search the dictionary of missing values for matches between
     possible values in a cell and
     the number of cells with that exact list of possibilities.
-    Also keep track of matches' locations.
+    Also keep track of the matches' locations.
     """
     matches_vals = []
     matches_locs = {}
@@ -152,6 +157,7 @@ def find_matches(self, missing_val_dict):
             matches_locs[missing_val] = missing_val_dict[missing_val]
 
     return matches_vals, matches_locs
+
 
 
 def in_same_box(self, coords_list):
@@ -177,6 +183,7 @@ def in_same_box(self, coords_list):
         return False, None
 
 
+
 def remove_in_box(self, match, match_dict):
     """
     match is the list of values in the pair/triplet/set.
@@ -197,6 +204,7 @@ def remove_in_box(self, match, match_dict):
                 col = box_col * 3 + col_step
                 this_cell = (row, col)
                 self.clean_naked_sets(this_cell, match, 'box')
+
 
 
 def clean_naked_sets(self, coord, matched_set, label):
