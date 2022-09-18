@@ -110,7 +110,6 @@ def check_naked_box(self, coord):
     # If there are matching sets, remove those vals as poss_vals from the rest of the box.
     if len(matches_vals) > 0:
         for match in matches_vals:
-            print('naked set: {0} \tloc: {1}'.format(match, matches_locs))
             self.remove_in_box(match, matches_locs)
         
         # Then check if cells have only one poss_val remaining.

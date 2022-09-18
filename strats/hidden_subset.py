@@ -88,16 +88,21 @@ def find_hidden_subset(self, subset_info, label, box_coord=None):
     for poss_key in subset_info.keys():
         item = subset_info[poss_key]
         subset_locs = item['subset_locs']
-        missing_nums = item['missing_num']
+        subset_nums = item['missing_num']
 
         # Hidden subset identified.
-        if len(missing_nums) == len(subset_locs):
+        if len(subset_nums) == len(subset_locs):
+
+            # testing
+            print('mode: {0}\thidden subset: {1}\t\tlocations: {2}'
+                .format(label, subset_nums, subset_locs))
+
             if label == 'col':
-                self.clean_hidden_col(subset_locs, missing_nums)
+                self.clean_hidden_col(subset_locs, subset_nums)
             elif label == 'row':
-                self.clean_hidden_row(subset_locs, missing_nums)
+                self.clean_hidden_row(subset_locs, subset_nums)
             elif label == 'box':
-                self.clean_hidden_box(subset_locs, missing_nums, box_coord)
+                self.clean_hidden_box(subset_locs, subset_nums, box_coord)
 
 
 
