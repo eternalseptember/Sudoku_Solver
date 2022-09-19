@@ -2,9 +2,9 @@ def check_hidden_subsets(self):
     """
     Like naked subset, except there are other candidates in the same cells.
     """
-    self.check_hidden_sub_cols()
+    # self.check_hidden_sub_cols()
     self.check_hidden_sub_rows()
-    self.check_hidden_sub_boxes()
+    # self.check_hidden_sub_boxes()
 
 
 
@@ -41,6 +41,13 @@ def check_hidden_sub_rows(self):
 
         # Find any subsets and then clean row.
         possible_subsets = self.format_hidden_subset_info(row_missing_vals)
+
+
+        # testing
+        for item in possible_subsets.keys():
+            print('{0} - {1}'.format(item, possible_subsets[item]))
+
+
         self.find_hidden_subset(possible_subsets, 'row')
         # self.solve_queue()  # uncomment after testing
 
@@ -94,7 +101,7 @@ def find_hidden_subset(self, subset_info, label, box_coord=None):
         if len(subset_nums) == len(subset_locs):
 
             # testing
-            print('mode: {0}\thidden subset: {1}\t\tlocations: {2}'
+            print('\tmode: {0}\thidden subset: {1}\t\tlocations: {2}'
                 .format(label, subset_nums, subset_locs))
 
             if label == 'col':
