@@ -20,8 +20,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("test_boards/rm_outside_box_row.txt")
-# sudoku.import_board("test_boards/rm_outside_box_col.txt")
+sudoku.import_board("test_boards/ints_rm_outside_box_row.txt")
+# sudoku.import_board("test_boards/ints_rm_outside_box_col.txt")
 sudoku.print_board()
 print('===============================')
 

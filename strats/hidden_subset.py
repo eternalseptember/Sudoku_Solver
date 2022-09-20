@@ -32,7 +32,9 @@ def check_hidden_sub_rows(self):
     Searches for hidden subsets in every row.
     """
     # Gets list of possible values for each location.
-    for row_step in range(9):  # iterate down rows.
+    test_row = [4]  # testing
+
+    for row_step in test_row:  # iterate down rows.
         row_missing_vals = {}  # list of missing values in this row
 
         for col_step in range(9):  # col goes across. row is constant.

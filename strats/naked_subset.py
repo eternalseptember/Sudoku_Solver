@@ -4,8 +4,8 @@ def check_naked_sets(self):
     Focused on finding pairs. Triplets can be found incidentally.
     Naked: EXACT list of candidates in EXACT cells.
     """
-    # self.check_naked_cols()
-    # self.check_naked_rows()
+    self.check_naked_cols()
+    self.check_naked_rows()
     self.check_naked_boxes()
 
 

@@ -1,7 +1,6 @@
 def check_intersections(self):
     """
     Functions that eliminate possibilities based on row/box/col interactions.
-    Could put the single- and double-boxed elims within a single function.
     """
     self.check_intersection_boxes()
     self.check_block_elim()
@@ -125,6 +124,76 @@ def clean_col_outside_box(self, eliminated_val, ref_box, in_col):
 
 
 
+def check_block_elim(self):
+    """
+    Double-boxed, block-level eliminations.
+    Check all nine boxes for patterns to eliminate possibilities.
+    Within each 3x3 box,
+    tally up whether unfilled values fit within the same two rows/cols.
+    Then check neighboring boxes.
+    By the process of elimination,
+    deduce where that number is in the third row/col.
+    """
+    # keys: hashable string; value: dict containing info about missing vals
+    # subdict keys: "num_missing", "in_cols" or "in_rows, "in_boxes"
+    block_row_info = {}
+    block_col_info = {}
+
+    for row_step in [0, 3, 6]:
+
+        for col_step in [0, 3, 6]:
+            coord = (row_step, col_step)
+
+            # Get list of missing vals and their poss locs in this box.
+            poss_vals_in_box = self.get_box_poss_vals(coord)
+
+            # For each missing val, get list of their possible locations.
+            for missing_val in poss_vals_in_box.keys():
+                poss_locs_list = poss_vals_in_box[missing_val]
+
+                # Are they in the same rows?
+                in_rows_list = self.in_which_rows(poss_locs_list)
+
+                if len(in_rows_list) == 2:
+                    # Create a hashable key.
+                    rows_str = '{0}-'.format(missing_val)
+                    rows_str += ''.join(map(str, in_rows_list))
+
+                    if rows_str not in block_row_info:
+                        block_row_info[rows_str] = {
+                            'num_missing': missing_val,
+                            'in_rows': in_rows_list,
+                            'in_boxes': [col_step]
+                        }
+                    else:
+                        row_info = block_row_info[rows_str]
+                        row_info['in_boxes'].append(col_step)
+
+
+                # Are they in the same cols?
+                in_cols_list = self.in_which_cols(poss_locs_list)
+
+                if len(in_cols_list) == 2:
+                    # Create a hashable key.
+                    cols_str = '{0}-'.format(missing_val)
+                    cols_str += ''.join(map(str, in_cols_list))
+
+                    if cols_str not in block_col_info:
+                        block_col_info[cols_str] = {
+                            'num_missing': missing_val,
+                            'in_cols': in_cols_list,
+                            'in_boxes': [row_step]
+                        }
+                    else:
+                        col_info = block_col_info[cols_str]
+                        col_info['in_boxes'].append(row_step)
+
+    self.clean_rows_in_box(block_row_info)
+    self.clean_cols_in_box(block_col_info)
+    self.solve_queue()
+
+
+
 def clean_rows_in_box(self, block_info):
     """
     Given info about a missing value and which two rows of which two boxes
@@ -190,80 +259,6 @@ def clean_cols_in_box(self, block_info):
             for elim_val_in_this_col in in_cols:
                 this_coord = (this_row, elim_val_in_this_col)
                 self.possible_vals_check(this_coord, num_missing)
-
-
-
-def check_block_elim(self):
-    """
-    Double-boxed, block-level eliminations.
-    Check all nine boxes for patterns to eliminate possibilities.
-    Within each 3x3 box,
-    tally up whether unfilled values fit within the same two rows/cols.
-    Then check neighboring boxes.
-    By the process of elimination,
-    deduce where that number is in the third row/col.
-    """
-    # keys: hashable string; value: dict containing info about missing vals
-    # subdict keys: "num_missing", "in_cols" or "in_rows, "in_boxes"
-    block_row_info = {}
-    block_col_info = {}
-
-    for row_step in [0, 3, 6]:
-
-        for col_step in [0, 3, 6]:
-            coord = (row_step, col_step)
-
-            # Get list of missing vals and their poss locs in this box.
-            poss_vals_in_box = self.get_box_poss_vals(coord)
-
-            # For each missing val, get list of their possible locations.
-            for missing_val in poss_vals_in_box.keys():
-                poss_locs_list = poss_vals_in_box[missing_val]
-
-                # Are they in the same rows?
-                in_rows_list = self.in_which_rows(poss_locs_list)
-
-                if len(in_rows_list) == 2:
-                    # Create a hashable key.
-                    rows_str = '{0}-'.format(missing_val)
-                    rows_str += ''.join(map(str, in_rows_list))
-
-                    if rows_str not in block_row_info:
-                        block_row_info[rows_str] = {
-                            'num_missing': missing_val,
-                            'in_rows': in_rows_list,
-                            'in_boxes': [col_step]
-                        }
-                    else:
-                        row_info = block_row_info[rows_str]
-                        row_info['in_boxes'].append(col_step)
-
-
-                # Are they in the same cols?
-                in_cols_list = self.in_which_cols(poss_locs_list)
-
-                if len(in_cols_list) == 2:
-                    # Create a hashable key.
-                    cols_str = '{0}-'.format(missing_val)
-                    cols_str += ''.join(map(str, in_cols_list))
-
-                    if cols_str not in block_col_info:
-                        block_col_info[cols_str] = {
-                            'num_missing': missing_val,
-                            'in_cols': in_cols_list,
-                            'in_boxes': [row_step]
-                        }
-                    else:
-                        col_info = block_col_info[cols_str]
-                        col_info['in_boxes'].append(row_step)
-
-
-    self.clean_rows_in_box(block_row_info)
-    self.clean_cols_in_box(block_col_info)
-    self.solve_queue()
-
-
-
 
 
 

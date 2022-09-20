@@ -56,17 +56,28 @@ sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
-"""
-# preliminary cleaning of board candidates for hidden_sub_row_2.txt
-print('Getting to the point where the test follows the example:')
-sudoku.check_naked_sets()  # naked_subset
-sudoku.check_naked_sets()  # naked_subset
-sudoku.check_intersection_boxes()  # intersection elim
 
+
+
+# Preliminary reduction of board candidates for hidden_sub_row_2.txt
+print('Getting to the point where the test follows the example:')
+
+# [2] can only be at (6,1) and (8,1). Remove [2] from the rest of col 1.
+print('check intersection')
+sudoku.check_intersection_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-"""
+# Reducing possible values list.
+print('check naked subsets')
+sudoku.check_naked_sets()
+sudoku.check_naked_sets()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+# Trying to eliminate [1] at (4,2) and (4,3) (test row) and (7,2) (to match example).
+
+
 
 
 print('Find hidden subset:')
