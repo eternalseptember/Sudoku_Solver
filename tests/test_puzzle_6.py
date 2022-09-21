@@ -21,7 +21,7 @@ sudoku.print_board()
 print('===============================')
 
 
-# board values found
+# Board values found.
 print('Unique lookup test:')
 sudoku.check_all_unique()
 sudoku.print_board()
@@ -29,23 +29,23 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# board values found and possible values list has been reduced
-print('Single-box block-level eliminations:')
+# Board values found and poss vals have been reduced.
+print('Boxed intersection eliminations:')
 sudoku.check_intersection_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
 
-# possible values list has been reduced
-print('Double-boxed block-level eliminations:')
-sudoku.check_block_elim()
+# Poss vals have been reduced.
+print('Double-box, block-level eliminations:')
+sudoku.check_intersection_blocks()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
 
-# board values found and possible values list has been reduced
+# Board values found and poss vals have been reduced.
 print('Check unique locations:')
 sudoku.check_all_unique()
 sudoku.print_board()
@@ -53,8 +53,8 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# poss vals list reduced for one location
-print('Single-box block-level eliminations:')
+# Poss vals reduced for one location.
+print('Boxed intersection eliminations:')
 sudoku.check_intersection_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()

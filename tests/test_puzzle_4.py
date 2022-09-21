@@ -36,33 +36,22 @@ sudoku.print_board()
 print('===============================')
 
 
-print('Single-box block-level eliminations:')
+print('Boxed intersection eliminations:')
 sudoku.check_intersection_boxes()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
 
-"""
-print('Check unique locations:')
-sudoku.check_all_unique()
-sudoku.print_board()
-# sudoku.print_possible_values()
-print('===============================')
-"""
 
-print('Double-boxed block-level eliminations:')
-sudoku.check_block_elim()
+print('Double-box, block-level eliminations:')
+sudoku.check_intersection_blocks()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
 
-"""
-print('Check unique locations:')
-sudoku.check_all_unique()
-sudoku.print_board()
-# sudoku.print_possible_values()
-print('===============================')
-"""
+
+
+
 
 
 

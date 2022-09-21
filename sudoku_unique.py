@@ -76,6 +76,7 @@ def get_box_poss_vals(self, coord):
     """
     Generate a lookup table of remaining unsolved values and all of their
     possible locations within a 3x3 box.
+    Used in other strats as well.
     """
     ref_row, ref_col = coord  # reference cell
     val_lookup = {}  # {value: [(possible cells)]}

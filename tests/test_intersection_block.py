@@ -42,8 +42,8 @@ sudoku.print_board()
 print('===============================')
 
 
-print('Intersection eliminations:')
-sudoku.check_intersections()
+print('Check block intersections:')
+sudoku.check_intersection_blocks()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')

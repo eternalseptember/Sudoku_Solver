@@ -17,8 +17,10 @@ class Sudoku_Solver():
 
     from strats.intersection_elim import check_intersections, \
         check_intersection_boxes, check_intersection_box, in_which_rows, \
-        in_which_cols, clean_row_outside_box, clean_col_outside_box, \
-        check_block_elim, clean_rows_in_box, clean_cols_in_box
+        in_which_cols, clean_row_outside_box, clean_col_outside_box
+
+    from strats.intersection_block import check_intersection_blocks, \
+        clean_rows_in_box, clean_cols_in_box
 
     from strats.hidden_subset import check_hidden_subsets, \
         check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_boxes, \
@@ -26,16 +28,17 @@ class Sudoku_Solver():
         clean_hidden_box, clean_hidden_subset, format_hidden_subset_info, \
         find_hidden_subset
 
-    from strats.naked_triples import check_naked_triples, \
+    from strats.naked_triple import check_naked_triples, \
         check_naked_trips_rows, check_naked_trips_row, clean_trips_row, \
         check_naked_trips_cols, check_naked_trips_col, clean_trips_col
 
-    from strats.naked_triples_util import find_naked_triples, \
+    from strats.naked_triple_util import find_naked_triples, \
         verify_triples_list, check_naked_trips_box, clean_trips_boxes, \
         clean_trips_box
 
-    from strats.xwing_row import check_xwing, check_xw_by_rows, \
-        check_xw_cands, clean_xw_list, check_xw_is_same_cols, \
+    from strats.xwing import check_xwing, check_xw_cands, clean_xw_list
+
+    from strats.xwing_row import check_xw_by_rows, check_xw_is_same_cols, \
         is_xwing_same_cols, clean_xw_col
 
     from strats.xwing_col import check_xw_by_cols, check_xw_is_same_rows, \

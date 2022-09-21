@@ -1,6 +1,6 @@
 def check_naked_triples(self):
     """
-    Checks naked triples in rows, cols, and boxes.
+    Checks for naked triples in rows, cols, and boxes.
 
     Naked triple:
     Not all cells must contain all three candidates, but there must not be more
