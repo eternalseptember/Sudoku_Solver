@@ -19,14 +19,18 @@ class Sudoku_Solver():
         check_intersection_boxes, check_intersection_box, in_which_rows, \
         in_which_cols, clean_row_outside_box, clean_col_outside_box
 
+    from strats.intersection_line import check_intersection_lines
+
+
+
     from strats.intersection_block import check_intersection_blocks, \
         clean_rows_in_box, clean_cols_in_box
 
     from strats.hidden_subset import check_hidden_subsets, \
         check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_boxes, \
-        check_hidden_sub_box, clean_hidden_col, clean_hidden_row, \
-        clean_hidden_box, clean_hidden_subset, format_hidden_subset_info, \
-        find_hidden_subset
+        check_hidden_sub_box, find_hidden_subset, clean_hidden_col, \
+        clean_hidden_row, clean_hidden_box, format_hidden_subset_info, \
+        clean_hidden_subset
 
     from strats.naked_triple import check_naked_triples, \
         check_naked_trips_rows, check_naked_trips_row, clean_trips_row, \
