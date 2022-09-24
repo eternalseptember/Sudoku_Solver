@@ -19,7 +19,8 @@ class Sudoku_Solver():
         check_intersection_boxes, check_intersection_box, in_which_rows, \
         in_which_cols, clean_row_outside_box, clean_col_outside_box
 
-    from strats.intersection_line import check_intersection_lines
+    from strats.intersection_line import check_intersection_lines, \
+        check_intersection_cols, check_intersection_rows
 
 
 

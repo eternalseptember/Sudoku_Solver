@@ -8,7 +8,12 @@ def check_intersection_lines(self):
 
 
 
+def check_intersection_rows(self):
+    return None
+
+
+def check_intersection_cols(self):
+    return None
 
 
 
-    
