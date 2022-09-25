@@ -16,4 +16,19 @@ def check_intersection_cols(self):
     return None
 
 
+def check_intersection_row(self, coord):
+    return None
+
+
+def check_intersection_col(self, coord):
+    return None
+
+
+
+
+
+
+
+
+
 
