@@ -14,12 +14,12 @@ def check_naked_cols(self):
     """
     Search each col for matching pairs/triplets.
     """
-    for col in range(9):
+    for col_step in range(9):
         col_missing_vals = {}
 
         # Collect all the missing value combinations in this col.
         for row_step in range(9):
-            this_cell = (row_step, col)
+            this_cell = (row_step, col_step)
             self.set_missing_val_table(this_cell, col_missing_vals)
 
         # Search this col's tally for pair/triplet matches.
@@ -31,7 +31,7 @@ def check_naked_cols(self):
             for match in matches_vals:
                 # Reduce within col.
                 for row_step in range(9):
-                    this_cell = (row_step, col)
+                    this_cell = (row_step, col_step)
                     self.clean_naked_sets(this_cell, match, 'col')
 
                 # Reduce within box.
@@ -46,12 +46,12 @@ def check_naked_rows(self):
     """
     Search each row for matching pairs/triplets.
     """
-    for row in range(9):
+    for row_step in range(9):
         row_missing_vals = {}
 
         # Collect all the missing value combinations in this row.
         for col_step in range(9):
-            this_cell = (row, col_step)
+            this_cell = (row_step, col_step)
             self.set_missing_val_table(this_cell, row_missing_vals)
 
         # Search this row's tally for pair/triplet matches.
@@ -63,7 +63,7 @@ def check_naked_rows(self):
             for match in matches_vals:
                 # Reduce within row.
                 for col_step in range(9):
-                    this_cell = (row, col_step)
+                    this_cell = (row_step, col_step)
                     self.clean_naked_sets(this_cell, match, 'row')
 
                 # Reduce within box.

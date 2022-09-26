@@ -9,7 +9,14 @@ def check_intersection_lines(self):
 
 
 def check_intersection_rows(self):
-    return None
+    """
+    tally up all possible values in each row.
+    """
+    for row_step in range(9):
+
+        # collect list of missing values and their locations in this row.
+        for col_step in range(9):
+            this_coord = (row_step, col_step)
 
 
 def check_intersection_cols(self):
