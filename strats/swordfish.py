@@ -9,10 +9,10 @@ def check_swordfish(self):
         val_lookup_row = {}
 
         for col_step in range(9):
-            this_coord = (row_step, col_step)
+            this_cell = (row_step, col_step)
 
-            if this_coord in self.possible_values:
-                self.set_lookup_table(this_coord, val_lookup_row)
+            if this_cell in self.possible_values:
+                self.set_lookup_table(this_cell, val_lookup_row)
 
         # End of row.
         self.check_sf_cands(val_lookup_row)
@@ -77,8 +77,8 @@ def clean_sf_list(self, swordfish_cands):
         else:
             unique_col_count = {}  # key: col; val: count
 
-            for this_coord in poss_coords:
-                this_row, this_col = (this_coord)
+            for this_cell in poss_coords:
+                this_row, this_col = (this_cell)
 
                 # Add to dict if not already tracked.
                 if this_col not in unique_col_count:

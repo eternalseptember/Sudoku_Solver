@@ -99,6 +99,7 @@ def get_box_poss_vals(self, coord):
 def set_lookup_table(self, coord, lookup_dict):
     """
     List all possible locations for each missing values.
+    Used in other strats as well.
     """
     if coord in self.possible_values:
         poss_values = self.possible_values[coord]

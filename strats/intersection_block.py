@@ -97,8 +97,8 @@ def clean_rows_in_box(self, block_info):
             this_col = box_remaining + col_step
 
             for elim_row in in_rows:
-                this_coord = (elim_row, this_col)
-                self.possible_vals_check(this_coord, missing_num)
+                this_cell = (elim_row, this_col)
+                self.possible_vals_check(this_cell, missing_num)
 
 
 
@@ -132,8 +132,8 @@ def clean_cols_in_box(self, block_info):
             this_row = box_remaining + row_step
 
             for elim_col in in_cols:
-                this_coord = (this_row, elim_col)
-                self.possible_vals_check(this_coord, missing_num)
+                this_cell = (this_row, elim_col)
+                self.possible_vals_check(this_cell, missing_num)
 
 
 

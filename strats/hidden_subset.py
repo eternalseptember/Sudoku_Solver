@@ -162,9 +162,9 @@ def clean_hidden_box(self, subset_locs, subset_vals, box_coord):
         for col_step in range(3):
             this_row = ref_row * 3 + row_step
             this_col = ref_col * 3 + col_step
-            this_coord = (this_row, this_col)
+            this_cell = (this_row, this_col)
 
-            self.clean_hidden_subset(this_coord, subset_locs, subset_vals)
+            self.clean_hidden_subset(this_cell, subset_locs, subset_vals)
 
 
 

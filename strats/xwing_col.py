@@ -14,10 +14,10 @@ def check_xw_by_cols(self):
 
         val_lookup_col = {}
         for row_step in range(0, 9):
-            this_coord = (row_step, col_step)
+            this_cell = (row_step, col_step)
 
-            if this_coord in self.possible_values:
-                self.set_lookup_table(this_coord, val_lookup_col)
+            if this_cell in self.possible_values:
+                self.set_lookup_table(this_cell, val_lookup_col)
 
         # End of col.
         self.check_xw_cands(val_lookup_col)
