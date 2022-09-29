@@ -42,14 +42,17 @@ def check_intersection_cols(self):
 
 
 
-
-
-def check_intersection_row(self, coord):
+def in_which_box_row(self):
     return None
 
 
-def check_intersection_col(self, coord):
+
+def in_which_box_col(self):
     return None
+
+
+
+
 
 
 

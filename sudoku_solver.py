@@ -20,8 +20,9 @@ class Sudoku_Solver():
         in_which_cols, clean_row_outside_box, clean_col_outside_box
 
     from strats.intersection_line import check_intersection_lines, \
-        check_intersection_cols, check_intersection_rows, \
-        check_intersection_col, check_intersection_row
+        check_intersection_cols, check_intersection_rows, in_which_box_col, \
+        in_which_box_row
+        
 
 
 
@@ -35,8 +36,8 @@ class Sudoku_Solver():
         clean_hidden_subset
 
     from strats.naked_triple import check_naked_triples, \
-        check_naked_trips_rows, check_naked_trips_row, clean_trips_row, \
-        check_naked_trips_cols, check_naked_trips_col, clean_trips_col
+        check_naked_trips_rows, clean_trips_row, check_naked_trips_cols, \
+        clean_trips_col
 
     from strats.naked_triple_util import find_naked_triples, \
         verify_triples_list, check_naked_trips_box, clean_trips_boxes, \

@@ -14,36 +14,29 @@ def check_naked_triples(self):
 def check_naked_trips_rows(self):
     """
     Iterate through each row to find naked triples.
-    """
-    for row_step in range(9):
-        self.check_naked_trips_row(row_step)
-
-
-
-def check_naked_trips_row(self, row_num):
-    """
     Collect candidate cells and their possibilities.
     """
-    poss_trip_list = []
+    for row_step in range(9):
+        poss_trip_list = []
 
-    # Get a list of cells that can be part of a triple.
-    for col_step in range(9):
-        this_cell = (row_num, col_step)
+        # Get a list of cells that can be part of a triple.
+        for col_step in range(9):
+            this_cell = (row_step, col_step)
 
-        # Skip over solved cells.
-        if this_cell in self.possible_values:
-            poss_vals = self.possible_values[this_cell]
+            # Skip over solved cells.
+            if this_cell in self.possible_values:
+                poss_vals = self.possible_values[this_cell]
 
-            # Can't be part of a triple if there are more than 3 candidates.
-            if len(poss_vals) <= 3:
-                poss_trip_list.append(this_cell)
+                # Can't be part of a triple if there are more than 3 candidates.
+                if len(poss_vals) <= 3:
+                    poss_trip_list.append(this_cell)
 
-    # Analyze if triple exists.
-    poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_row')
+        # Analyze if triple exists.
+        poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_row')
 
-    if len(poss_trips_info) > 0:
-        self.clean_trips_row(poss_trips_info, row_num)
-        self.solve_queue()
+        if len(poss_trips_info) > 0:
+            self.clean_trips_row(poss_trips_info, row_step)
+            self.solve_queue()
 
 
 
@@ -74,36 +67,29 @@ def clean_trips_row(self, poss_trips_info, row_num):
 def check_naked_trips_cols(self):
     """
     Iterate through each col to find naked triples.
-    """
-    for col_step in range(9):
-        self.check_naked_trips_col(col_step)
-
-
-
-def check_naked_trips_col(self, col_num):
-    """
     Collect candidate cells and their possibilities.
     """
-    poss_trip_list = []
+    for col_step in range(9):
+        poss_trip_list = []
 
-    # Get a list of cells that can be part of a triple.
-    for row_step in range(9):
-        this_cell = (row_step, col_num)
+        # Get a list of cells that can be part of a triple.
+        for row_step in range(9):
+            this_cell = (row_step, col_step)
 
-        # Skip over solved cells.
-        if this_cell in self.possible_values:
-            poss_vals = self.possible_values[this_cell]
+            # Skip over solved cells.
+            if this_cell in self.possible_values:
+                poss_vals = self.possible_values[this_cell]
 
-            # Can't be part of a triple if there are more than 3 candidates.
-            if len(poss_vals) <= 3:
-                poss_trip_list.append(this_cell)
+                # Can't be part of a triple if there are more than 3 candidates.
+                if len(poss_vals) <= 3:
+                    poss_trip_list.append(this_cell)
 
-    # Analyze if triple exists.
-    poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_col')
+        # Analyze if triple exists.
+        poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_col')
 
-    if len(poss_trips_info) > 0:
-        self.clean_trips_col(poss_trips_info, col_num)
-        self.solve_queue()
+        if len(poss_trips_info) > 0:
+            self.clean_trips_col(poss_trips_info, col_step)
+            self.solve_queue()
 
 
 
