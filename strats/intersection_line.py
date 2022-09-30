@@ -39,16 +39,26 @@ def check_intersection_cols(self):
         for row_step in range(9):
             this_cell = (row_step, col_step)
             self.set_lookup_table(this_cell, col_missing_vals)
+        
+
+        # Check if missing values are all located in the same box.
+        for missing_val in col_missing_vals.keys():
+            missing_val_locs = col_missing_vals[missing_val]
+
+            # If there are more than 3 locations, then can't be in the same box.
+            if len(missing_val_locs) <= 3:
+                is_same_box, box_loc = self.in_which_box(missing_val_locs)
+
+                if is_same_box:
+                    print('missing val: {0}\tbox: {1}\tlocs:{2}'
+                        .format(missing_val, box_loc, missing_val_locs))
 
 
 
-def in_which_box_row(self):
-    return None
 
 
 
-def in_which_box_col(self):
-    return None
+
 
 
 

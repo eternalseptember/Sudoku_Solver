@@ -159,11 +159,35 @@ def find_matches(self, missing_val_dict):
 
 
 
-def in_same_box(self, coords_list):
+def remove_in_box(self, match, match_dict):
+    """
+    match is the list of values in the pair/triplet/set.
+    match_dict keeps track of where the match is with a hashable key.
+    If cells of the match are in the same box, then remove those values
+    as possibilities from the rest of the box.
+    """
+    match_str = ''.join(map(str, match))
+    match_loc = match_dict[match_str]
+    is_same_box, box_loc = self.in_which_box(match_loc)
+
+    if is_same_box:
+        box_row, box_col = box_loc
+
+        for row_step in range(3):
+            for col_step in range(3):
+                row = box_row * 3 + row_step
+                col = box_col * 3 + col_step
+                this_cell = (row, col)
+                self.clean_naked_sets(this_cell, match, 'box')
+
+
+
+def in_which_box(self, coords_list):
     """
     Checks whether all values in match are in the same box.
     coords_list is all of the cells in the match, sharing the same
     list of possible values.
+    Used in other strats as well.
     """
     boxes = []  # box_loc = (box_row, box_col)
 
@@ -177,32 +201,10 @@ def in_same_box(self, coords_list):
     # Are they all in the same box?
     # And if they are, which box?
     if len(set(boxes)) == 1:
+        # Multiply box_row and box_col by 3.
         return True, boxes[0]
     else:
         return False, None
-
-
-
-def remove_in_box(self, match, match_dict):
-    """
-    match is the list of values in the pair/triplet/set.
-    match_dict keeps track of where the match is with a hashable key.
-    If cells of the match are in the same box, then remove those values
-    as possibilities from the rest of the box.
-    """
-    match_str = ''.join(map(str, match))
-    match_loc = match_dict[match_str]
-    is_same_box, box_loc = self.in_same_box(match_loc)
-
-    if is_same_box:
-        box_row, box_col = box_loc
-
-        for row_step in range(3):
-            for col_step in range(3):
-                row = box_row * 3 + row_step
-                col = box_col * 3 + col_step
-                this_cell = (row, col)
-                self.clean_naked_sets(this_cell, match, 'box')
 
 
 
