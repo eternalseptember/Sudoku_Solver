@@ -26,7 +26,7 @@ def check_swordfish(self):
 
 
     # Eliminate poss_vals that can't be part of a swordfish.
-    self.clean_sf_list(swordfish_cands)
+    self.reduce_sf_list(swordfish_cands)
 
 
     # Then check each dict entry to see if there's a swordfish
@@ -44,6 +44,7 @@ def check_swordfish(self):
 def check_sf_cands(self, lookup_dict):
     """
     Conditions: at least 3 possible locations per row.
+    If not met, then remove those entries from swordfish consideration.
     """
     remove_list = []
 
@@ -60,7 +61,7 @@ def check_sf_cands(self, lookup_dict):
 
 
 
-def clean_sf_list(self, swordfish_cands):
+def reduce_sf_list(self, swordfish_cands):
     """
     Initial cleanup of swordfish_cands list.
     Conditions: at least 9 coordinates total; at least 3 coords in each col.

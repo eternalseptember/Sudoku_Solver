@@ -3,6 +3,7 @@
 
 
 class Sudoku_Solver():
+    # Core
     from sudoku_print import print_board, print_possible_values, \
         print_solved_queue
 
@@ -10,31 +11,39 @@ class Sudoku_Solver():
         check_unique_col, check_unique_box, get_box_poss_vals, \
         set_lookup_table, solve_lookup_table
 
-    from strats.naked_subset import check_naked_sets, check_naked_cols, \
-        check_naked_rows, check_naked_boxes, check_naked_box, \
-        set_missing_val_table, find_matches, remove_in_box, in_which_box, \
-        clean_naked_sets
 
+    # Naked Subset
+    from strats.naked_subset_ import check_naked_sets, check_naked_cols, \
+        check_naked_rows, check_naked_boxes, check_naked_box
+    
+    from strats.naked_subset_util import set_missing_val_table, find_matches, \
+        remove_naked_in_box, in_which_box, clean_naked_sets
+
+
+    # Intersections
     from strats.intersection_elim import check_intersections, \
         check_intersection_boxes, check_intersection_box, in_which_rows, \
         in_which_cols, clean_row_outside_box, clean_col_outside_box
 
     from strats.intersection_line import check_intersection_lines, \
-        check_intersection_cols, check_intersection_rows
-        
-
-
+        check_intersection_cols, check_intersection_rows, clean_ints_in_box
 
     from strats.intersection_block import check_intersection_blocks, \
-        clean_rows_in_box, clean_cols_in_box
+        clean_ints_block_row, clean_ints_block_col
 
-    from strats.hidden_subset import check_hidden_subsets, \
+
+    # Hidden Subset
+    from strats.hidden_subset_ import check_hidden_subsets, \
         check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_boxes, \
         check_hidden_sub_box, find_hidden_subset, clean_hidden_col, \
-        clean_hidden_row, clean_hidden_box, format_hidden_subset_info, \
+        clean_hidden_row, clean_hidden_box
+        
+    from strats.hidden_subset_util import format_hidden_subset_info, \
         clean_hidden_subset
 
-    from strats.naked_triple import check_naked_triples, \
+
+    # Naked Triple
+    from strats.naked_triple_ import check_naked_triples, \
         check_naked_trips_rows, clean_trips_row, check_naked_trips_cols, \
         clean_trips_col
 
@@ -42,7 +51,9 @@ class Sudoku_Solver():
         verify_triples_list, check_naked_trips_box, clean_trips_boxes, \
         clean_trips_box
 
-    from strats.xwing import check_xwing, check_xw_cands, clean_xw_list
+
+    # Xwing
+    from strats.xwing_ import check_xwing, check_xw_cands, reduce_xw_list
 
     from strats.xwing_row import check_xw_by_rows, check_xw_is_same_cols, \
         is_xwing_same_cols, clean_xw_col
@@ -50,8 +61,10 @@ class Sudoku_Solver():
     from strats.xwing_col import check_xw_by_cols, check_xw_is_same_rows, \
         is_xwing_same_rows, clean_xw_row
 
+
+    # Swordfish
     from strats.swordfish import check_swordfish, check_sf_cands, \
-        clean_sf_list, find_swordfish, clean_swordfish, intersection
+        reduce_sf_list, find_swordfish, clean_swordfish, intersection
 
 
 

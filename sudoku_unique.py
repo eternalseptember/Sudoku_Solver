@@ -13,13 +13,13 @@ def check_all_unique(self):
 
         # Check all rows.
         if len(self.solved_list) < 81:
-            for row in range(9):
-                self.check_unique_row((row, 0))
+            for row_step in range(9):
+                self.check_unique_row((row_step, 0))
 
         # Check all cols.
         if len(self.solved_list) < 81:
-            for col in range(9):
-                self.check_unique_col((0, col))
+            for col_step in range(9):
+                self.check_unique_col((0, col_step))
 
         # Check all boxes.
         if len(self.solved_list) < 81:

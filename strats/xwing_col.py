@@ -1,3 +1,6 @@
+# Used in main xwing function.
+
+
 def check_xw_by_cols(self):
     """
     When there are
@@ -31,7 +34,7 @@ def check_xw_by_cols(self):
 
 
     # Eliminate entries without enough possible candidates be part of an xwing.
-    self.clean_xw_list(xwing_candidates)
+    self.reduce_xw_list(xwing_candidates)
 
 
     # Then check each dict entry to see if there's an xwing

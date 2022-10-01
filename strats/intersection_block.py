@@ -61,13 +61,13 @@ def check_intersection_blocks(self):
                         col_info['in_boxes'].append(row_step)
 
 
-    self.clean_rows_in_box(block_row_info)
-    self.clean_cols_in_box(block_col_info)
+    self.clean_ints_block_row(block_row_info)
+    self.clean_ints_block_col(block_col_info)
     self.solve_queue()
 
 
 
-def clean_rows_in_box(self, block_info):
+def clean_ints_block_row(self, block_info):
     """
     Given info about a missing value and which two rows of which two boxes
     it's in, remove that possibility from the third box.
@@ -102,7 +102,7 @@ def clean_rows_in_box(self, block_info):
 
 
 
-def clean_cols_in_box(self, block_info):
+def clean_ints_block_col(self, block_info):
     """
     Given info about a missing value and which two cols of which two boxes
     it's in, remove that possibility from the third box.

@@ -1,6 +1,3 @@
-# General xwing functions
-
-
 def check_xwing(self):
     """
     X-wing: a candidate in four cells that form a rectangle.
@@ -12,8 +9,9 @@ def check_xwing(self):
 
 def check_xw_cands(self, lookup_dict):
     """
-    Check this condition:
+    At the end of row or col, check this condition:
     Only two possible cells for a val in this row or col.
+    If not met, then remove those entries from xwing consideration.
     """
     remove_list = []
 
@@ -30,7 +28,7 @@ def check_xw_cands(self, lookup_dict):
 
 
 
-def clean_xw_list(self, xwing_candidates):
+def reduce_xw_list(self, xwing_candidates):
     """
     Remove unsolved candidates that can't be part of an xwing.
     """
