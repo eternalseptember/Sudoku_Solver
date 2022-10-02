@@ -26,7 +26,8 @@ class Sudoku_Solver():
         in_which_cols, clean_row_outside_box, clean_col_outside_box
 
     from strats.intersection_line import check_intersection_lines, \
-        check_intersection_cols, check_intersection_rows, clean_ints_in_box
+        check_intersection_cols, check_intersection_rows, \
+        clean_box_with_row, clean_box_with_col
 
     from strats.intersection_block import check_intersection_blocks, \
         clean_ints_block_row, clean_ints_block_col

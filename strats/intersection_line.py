@@ -59,10 +59,15 @@ def check_intersection_cols(self):
 
 
 
-def clean_ints_in_box(self, coords_list):
+def clean_box_with_row(self, eliminated_val, ref_box, in_row):
     return None
 
 
+
+
+
+def clean_box_with_col(self, eliminated_val, ref_box, in_col):
+    return None
 
 
 
