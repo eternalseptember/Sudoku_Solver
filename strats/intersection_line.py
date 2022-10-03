@@ -60,14 +60,14 @@ def check_intersection_cols(self):
 
 
 def clean_box_with_row(self, eliminated_val, ref_box, in_row):
-    return None
+    ref_row, ref_col = ref_box
 
 
 
 
 
 def clean_box_with_col(self, eliminated_val, ref_box, in_col):
-    return None
+    ref_row, ref_col = ref_box
 
 
 
