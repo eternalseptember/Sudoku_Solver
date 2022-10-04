@@ -50,8 +50,9 @@ def check_intersection_cols(self):
                 is_same_box, box_loc = self.in_which_box(missing_val_locs)
 
                 if is_same_box:
-                    print('missing val: {0}\tbox: {1}\tlocs:{2}'
-                        .format(missing_val, box_loc, missing_val_locs))
+                    print('missing val: {0}\tin col: {1}\tbox: {2}\tlocs:{3}'
+                        .format(missing_val, col_step, box_loc, missing_val_locs))
+                    # self.clean_box_with_col(missing_val, box_loc, col_step)
 
 
 
@@ -67,8 +68,20 @@ def clean_box_with_row(self, eliminated_val, ref_box, in_row):
 
 
 def clean_box_with_col(self, eliminated_val, ref_box, in_col):
+    """
+    eliminated_val is in in_col.
+    Remove that possibility in the rest of the box, where col is not in_col.
+    ref_box defines the 3x3 box.
+    """
     ref_row, ref_col = ref_box
 
+    for col_step in range(3):
+        this_col = ref_col * 3 + col_step
+
+        # skip if this_col == in_col
+
+        for row_step in range(3):
+            this_row = ref_row * 3 + row_step
 
 
 
