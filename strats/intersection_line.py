@@ -85,6 +85,8 @@ def clean_box_with_col(self, eliminated_val, ref_box, in_col):
 
         for row_step in range(3):
             this_row = ref_row * 3 + row_step
+            this_coord = (this_row, this_col)
+
 
 
 
