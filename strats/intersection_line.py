@@ -50,9 +50,9 @@ def check_intersection_cols(self):
                 is_same_box, box_loc = self.in_which_box(missing_val_locs)
 
                 if is_same_box:
-                    print('missing val: {0}\tin col: {1}\tbox: {2}\tlocs:{3}'
-                        .format(missing_val, col_step, box_loc, missing_val_locs))
-                    # self.clean_box_with_col(missing_val, box_loc, col_step)
+                    # print('\tmissing val: {0}\tin col: {1}\tbox: {2}\tlocs:{3}'
+                    # 	.format(missing_val, col_step, box_loc, missing_val_locs))
+                    self.clean_box_with_col(missing_val, box_loc, col_step)
 
 
 
@@ -85,7 +85,8 @@ def clean_box_with_col(self, eliminated_val, ref_box, in_col):
 
         for row_step in range(3):
             this_row = ref_row * 3 + row_step
-            this_coord = (this_row, this_col)
+            this_cell = (this_row, this_col)
+            self.possible_vals_check(this_cell, eliminated_val)
 
 
 
