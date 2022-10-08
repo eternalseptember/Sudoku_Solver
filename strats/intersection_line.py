@@ -61,7 +61,15 @@ def check_intersection_cols(self):
 
 
 def clean_box_with_row(self, eliminated_val, ref_box, in_row):
+    """
+    eliminated_val is in in_row.
+    Remove that possibility from the rest of the box, where row is not in_row.
+    ref_box defines the 3x3 box.
+    """
     ref_row, ref_col = ref_box
+
+    for row_step in range(3):
+        this_row = ref_row * 3 + row_step
 
 
 
@@ -70,7 +78,7 @@ def clean_box_with_row(self, eliminated_val, ref_box, in_row):
 def clean_box_with_col(self, eliminated_val, ref_box, in_col):
     """
     eliminated_val is in in_col.
-    Remove that possibility in the rest of the box, where col is not in_col.
+    Remove that possibility from the rest of the box, where col is not in_col.
     ref_box defines the 3x3 box.
     """
     ref_row, ref_col = ref_box
