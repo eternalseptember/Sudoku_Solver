@@ -74,6 +74,9 @@ def clean_box_with_row(self, eliminated_val, ref_box, in_row):
         if this_row == in_row:
             # skip if this_col is in_col.
             continue
+        
+        for col_step in range(3):
+            this_col = ref_col * 3 + col_step
 
 
 
