@@ -72,11 +72,13 @@ def clean_box_with_row(self, eliminated_val, ref_box, in_row):
         this_row = ref_row * 3 + row_step
 
         if this_row == in_row:
-            # skip if this_col is in_col.
+            # skip if this_row is in_row.
             continue
         
         for col_step in range(3):
             this_col = ref_col * 3 + col_step
+            this_cell = (this_row, this_col)
+            self.possible_vals_check(this_cell, eliminated_val)
 
 
 
