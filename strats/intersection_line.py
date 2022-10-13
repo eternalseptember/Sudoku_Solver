@@ -4,8 +4,8 @@ def check_intersection_lines(self):
     Then check if all possible locations for a missing value is in the same box.
     If it is, then remove it from the rest of the box.
     """
-    # self.check_intersection_rows()
-    self.check_intersection_cols()
+    self.check_intersection_rows()
+    # self.check_intersection_cols()
 
 
 def check_intersection_rows(self):
@@ -21,6 +21,10 @@ def check_intersection_rows(self):
         for col_step in range(9):
             this_cell = (row_step, col_step)
             self.set_lookup_table(this_cell, row_missing_vals)
+        
+        # Check if missing values are all located in the same box.
+        for missing_val in row_missing_vals.keys():
+            missing_val_locs = row_missing_vals[missing_val]
 
 
 
