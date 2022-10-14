@@ -26,6 +26,10 @@ def check_intersection_rows(self):
         for missing_val in row_missing_vals.keys():
             missing_val_locs = row_missing_vals[missing_val]
 
+            # If there are more than 3 locations, then can't be in the same box.
+            if len(missing_val_locs) <= 3:
+                is_same_box, box_loc = self.in_which_box(missing_val_locs)
+
 
 
 
