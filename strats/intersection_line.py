@@ -30,6 +30,11 @@ def check_intersection_rows(self):
             if len(missing_val_locs) <= 3:
                 is_same_box, box_loc = self.in_which_box(missing_val_locs)
 
+                if is_same_box:
+                    # print('\tmissing val: {0}\tin row: {1}\tbox: {2}\tlocs:{3}'
+                    # 	.format(missing_val, row_step, box_loc, missing_val_locs))
+                    self.clean_box_with_row(missing_val, box_loc, row_step)
+
 
 
 
