@@ -4,7 +4,7 @@ def check_intersections(self):
     """
     self.check_intersection_boxes()
     self.check_intersection_blocks()
-    # self.check_intersection_lines()
+    self.check_intersection_lines()
 
 
 

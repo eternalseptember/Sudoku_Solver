@@ -21,8 +21,9 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("test_boards/ints_line_col.txt")
-sudoku.import_board("test_boards/ints_line_row.txt")
+# sudoku.import_board("test_boards/ints_line_col_1.txt")
+# sudoku.import_board("test_boards/ints_line_row_1.txt")
+sudoku.import_board("test_boards/ints_line_row_2.txt")
 sudoku.print_board()
 print('===============================')
 

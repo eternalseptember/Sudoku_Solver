@@ -5,7 +5,8 @@ def check_intersection_lines(self):
     If it is, then remove it from the rest of the box.
     """
     self.check_intersection_rows()
-    # self.check_intersection_cols()
+    self.check_intersection_cols()
+
 
 
 def check_intersection_rows(self):
@@ -34,8 +35,6 @@ def check_intersection_rows(self):
                     # print('\tmissing val: {0}\tin row: {1}\tbox: {2}\tlocs:{3}'
                     # 	.format(missing_val, row_step, box_loc, missing_val_locs))
                     self.clean_box_with_row(missing_val, box_loc, row_step)
-
-
 
 
 
@@ -69,10 +68,6 @@ def check_intersection_cols(self):
 
 
 
-
-
-
-
 def clean_box_with_row(self, eliminated_val, ref_box, in_row):
     """
     eliminated_val is in in_row.
@@ -92,8 +87,6 @@ def clean_box_with_row(self, eliminated_val, ref_box, in_row):
             this_col = ref_col * 3 + col_step
             this_cell = (this_row, this_col)
             self.possible_vals_check(this_cell, eliminated_val)
-
-
 
 
 
