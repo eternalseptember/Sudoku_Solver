@@ -1,15 +1,18 @@
 """
 Intersection eliminations.
 
-Col test:
+Col test 1:
 7 can't be in any other (4, col) locations.
 In the central box, 7 can only be in (3, 4) and (5, 4),
 so eliminate 7 as a possibility in the rest of (row, 4).
 
-Row test:
+Row test 1:
 7 can't be in any other (row, 4) locations.
 In the central box, 7 can only be in (4, 3) and (4, 5),
 so eliminate 7 as a possibility in the rest of (4, col).
+
+Row test 2:
+5 is in (2, 0) and (2, 1). Remove 5 from (2, 6).
 """
 
 
@@ -20,8 +23,9 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("test_boards/ints_rm_outside_box_row.txt")
-# sudoku.import_board("test_boards/ints_rm_outside_box_col.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_col_1.txt")
+sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -34,11 +38,23 @@ sudoku.print_board()
 print('===============================')
 
 
+"""
+# Used for first set of tests
 print('Check intersection in box:')
 sudoku.check_intersection_box((4, 4))
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+"""
+
+print('Check intersection in box:')
+sudoku.check_intersection_boxes()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
 
 
 

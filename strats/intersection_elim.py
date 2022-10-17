@@ -3,8 +3,8 @@ def check_intersections(self):
     Functions that eliminate possibilities based on row/box/col intersections.
     """
     self.check_intersection_boxes()
-    self.check_intersection_blocks()
-    self.check_intersection_lines()
+    # self.check_intersection_blocks()
+    # self.check_intersection_lines()
 
 
 

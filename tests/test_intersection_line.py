@@ -1,12 +1,12 @@
 """
-Col test:
+Col test 1:
 3 is confined to (rows 6-8; col 0).
 Remove 3 as possibilities from (7,1) and (8,2).
 
 6 is confined to (rows 3-5; col 1).
 Remove 6 as possibilities from (rows 3-5; col 2).
 
-Row test:
+Row test 1:
 3 is confined to (row 0; cols 0-2).
 Remove 3 as possibilities from (1,1) and (2,0).
 
@@ -22,8 +22,7 @@ from sudoku_solver import *
 
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/ints_line_col_1.txt")
-# sudoku.import_board("test_boards/ints_line_row_1.txt")
-sudoku.import_board("test_boards/ints_line_row_2.txt")
+sudoku.import_board("test_boards/ints_line_row_1.txt")
 sudoku.print_board()
 print('===============================')
 
