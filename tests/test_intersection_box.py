@@ -12,7 +12,12 @@ In the central box, 7 can only be in (4, 3) and (4, 5),
 so eliminate 7 as a possibility in the rest of (4, col).
 
 Row test 2:
-5 is in (2, 0) and (2, 1). Remove 5 from (2, 6).
+5 is in (2, 0) or (2, 1).
+Remove 5 from (2, 6).
+
+Row test 3:
+1 is in (6, 3) or (6, 5).
+Remove 1 from (row 6; cols 0-2) and (row 6; cols 6-8).
 """
 
 
@@ -25,7 +30,8 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_col_1.txt")
-sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
+sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
 sudoku.print_board()
 print('===============================')
 
