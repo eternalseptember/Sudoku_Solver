@@ -6,6 +6,9 @@ Col test 1:
 In the central box, 7 can only be in (3, 4) and (5, 4),
 so eliminate 7 as a possibility in the rest of (row, 4).
 
+Col test 2:
+
+
 Row test 1:
 7 can't be in any other (row, 4) locations.
 In the central box, 7 can only be in (4, 3) and (4, 5),
@@ -29,9 +32,10 @@ from sudoku_solver import *
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
+sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_col_1.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
-sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
 sudoku.print_board()
 print('===============================')
 
