@@ -7,6 +7,12 @@ In the central box, 7 can only be in (3, 4) and (5, 4),
 so eliminate 7 as a possibility in the rest of (row, 4).
 
 Col test 2:
+5 is in (0, 6) or (1, 6).
+Remove 5 from (6, 6).
+
+Col test 3:
+1 is in (3, 2) or (5, 2).
+Remove 1 from (cols 0-2; row 2) and (cols 6-8; row 2)
 
 
 Row test 1:
@@ -32,7 +38,8 @@ from sudoku_solver import *
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
-sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
+sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_col_1.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
