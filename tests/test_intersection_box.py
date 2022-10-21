@@ -12,7 +12,7 @@ Remove 5 from (6, 6).
 
 Col test 3:
 1 is in (3, 2) or (5, 2).
-Remove 1 from (cols 0-2; row 2) and (cols 6-8; row 2)
+Remove 1 from (rows 0-2; col 2) and (rows 6-8; col 2)
 
 
 Row test 1:
@@ -37,10 +37,10 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-# sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
-# sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
-sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_col_1.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_col_2.txt")
+sudoku.import_board("test_boards/ints_rm_out_box_col_3.txt")
+# sudoku.import_board("test_boards/ints_rm_out_box_row_1.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_row_2.txt")
 # sudoku.import_board("test_boards/ints_rm_out_box_row_3.txt")
 sudoku.print_board()
