@@ -34,6 +34,15 @@ def check_swordfish(self):
     swordfish_found = self.find_swordfish(swordfish_cands)
 
 
+    # Clean any swordfish found.
+    for swordfish_set in swordfish_found:
+        print('{0}'.format(swordfish_set))
+
+
+    # Check if anything's been solved.
+    # self.solve_queue()
+
+
 
 
 
@@ -140,6 +149,7 @@ def intersection(self, list_1, list_2):
 def clean_swordfish(self, poss_val, coords_list):
     """
     """
+    # possible_vals_check() or check_if_solved()
     return None
 
 
