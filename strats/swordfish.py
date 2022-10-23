@@ -35,6 +35,7 @@ def check_swordfish(self):
 
 
     # Clean any swordfish found.
+    # print('swordfish found:')
     for swordfish_set in swordfish_found:
         print('{0}'.format(swordfish_set))
 
@@ -123,15 +124,22 @@ def find_swordfish(self, swordfish_cands):
     """
     Check if there is a swordfish in the cleaned swordfish_cands list.
     """
-    swordfish_found = []  # stores dicts[poss_val] of swordfish coords
+    swordfishes_found = []  # stores dicts[poss_val] of swordfish coords
     
-    # print('checking swordfish cands')
+    print('checking swordfish cands')
     for poss_val in swordfish_cands.keys():
-        print('poss_val: {0}, coords: {1}'.format(poss_val, swordfish_cands[poss_val]))
+        swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
+        poss_coords = swordfish_cands[poss_val]
         col_count = {}  # key is col? and stores a list of row numbers?
 
 
-    return swordfish_found
+        print('poss_val: {0}, coords: {1}'.format(poss_val, poss_coords))
+
+
+
+
+
+    return swordfishes_found
 
 
 
