@@ -130,12 +130,22 @@ def find_swordfish(self, swordfish_cands):
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
         poss_coords = swordfish_cands[poss_val]
-        col_count = {}  # key is col? and stores a list of row numbers?
-
+        row_tracker = {}  # row_tracker[col] = [row numbers]
 
         print('poss_val: {0}, coords: {1}'.format(poss_val, poss_coords))
 
+        # first, sort the list of coords
+        for poss_coord in poss_coords:
+            this_row, this_col = poss_coord
 
+            if this_col in row_tracker:
+                row_tracker[this_col].append(this_row)
+            else:
+                row_tracker[this_col] = [this_row]
+
+
+        # then compare each entry in row_tracker to see if the same three
+        # row numbers show up in three different cols.
 
 
 
