@@ -154,11 +154,11 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def intersection(self, list_1, list_2):
+def intersection_of_three(self, list_1, list_2, list_3):
     """
-    Returns the intersection of list1 and list2 in a list.
+    Returns the intersection of list_1, list_2, and list_3 in a list.
     """
-    return list(set(list_1) & set(list_2))
+    return list(set(list_1) & set(list_2) & set(list_3))
 
 
 
