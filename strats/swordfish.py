@@ -74,7 +74,7 @@ def check_sf_cands(self, lookup_dict):
 def reduce_sf_list(self, swordfish_cands):
     """
     Initial cleanup of swordfish_cands list.
-    Conditions: at least 9 coordinates total; at least 3 coords in each col.
+    Conditions: at least 9 coords total; at least 3 rows in at least 3 cols.
     """
     remove_list = []  # store poss_vals
 
@@ -82,11 +82,13 @@ def reduce_sf_list(self, swordfish_cands):
         poss_coords = swordfish_cands[poss_val]
 
         # Check conditions.
+        # Condition: at least nine coords total.
         if len(poss_coords) < 9:
             remove_list.append(poss_val)
     
         else:
-            unique_col_count = {}  # key: col; val: count
+            # Condition: at least three unique cols.
+            unique_col_count = {}  # unique_col_count[col] = row_count
 
             for this_cell in poss_coords:
                 this_row, this_col = (this_cell)
@@ -97,20 +99,19 @@ def reduce_sf_list(self, swordfish_cands):
                 else:
                     unique_col_count[this_col] += 1
 
-            # Check that there are at least three cols.
+            # Remove if there are fewer than three unique cols.
             if len(unique_col_count.keys()) < 3:
                 remove_list.append(poss_val)
 
-            # Then check count in all cols.
+            # Condition: at least three cols with at least three rows.
             else:
-                swordfish_cols_count = 0  # at least 3 cols need at least 3 locations
+                valid_swordfish_cols = 0
 
                 for this_col in unique_col_count.keys():
                     if unique_col_count[this_col] >= 3:
-                        swordfish_cols_count += 1
+                        valid_swordfish_cols += 1
 
-
-                if swordfish_cols_count <= 2:
+                if valid_swordfish_cols < 3:
                     remove_list.append(poss_val)
 
 
@@ -132,7 +133,6 @@ def find_swordfish(self, swordfish_cands):
         poss_coords = swordfish_cands[poss_val]
         row_tracker = {}  # row_tracker[col] = [row numbers]
 
-        print('poss_val: {0}, coords: {1}'.format(poss_val, poss_coords))
 
         # first, sort the list of coords
         for poss_coord in poss_coords:
@@ -146,6 +146,9 @@ def find_swordfish(self, swordfish_cands):
 
         # then compare each entry in row_tracker to see if the same three
         # row numbers show up in three different cols.
+        print('row tracker for poss val: {0}'.format(poss_val))
+        for col_item in row_tracker.keys():
+            print('col: {0} rows: {1}'.format(col_item, row_tracker[col_item]))
 
 
 

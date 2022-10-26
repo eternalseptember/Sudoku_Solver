@@ -102,7 +102,7 @@ def clean_naked_sets(self, coord, matched_set, label):
             # 	.format(label, matched_set, coord))
             return
         else:
-            # Otherwise, remove any values of the matched set.
+            # Outside of the match, remove any values of the matched set.
             # Then check if coord has been solved.
             for val in matched_set:
                 self.possible_vals_check(coord, val)
