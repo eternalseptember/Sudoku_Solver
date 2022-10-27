@@ -126,29 +126,33 @@ def find_swordfish(self, swordfish_cands):
     Check if there is a swordfish in the cleaned swordfish_cands list.
     """
     swordfishes_found = []  # stores dicts[poss_val] of swordfish coords
-    
+
     print('checking swordfish cands')
+    for item in swordfish_cands.keys():
+        print('poss val: {0}\tcoords: {1}'.format(item, swordfish_cands[item]))
+    
+
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
         poss_coords = swordfish_cands[poss_val]
-        row_tracker = {}  # row_tracker[col] = [row numbers]
+        col_tracker = {}  # col_tracker[row_num] = [col numbers]
 
 
         # first, sort the list of coords
         for poss_coord in poss_coords:
             this_row, this_col = poss_coord
 
-            if this_col in row_tracker:
-                row_tracker[this_col].append(this_row)
+            if this_row in col_tracker:
+                col_tracker[this_row].append(this_col)
             else:
-                row_tracker[this_col] = [this_row]
+                col_tracker[this_row] = [this_col]
 
 
-        # then compare each entry in row_tracker to see if the same three
-        # row numbers show up in three different cols.
-        print('row tracker for poss val: {0}'.format(poss_val))
-        for col_item in row_tracker.keys():
-            print('col: {0} rows: {1}'.format(col_item, row_tracker[col_item]))
+        # then compare each entry in col_tracker to see if the same three
+        # col numbers show up in three different rows.
+        print('col tracking for poss val: {0}'.format(poss_val))
+        for row_num in col_tracker.keys():
+            print('row: {0} cols: {1}'.format(row_num, col_tracker[row_num]))
 
 
 
