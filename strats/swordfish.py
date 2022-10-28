@@ -150,9 +150,13 @@ def find_swordfish(self, swordfish_cands):
 
         # then compare each entry in col_tracker to see if the same three
         # col numbers show up in three different rows.
+
         print('col tracking for poss val: {0}'.format(poss_val))
         for row_num in col_tracker.keys():
             print('row: {0} cols: {1}'.format(row_num, col_tracker[row_num]))
+
+
+        num_of_rows = len(col_tracker.keys())
 
 
 
