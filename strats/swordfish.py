@@ -127,10 +127,11 @@ def find_swordfish(self, swordfish_cands):
     """
     swordfishes_found = []  # stores dicts[poss_val] of swordfish coords
 
+    """
     print('checking swordfish cands')
     for item in swordfish_cands.keys():
         print('poss val: {0}\tcoords: {1}'.format(item, swordfish_cands[item]))
-    
+    """
 
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
@@ -157,6 +158,19 @@ def find_swordfish(self, swordfish_cands):
 
 
         num_of_rows = len(col_tracker.keys())
+        print('number of rows: {0}'.format(num_of_rows))
+    
+
+        for i in range(0, num_of_rows-2):
+
+            j_init = i + 1
+            for j in range(j_init, num_of_rows-1):
+
+                k_init = j + 1
+                for k in range(k_init, num_of_rows):
+                    print('{0}, {1}, {2}'.format(i, j, k))
+                
+
 
 
 

@@ -31,7 +31,7 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# hidden pair here to reduce the possibilities list some more?
+# check hidden pairs to reduce the possibilities list some more?
 
 
 print('Check swordfish:')
