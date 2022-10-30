@@ -158,8 +158,7 @@ def find_swordfish(self, swordfish_cands):
 
 
         num_of_rows = len(col_tracker.keys())
-        print('number of rows: {0}'.format(num_of_rows))
-    
+        col_tracker_list = list(col_tracker.keys())
 
         for i in range(0, num_of_rows-2):
 
