@@ -127,12 +127,6 @@ def find_swordfish(self, swordfish_cands):
     """
     swordfishes_found = []  # stores dicts[poss_val] of swordfish coords
 
-    """
-    print('checking swordfish cands')
-    for item in swordfish_cands.keys():
-        print('poss val: {0}\tcoords: {1}'.format(item, swordfish_cands[item]))
-    """
-
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
         poss_coords = swordfish_cands[poss_val]
@@ -158,8 +152,11 @@ def find_swordfish(self, swordfish_cands):
 
 
         num_of_rows = len(col_tracker.keys())
-        col_tracker_list = list(col_tracker.keys())
+        col_tracker_keys = list(col_tracker.keys())
 
+        print('col tracker list: {0}'.format(col_tracker_keys))
+
+        # i, j, k are generic counters for keeping track of three lists for comparison
         for i in range(0, num_of_rows-2):
 
             j_init = i + 1
@@ -168,9 +165,11 @@ def find_swordfish(self, swordfish_cands):
                 k_init = j + 1
                 for k in range(k_init, num_of_rows):
                     print('{0}, {1}, {2}'.format(i, j, k))
-                    row_0 = col_tracker_list[0]
-                    row_1 = col_tracker_list[1]
-                    row_2 = col_tracker_list[2]
+                    row_0 = col_tracker_keys[0]
+                    row_1 = col_tracker_keys[1]
+                    row_2 = col_tracker_keys[2]
+                    print('row numbers: ', end=" ")
+                    print('{0}, {1}, {2}'.format(row_0, row_1, row_2))
                 
 
 
