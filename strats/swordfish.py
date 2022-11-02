@@ -170,7 +170,9 @@ def find_swordfish(self, swordfish_cands):
                     row_2 = col_tracker_keys[2]
                     print('row numbers: ', end=" ")
                     print('{0}, {1}, {2}'.format(row_0, row_1, row_2))
-                
+                    col_list_0 = col_tracker[row_0]
+                    col_list_1 = col_tracker[row_1]
+                    col_list_2 = col_tracker[row_2]
 
 
 
