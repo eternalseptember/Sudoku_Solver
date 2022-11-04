@@ -145,16 +145,15 @@ def find_swordfish(self, swordfish_cands):
 
         # then compare each entry in col_tracker to see if the same three
         # col numbers show up in three different rows.
-
-        print('col tracking for poss val: {0}'.format(poss_val))
-        for row_num in col_tracker.keys():
-            print('row: {0} cols: {1}'.format(row_num, col_tracker[row_num]))
-
-
         num_of_rows = len(col_tracker.keys())
         col_tracker_keys = list(col_tracker.keys())
 
-        print('col tracker list: {0}'.format(col_tracker_keys))
+        """
+        print('col tracking for poss val: {0}'.format(poss_val))
+        for row_num in col_tracker.keys():
+            print('row: {0} cols: {1}'.format(row_num, col_tracker[row_num]))
+        print('col tracker keys: {0}'.format(col_tracker_keys))
+        """
 
         # i, j, k are generic counters for keeping track of three lists for comparison
         for i in range(0, num_of_rows-2):
@@ -164,9 +163,6 @@ def find_swordfish(self, swordfish_cands):
 
                 k_init = j + 1
                 for k in range(k_init, num_of_rows):
-                    print('indices: ',end=' ')
-                    print('{0}, {1}, {2}'.format(i, j, k))
-
                     row_0 = col_tracker_keys[0]
                     row_1 = col_tracker_keys[1]
                     row_2 = col_tracker_keys[2]
@@ -174,9 +170,17 @@ def find_swordfish(self, swordfish_cands):
                     col_list_0 = col_tracker[row_0]
                     col_list_1 = col_tracker[row_1]
                     col_list_2 = col_tracker[row_2]
+
+                    """
+                    print('indices: ',end=' ')
+                    print('{0}, {1}, {2}'.format(i, j, k))
+                    """
                     print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
                     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+
+                    intersection = self.intersection_of_three(col_list_0, col_list_1, col_list_2)
+                    print('intersection: {0}'.format(intersection))
 
 
 
