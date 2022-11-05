@@ -163,9 +163,9 @@ def find_swordfish(self, swordfish_cands):
 
                 k_init = j + 1
                 for k in range(k_init, num_of_rows):
-                    row_0 = col_tracker_keys[0]
-                    row_1 = col_tracker_keys[1]
-                    row_2 = col_tracker_keys[2]
+                    row_0 = col_tracker_keys[i]
+                    row_1 = col_tracker_keys[j]
+                    row_2 = col_tracker_keys[k]
 
                     col_list_0 = col_tracker[row_0]
                     col_list_1 = col_tracker[row_1]
