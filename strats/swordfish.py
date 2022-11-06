@@ -182,6 +182,11 @@ def find_swordfish(self, swordfish_cands):
                     intersection = self.intersection_of_three(col_list_0, col_list_1, col_list_2)
                     print('intersection: {0}'.format(intersection))
 
+                    # swordfish found?
+                    # remake the list of coordinates
+                    if len(intersection) == 3:
+                        print()
+
 
 
 
