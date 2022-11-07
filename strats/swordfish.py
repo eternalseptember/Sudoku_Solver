@@ -185,7 +185,8 @@ def find_swordfish(self, swordfish_cands):
                     # swordfish found?
                     # remake the list of coordinates
                     if len(intersection) == 3:
-                        print()
+                        sf_coords = []
+                        sf_rows = [row_0, row_1, row_2]
 
 
 
