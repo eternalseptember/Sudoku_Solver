@@ -188,6 +188,11 @@ def find_swordfish(self, swordfish_cands):
                         sf_coords = []
                         sf_rows = [row_0, row_1, row_2]
 
+                        for this_row in sf_rows:
+                            for this_col in intersection:
+                                this_coord = (this_row, this_col)
+                                
+
 
 
 
