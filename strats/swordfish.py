@@ -192,6 +192,9 @@ def find_swordfish(self, swordfish_cands):
                             for this_col in intersection:
                                 this_coord = (this_row, this_col)
                                 sf_coords.append(this_coord)
+                        
+                        print('sf coords: ', end=' ')
+                        print(sf_coords)
 
 
 
