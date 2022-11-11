@@ -125,7 +125,7 @@ def find_swordfish(self, swordfish_cands):
     """
     Check if there is a swordfish in the cleaned swordfish_cands list.
     """
-    swordfishes_found = []  # stores dicts[poss_val] of swordfish coords
+    sf_found = {}  # sf_found[poss_val] of swordfish coords
 
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
@@ -196,12 +196,17 @@ def find_swordfish(self, swordfish_cands):
                         print('sf coords: ', end=' ')
                         print(sf_coords)
 
+                        # swordfishes found?
+                        sf_coords[poss_val] = sf_coords
+
+        
 
 
 
 
 
-    return swordfishes_found
+
+    return sf_found
 
 
 
