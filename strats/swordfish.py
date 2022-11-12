@@ -31,13 +31,16 @@ def check_swordfish(self):
 
     # Then check each dict entry to see if there's a swordfish
     # within its list of coords.
-    swordfish_found = self.find_swordfish(swordfish_cands)
+    sf_found = self.find_swordfish(swordfish_cands)
 
 
     # Clean any swordfish found.
     # print('swordfish found:')
-    for swordfish_set in swordfish_found:
-        print('{0}'.format(swordfish_set))
+    if len(sf_found) > 0:
+        for swordfish_set in sf_found:
+            print('{0}'.format(swordfish_set))
+
+
 
 
     # Check if anything's been solved.
@@ -125,7 +128,7 @@ def find_swordfish(self, swordfish_cands):
     """
     Check if there is a swordfish in the cleaned swordfish_cands list.
     """
-    sf_found = {}  # sf_found[poss_val] of swordfish coords
+    sf_found = {}  # sf_found[poss_val] = [swordfish coords]
 
     for poss_val in swordfish_cands.keys():
         swordfish_found = {}  # swordfish_found[poss_val] = [list of coords]
@@ -148,12 +151,6 @@ def find_swordfish(self, swordfish_cands):
         num_of_rows = len(col_tracker.keys())
         col_tracker_keys = list(col_tracker.keys())
 
-        """
-        print('col tracking for poss val: {0}'.format(poss_val))
-        for row_num in col_tracker.keys():
-            print('row: {0} cols: {1}'.format(row_num, col_tracker[row_num]))
-        print('col tracker keys: {0}'.format(col_tracker_keys))
-        """
 
         # i, j, k are generic counters for keeping track of three lists for comparison
         for i in range(0, num_of_rows-2):
@@ -174,13 +171,14 @@ def find_swordfish(self, swordfish_cands):
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
-                    """
                     print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
                     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+                    """
 
                     intersection = self.intersection_of_three(col_list_0, col_list_1, col_list_2)
-                    print('intersection: {0}'.format(intersection))
+                    # print('intersection: {0}'.format(intersection))
+
 
                     # swordfish found?
                     # remake the list of coordinates
@@ -193,8 +191,10 @@ def find_swordfish(self, swordfish_cands):
                                 this_coord = (this_row, this_col)
                                 sf_coords.append(this_coord)
                         
+                        """
                         print('sf coords: ', end=' ')
                         print(sf_coords)
+                        """
 
                         # swordfishes found?
                         sf_coords[poss_val] = sf_coords
