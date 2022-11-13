@@ -31,15 +31,16 @@ def check_swordfish(self):
 
     # Then check each dict entry to see if there's a swordfish
     # within its list of coords.
-    sf_found = self.find_swordfish(swordfish_cands)
+    sf_found_dict = self.find_swordfish(swordfish_cands)
 
 
     # Clean any swordfish found.
     # print('swordfish found:')
-    if len(sf_found) > 0:
-        for swordfish_set in sf_found:
+    if len(sf_found_dict) > 0:
+        for swordfish_set in sf_found_dict:
             print('{0}'.format(swordfish_set))
 
+        self.clean_swordfish(sf_found_dict)
 
 
 
@@ -221,8 +222,9 @@ def intersection_of_three(self, list_1, list_2, list_3):
 
 
 
-def clean_swordfish(self, poss_val, coords_list):
+def clean_swordfish(self, sf_dict):
     """
+    sf_dict[poss_val] = [swordfish coords]
     """
     # possible_vals_check() or check_if_solved()
     return None
