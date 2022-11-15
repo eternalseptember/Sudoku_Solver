@@ -33,6 +33,8 @@ def check_swordfish(self):
     # within its list of coords.
     sf_found_dict = self.find_swordfish(swordfish_cands)
 
+    print('sf_found_dict: {0}'.format(sf_found_dict))
+
 
     # Clean any swordfish found.
     # print('swordfish found:')
@@ -220,6 +222,9 @@ def clean_swordfish(self, sf_dict):
 
     for sf_val in sf_dict.keys():
         sf_coords = sf_dict[sf_val]
+
+        print('cleaning swordfish val: {0}'.format(sf_val))
+        print('coords: {0}'.format(sf_coords))
 
 
 
