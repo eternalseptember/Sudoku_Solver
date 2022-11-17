@@ -217,6 +217,8 @@ def clean_swordfish(self, sf_dict):
 
     for sf_val in sf_dict.keys():
         sf_coords = sf_dict[sf_val]
+        row_list = []
+        col_list = []
 
         print('cleaning swordfish val: {0}'.format(sf_val))
         print('coords: {0}'.format(sf_coords))
