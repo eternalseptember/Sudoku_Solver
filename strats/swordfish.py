@@ -222,6 +222,8 @@ def clean_swordfish(self, sf_dict):
 
         print('cleaning swordfish val: {0}'.format(sf_val))
         print('coords: {0}'.format(sf_coords))
+        for this_coord in sf_coords:
+            this_row, this_col = this_coord
 
 
 
