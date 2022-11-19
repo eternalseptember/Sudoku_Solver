@@ -225,6 +225,9 @@ def clean_swordfish(self, sf_dict):
         for this_coord in sf_coords:
             this_row, this_col = this_coord
 
+            if this_row not in row_list:
+                row_list.append(this_row)
+
 
 
 
