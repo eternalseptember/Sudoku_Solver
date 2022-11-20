@@ -227,6 +227,9 @@ def clean_swordfish(self, sf_dict):
 
             if this_row not in row_list:
                 row_list.append(this_row)
+            
+            if this_col not in col_list:
+                col_list.append(this_col)
 
 
 
