@@ -211,10 +211,12 @@ def intersection_of_three(self, list_1, list_2, list_3):
 
 def clean_swordfish(self, sf_dict):
     """
+    Goes through every cell and removes the swordfish val from the cell's list
+    of possibilities if the cell is not part of the swordfish.
+
     sf_dict[poss_val] = [swordfish coords]
     """
-    # possible_vals_check() or check_if_solved()
-
+    
     for sf_val in sf_dict.keys():
         sf_coords = sf_dict[sf_val]
         row_list = []
@@ -222,6 +224,8 @@ def clean_swordfish(self, sf_dict):
 
         print('cleaning swordfish val: {0}'.format(sf_val))
         print('coords: {0}'.format(sf_coords))
+
+        # get lists of swordfish rows and cols.
         for this_coord in sf_coords:
             this_row, this_col = this_coord
 
@@ -230,6 +234,16 @@ def clean_swordfish(self, sf_dict):
             
             if this_col not in col_list:
                 col_list.append(this_col)
+        
+
+        # go through each cell
+        # if cell is in the same row or col as the swordfish set,
+        # but it's not part of the sf set, then remove sf_val from its
+        # list of possibilities.
+        for row_step in range(9):
+            for col_step in range(9):
+                # skip over solved cells
+                print()
 
 
 
@@ -237,6 +251,7 @@ def clean_swordfish(self, sf_dict):
 
 
 
+    # possible_vals_check() or check_if_solved()
 
 
 
