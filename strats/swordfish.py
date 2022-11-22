@@ -242,16 +242,19 @@ def clean_swordfish(self, sf_dict):
         # list of possibilities.
         for row_step in range(9):
             for col_step in range(9):
+                this_cell = (row_step, col_step)
+
                 # skip over solved cells
                 print()
+                
+                # possible_vals_check() or check_if_solved()
 
 
 
 
 
 
-
-    # possible_vals_check() or check_if_solved()
+    
 
 
 
