@@ -244,8 +244,12 @@ def clean_swordfish(self, sf_dict):
             for col_step in range(9):
                 this_cell = (row_step, col_step)
 
-                # skip over solved cells
-                print()
+                # skip over solved cells.
+                if this_cell not in self.possible_values:
+                    continue
+
+                # if in row or col of a swordfish cell, then check if it's a swordfish cell.
+                # if it's not, remove sf_val from its list of possible cells.
                 
                 # possible_vals_check() or check_if_solved()
 
