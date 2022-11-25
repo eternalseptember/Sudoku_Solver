@@ -252,6 +252,8 @@ def clean_swordfish(self, sf_dict):
                 # if it's not, remove sf_val from its list of possible cells.
                 if this_cell in sf_coords:
                     continue
+                else:
+                    self.possible_vals_check(this_cell, sf_val)
                 
                 # possible_vals_check() or check_if_solved()
 
