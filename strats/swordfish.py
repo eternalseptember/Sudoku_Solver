@@ -236,7 +236,7 @@ def clean_swordfish(self, sf_dict):
                 col_list.append(this_col)
         
 
-        # go through each cell
+        # go through each cell.
         # if cell is in the same row or col as the swordfish set,
         # but it's not part of the sf set, then remove sf_val from its
         # list of possibilities.
@@ -244,26 +244,31 @@ def clean_swordfish(self, sf_dict):
             for col_step in range(9):
                 this_cell = (row_step, col_step)
 
-                # check if this cell is in swordfish row or col
-                if row_step in row_list:
-                    is_in_sf_row = True
-                else:
-                    is_in_sf_row = False
-
-
-
-
-
-
                 # skip over solved cells.
                 if this_cell not in self.possible_values:
                     continue
+
+
+                # check if this cell is in swordfish row or col.
+                if row_step in row_list:
+                    in_sf_row = True
+                else:
+                    in_sf_row = False
+                
+                if col_step in col_list:
+                    in_sf_col = True
+                else:
+                    in_sf_col = False
+
+
+
+
 
                 # if in row or col of a swordfish cell, then check if it's a swordfish cell.
                 # if it's not a sf cell, remove sf_val from its list of possible cells.
                 if this_cell in sf_coords:
                     continue
-                else:  # fix this
+                else :  # fix this
                     self.possible_vals_check(this_cell, sf_val)
                 
 
