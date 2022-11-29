@@ -19,7 +19,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("test_boards/swordfish.txt")
+# sudoku.import_board("test_boards/swordfish_1.txt")  # perfect swordfish
+sudoku.import_board("test_boards/swordfish_2.txt")  # imperfect swordfish
 sudoku.print_board()
 print('===============================')
 
