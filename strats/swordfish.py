@@ -25,6 +25,8 @@ def check_swordfish(self):
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
 
 
+    # Commenting this out to rework for imperfect sworfish.
+    """
     # Eliminate poss_vals that can't be part of a swordfish.
     self.reduce_sf_list(swordfish_cands)
 
@@ -38,7 +40,7 @@ def check_swordfish(self):
     # print('swordfish found:')
     if len(sf_found_dict) > 0:
         self.clean_swordfish(sf_found_dict)
-
+    """
 
     # Check if anything's been solved.
     # self.solve_queue()
@@ -185,7 +187,7 @@ def find_swordfish(self, swordfish_cands):
                             for this_col in intersection:
                                 this_coord = (this_row, this_col)
                                 sf_coords.append(this_coord)
-                        
+
                         """
                         print('sf coords: ', end=' ')
                         print(sf_coords)
@@ -193,9 +195,7 @@ def find_swordfish(self, swordfish_cands):
 
                         sf_found[poss_val] = sf_coords
 
-        
     return sf_found
-
 
 
 
@@ -204,8 +204,6 @@ def intersection_of_three(self, list_1, list_2, list_3):
     Returns the intersection of list_1, list_2, and list_3 in a list.
     """
     return list(set(list_1) & set(list_2) & set(list_3))
-
-
 
 
 
