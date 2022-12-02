@@ -55,7 +55,7 @@ def check_swordfish(self):
 # #######################################
 def check_sf_cands(self, lookup_dict):
     """
-    Conditions: at least 3 possible locations per row.
+    Conditions: for 2-2-2 swordfish, at least *2* possible locations per row.
     If not met, then remove those entries from swordfish consideration.
     """
     remove_list = []
@@ -64,7 +64,7 @@ def check_sf_cands(self, lookup_dict):
         poss_locs = lookup_dict[poss_val]
 
         # Check conditions.
-        if len(poss_locs) < 3:
+        if len(poss_locs) < 2:  # was 3 for perfect sf
             remove_list.append(poss_val)
 
     # Remove entries.
