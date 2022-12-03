@@ -55,7 +55,7 @@ def check_swordfish(self):
 # #######################################
 def check_sf_cands(self, lookup_dict):
     """
-    Conditions: for 2-2-2 swordfish, at least *2* possible locations per row.
+    Conditions: for 2-2-2, at least 2 possible locations per row.
     If not met, then remove those entries from swordfish consideration.
     """
     remove_list = []
@@ -76,7 +76,9 @@ def check_sf_cands(self, lookup_dict):
 def reduce_sf_list(self, swordfish_cands):
     """
     Initial cleanup of swordfish_cands list.
-    Conditions: at least 9 coords total; at least 3 rows in at least 3 cols.
+    Conditions: for 2-2-2, at least 6 coords total;
+                at least 2 rows in at least 2 cols,
+                because solved values can be part of the swordfish.
     """
     remove_list = []  # store poss_vals
 
@@ -84,12 +86,12 @@ def reduce_sf_list(self, swordfish_cands):
         poss_coords = swordfish_cands[poss_val]
 
         # Check conditions.
-        # Condition: at least nine coords total.
-        if len(poss_coords) < 9:
+        # Condition: at least six coords total.
+        if len(poss_coords) < 6:  # was 9 for perfect sf
             remove_list.append(poss_val)
     
         else:
-            # Condition: at least three unique cols.
+            # Condition: at least two unique cols.
             unique_col_count = {}  # unique_col_count[col] = row_count
 
             for this_cell in poss_coords:
@@ -101,19 +103,19 @@ def reduce_sf_list(self, swordfish_cands):
                 else:
                     unique_col_count[this_col] += 1
 
-            # Remove if there are fewer than three unique cols.
-            if len(unique_col_count.keys()) < 3:
+            # Remove if there are fewer than two unique cols.
+            if len(unique_col_count.keys()) < 2:  # was 3 for perfect sf
                 remove_list.append(poss_val)
 
-            # Condition: at least three cols with at least three rows.
+            # Condition: at least two cols with at least two rows.
             else:
                 valid_swordfish_cols = 0
 
                 for this_col in unique_col_count.keys():
-                    if unique_col_count[this_col] >= 3:
+                    if unique_col_count[this_col] >= 2:  # was 3 for perfect sf
                         valid_swordfish_cols += 1
 
-                if valid_swordfish_cols < 3:
+                if valid_swordfish_cols < 2:  # was 3 for perfect sf
                     remove_list.append(poss_val)
 
 
