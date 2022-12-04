@@ -6,7 +6,7 @@ def check_swordfish(self):
     swordfish_cands = {}  # for all rows
 
     for row_step in range(9):
-        val_lookup_row = {}
+        val_lookup_row = {}  # for each row
 
         for col_step in range(9):
             this_cell = (row_step, col_step)
@@ -17,12 +17,19 @@ def check_swordfish(self):
         # End of row.
         self.check_sf_cands(val_lookup_row)
 
-        # Compile dict of potential swordfish coords.
+        # Compile dict of potential swordfish rows.
         for poss_val in val_lookup_row.keys():
             if poss_val in swordfish_cands:
                 swordfish_cands[poss_val].extend(val_lookup_row[poss_val])
             else:
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
+    
+
+    # testing
+    print('list of swordfish cands so far')
+    for poss_val in swordfish_cands.keys():
+        print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
+
 
 
     # Commenting this out to rework for imperfect sworfish.
