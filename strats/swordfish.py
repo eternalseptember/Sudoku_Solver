@@ -25,19 +25,31 @@ def check_swordfish(self):
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
     
 
+
     # testing
-    print('list of swordfish cands so far')
+    print('list of swordfish cands before elimination')
+    for poss_val in swordfish_cands.keys():
+        print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
+    print()
+
+
+
+    # Eliminate poss_vals that can't be part of a swordfish.
+    self.reduce_sf_list(swordfish_cands)
+
+
+
+
+    # testing
+    print('list of swordfish cands after elimination')
     for poss_val in swordfish_cands.keys():
         print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
 
 
 
+
     # Commenting this out to rework for imperfect sworfish.
     """
-    # Eliminate poss_vals that can't be part of a swordfish.
-    self.reduce_sf_list(swordfish_cands)
-
-
     # Then check each dict entry to see if there's a swordfish
     # within its list of coords.
     sf_found_dict = self.find_swordfish(swordfish_cands)
