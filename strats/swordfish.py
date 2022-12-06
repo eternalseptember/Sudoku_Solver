@@ -44,17 +44,20 @@ def check_swordfish(self):
     print('list of swordfish cands after elimination')
     for poss_val in swordfish_cands.keys():
         print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
+    print()
+
+
+
+
+    # Then check each dict entry to see if there's a swordfish
+    # within its list of coords.
+    sf_found_dict = self.find_swordfish(swordfish_cands)
 
 
 
 
     # Commenting this out to rework for imperfect sworfish.
     """
-    # Then check each dict entry to see if there's a swordfish
-    # within its list of coords.
-    sf_found_dict = self.find_swordfish(swordfish_cands)
-
-
     # Clean any swordfish found.
     # print('swordfish found:')
     if len(sf_found_dict) > 0:
@@ -171,6 +174,13 @@ def find_swordfish(self, swordfish_cands):
         col_tracker_keys = list(col_tracker.keys())
 
 
+
+        print('what is in col tracker list?')
+        for item in col_tracker_keys:
+            print('{0}'.format(item))
+
+
+        """
         # i, j, k are generic counters for keeping track of three lists for comparison.
         for i in range(0, num_of_rows-2):
 
@@ -189,14 +199,14 @@ def find_swordfish(self, swordfish_cands):
 
                     intersection = self.intersection_of_three(col_list_0, col_list_1, col_list_2)
 
-                    """
-                    print('indices: ',end=' ')
-                    print('{0}, {1}, {2}'.format(i, j, k))
-                    print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
-                    print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
-                    print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
-                    print('intersection: {0}'.format(intersection))
-                    """
+
+                    # print('indices: ',end=' ')
+                    # print('{0}, {1}, {2}'.format(i, j, k))
+                    # print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
+                    # print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
+                    # print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+                    # print('intersection: {0}'.format(intersection))
+
 
                     # swordfish found?
                     # remake the list of coordinates.
@@ -209,12 +219,15 @@ def find_swordfish(self, swordfish_cands):
                                 this_coord = (this_row, this_col)
                                 sf_coords.append(this_coord)
 
-                        """
-                        print('sf coords: ', end=' ')
-                        print(sf_coords)
-                        """
+
+                        # print('sf coords: ', end=' ')
+                        # print(sf_coords)
+
 
                         sf_found[poss_val] = sf_coords
+            """
+
+
 
     return sf_found
 
