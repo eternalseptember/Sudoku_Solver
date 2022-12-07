@@ -177,7 +177,7 @@ def find_swordfish(self, swordfish_cands):
 
         print('what is in col tracker list?')
         for item in col_tracker_keys:
-            print('{0}'.format(item))
+            print('{0} - {1}'.format(item, col_tracker[item]))
 
 
         """
