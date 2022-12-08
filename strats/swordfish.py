@@ -156,6 +156,7 @@ def find_swordfish(self, swordfish_cands):
     for poss_val in swordfish_cands.keys():
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
+        row_tracker = {}  # row_tracker[col_num] = [row_numbers]
 
 
         # first, sort the list of coords
