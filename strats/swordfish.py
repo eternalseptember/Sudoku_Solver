@@ -170,6 +170,8 @@ def find_swordfish(self, swordfish_cands):
 
             if this_col in row_tracker:
                 row_tracker[this_col].append(this_row)
+            else:
+                row_tracker[this_col] = [this_row]
 
 
         # then compare each entry in col_tracker to see if the same three
