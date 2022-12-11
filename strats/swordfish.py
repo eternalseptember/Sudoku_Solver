@@ -186,6 +186,13 @@ def find_swordfish(self, swordfish_cands):
             print('{0} - {1}'.format(item, col_tracker[item]))
 
 
+        print('what is in row tracker list?')
+        for item in row_tracker.keys():
+            print('{0} - {1}'.format(item, row_tracker[item]))
+
+
+
+
         """
         # i, j, k are generic counters for keeping track of three lists for comparison.
         for i in range(0, num_of_rows-2):
