@@ -25,13 +25,13 @@ def check_swordfish(self):
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
     
 
-
+    """
     # testing
     print('list of swordfish cands before elimination')
     for poss_val in swordfish_cands.keys():
         print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
     print()
-
+    """
 
 
     # Eliminate poss_vals that can't be part of a swordfish.
@@ -180,6 +180,7 @@ def find_swordfish(self, swordfish_cands):
         col_tracker_keys = list(col_tracker.keys())
 
 
+        print('poss val:{0}'.format(poss_val))
 
         print('what is in col tracker list?')
         for item in col_tracker_keys:
@@ -189,6 +190,7 @@ def find_swordfish(self, swordfish_cands):
         print('what is in row tracker list?')
         for item in row_tracker.keys():
             print('{0} - {1}'.format(item, row_tracker[item]))
+        print()
 
 
 
