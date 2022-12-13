@@ -25,14 +25,6 @@ def check_swordfish(self):
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
     
 
-    """
-    # testing
-    print('list of swordfish cands before elimination')
-    for poss_val in swordfish_cands.keys():
-        print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
-    print()
-    """
-
 
     # Eliminate poss_vals that can't be part of a swordfish.
     self.reduce_sf_list(swordfish_cands)
@@ -191,6 +183,13 @@ def find_swordfish(self, swordfish_cands):
         for item in row_tracker.keys():
             print('{0} - {1}'.format(item, row_tracker[item]))
         print()
+
+
+
+        # check for a 9x9 setup, with either poss_val or a solved value in those spots
+        # start with row (indexed in col_tracker)
+        for poss_row in col_tracker.keys():
+            print('check if poss_val is connected by row')
 
 
 
