@@ -25,10 +25,8 @@ def check_swordfish(self):
                 swordfish_cands[poss_val] = val_lookup_row[poss_val]
     
 
-
     # Eliminate poss_vals that can't be part of a swordfish.
     self.reduce_sf_list(swordfish_cands)
-
 
 
 
@@ -37,7 +35,6 @@ def check_swordfish(self):
     for poss_val in swordfish_cands.keys():
         print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
     print()
-
 
 
 
@@ -78,7 +75,7 @@ def check_sf_cands(self, lookup_dict):
         poss_locs = lookup_dict[poss_val]
 
         # Check conditions.
-        if len(poss_locs) < 2:  # was 3 for perfect sf
+        if len(poss_locs) < 2:
             remove_list.append(poss_val)
 
     # Remove entries.
@@ -101,7 +98,7 @@ def reduce_sf_list(self, swordfish_cands):
 
         # Check conditions.
         # Condition: at least six coords total.
-        if len(poss_coords) < 6:  # was 9 for perfect sf
+        if len(poss_coords) < 6:
             remove_list.append(poss_val)
     
         else:
@@ -118,7 +115,7 @@ def reduce_sf_list(self, swordfish_cands):
                     unique_col_count[this_col] += 1
 
             # Remove if there are fewer than two unique cols.
-            if len(unique_col_count.keys()) < 2:  # was 3 for perfect sf
+            if len(unique_col_count.keys()) < 2:
                 remove_list.append(poss_val)
 
             # Condition: at least two cols with at least two rows.
@@ -126,10 +123,10 @@ def reduce_sf_list(self, swordfish_cands):
                 valid_swordfish_cols = 0
 
                 for this_col in unique_col_count.keys():
-                    if unique_col_count[this_col] >= 2:  # was 3 for perfect sf
+                    if unique_col_count[this_col] >= 2:
                         valid_swordfish_cols += 1
 
-                if valid_swordfish_cols < 2:  # was 3 for perfect sf
+                if valid_swordfish_cols < 2:
                     remove_list.append(poss_val)
 
 
@@ -148,7 +145,6 @@ def find_swordfish(self, swordfish_cands):
     for poss_val in swordfish_cands.keys():
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
-        row_tracker = {}  # row_tracker[col_num] = [row_numbers]
 
 
         # first, sort the list of coords
@@ -160,41 +156,50 @@ def find_swordfish(self, swordfish_cands):
             else:
                 col_tracker[this_row] = [this_col]
 
-            if this_col in row_tracker:
-                row_tracker[this_col].append(this_row)
-            else:
-                row_tracker[this_col] = [this_row]
 
-
-        # then compare each entry in col_tracker to see if the same three
-        # col numbers show up in three different rows.
+        # look for a 9x9 setup, with either poss_val or a solved value in those spots.
+        # i, j, k are generic counters for keeping track of three lists for comparison.
         num_of_rows = len(col_tracker.keys())
         col_tracker_keys = list(col_tracker.keys())
 
 
-        print('poss val:{0}'.format(poss_val))
-
-        print('what is in col tracker list?')
+        print('col_tracker list for poss_val: {0}'.format(poss_val))
         for item in col_tracker_keys:
             print('{0} - {1}'.format(item, col_tracker[item]))
-
-
-        print('what is in row tracker list?')
-        for item in row_tracker.keys():
-            print('{0} - {1}'.format(item, row_tracker[item]))
         print()
 
+        """
+        for i in range(0, num_of_rows-2):
+
+            j_init = i + 1
+            for j in range(j_init, num_of_rows-1):
+
+                k_init = j + 1
+                for k in range(k_init, num_of_rows):
+                    print()
+        """
 
 
-        # check for a 9x9 setup, with either poss_val or a solved value in those spots
-        # start with row (indexed in col_tracker)
-        for poss_row in col_tracker.keys():
-            print('check if poss_val is connected by row')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
         """
+        # then compare each entry in col_tracker to see if the same three
+        # col numbers show up in three different rows.
         # i, j, k are generic counters for keeping track of three lists for comparison.
         for i in range(0, num_of_rows-2):
 
