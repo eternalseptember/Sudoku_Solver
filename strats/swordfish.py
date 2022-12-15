@@ -168,7 +168,7 @@ def find_swordfish(self, swordfish_cands):
             print('{0} - {1}'.format(item, col_tracker[item]))
         print()
 
-        """
+
         for i in range(0, num_of_rows-2):
 
             j_init = i + 1
@@ -176,8 +176,20 @@ def find_swordfish(self, swordfish_cands):
 
                 k_init = j + 1
                 for k in range(k_init, num_of_rows):
+                    row_0 = col_tracker_keys[i]
+                    row_1 = col_tracker_keys[j]
+                    row_2 = col_tracker_keys[k]
+
+                    col_list_0 = col_tracker[row_0]
+                    col_list_1 = col_tracker[row_1]
+                    col_list_2 = col_tracker[row_2]
+
+                    print('indices: ',end=' ')
+                    print('{0}, {1}, {2}'.format(i, j, k))
+                    print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
+                    print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
+                    print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
                     print()
-        """
 
 
 
