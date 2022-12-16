@@ -142,7 +142,10 @@ def find_swordfish(self, swordfish_cands):
     """
     sf_found = {}  # sf_found[poss_val] = [swordfish coords]
 
-    for poss_val in swordfish_cands.keys():
+
+    # simplifying for testing
+    # for poss_val in swordfish_cands.keys():
+    for poss_val in [8]:
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
 
@@ -190,6 +193,8 @@ def find_swordfish(self, swordfish_cands):
                     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
                     print()
+
+                    # now search for a 2-2-2 combination
 
 
 
