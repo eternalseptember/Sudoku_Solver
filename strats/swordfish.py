@@ -145,7 +145,7 @@ def find_swordfish(self, swordfish_cands):
 
     # simplifying for testing
     # for poss_val in swordfish_cands.keys():
-    for poss_val in [8]:
+    for poss_val in [9]:
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
 
