@@ -277,6 +277,26 @@ def intersection_of_three(self, list_1, list_2, list_3):
 
 
 
+def two_search(self, list_1, list_2, list_3):
+    """
+    """
+    return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def clean_swordfish(self, sf_dict):
     """
     Goes through every cell and removes the swordfish val from the cell's list
