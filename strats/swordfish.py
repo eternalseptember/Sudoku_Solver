@@ -199,51 +199,7 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         """
-        # then compare each entry in col_tracker to see if the same three
-        # col numbers show up in three different rows.
-        # i, j, k are generic counters for keeping track of three lists for comparison.
-        for i in range(0, num_of_rows-2):
-
-            j_init = i + 1
-            for j in range(j_init, num_of_rows-1):
-
-                k_init = j + 1
-                for k in range(k_init, num_of_rows):
-                    row_0 = col_tracker_keys[i]
-                    row_1 = col_tracker_keys[j]
-                    row_2 = col_tracker_keys[k]
-
-                    col_list_0 = col_tracker[row_0]
-                    col_list_1 = col_tracker[row_1]
-                    col_list_2 = col_tracker[row_2]
-
-                    intersection = self.intersection_of_three(col_list_0, col_list_1, col_list_2)
-
-
-                    # print('indices: ',end=' ')
-                    # print('{0}, {1}, {2}'.format(i, j, k))
-                    # print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
-                    # print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
-                    # print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
-                    # print('intersection: {0}'.format(intersection))
-
-
                     # swordfish found?
                     # remake the list of coordinates.
                     if len(intersection) == 3:
@@ -279,7 +235,10 @@ def intersection_of_three(self, list_1, list_2, list_3):
 
 def two_search(self, list_1, list_2, list_3):
     """
+    Given three lists, find a 2-2-2 pattern,
+    where the third spot is filled inwith a solved value.
     """
+    row_tracker = {}  # row_tracker[col_num] = [row numbers]
     return
 
 
