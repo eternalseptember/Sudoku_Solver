@@ -239,6 +239,9 @@ def two_search(self, list_1, list_2, list_3):
     where the third spot is filled inwith a solved value.
     """
     row_tracker = {}  # row_tracker[col_num] = [row numbers]
+
+    for coord in list_1:
+        this_row, this_col = (coord)
     return
 
 
