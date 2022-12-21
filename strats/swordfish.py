@@ -240,6 +240,8 @@ def two_search(self, list_1, list_2, list_3):
     """
     row_tracker = {}  # row_tracker[col_num] = [row numbers]
 
+    lists = [list_1, list_2, list_3]
+
     for coord in list_1:
         this_row, this_col = (coord)
     return
