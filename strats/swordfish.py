@@ -187,14 +187,17 @@ def find_swordfish(self, swordfish_cands):
                     col_list_1 = col_tracker[row_1]
                     col_list_2 = col_tracker[row_2]
 
+                    """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
                     print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
                     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
                     print()
+                    """
 
                     # now search for a 2-2-2 combination
+                    self.two_search(col_list_0, col_list_1, col_list_2)
 
 
 
@@ -242,8 +245,16 @@ def two_search(self, list_1, list_2, list_3):
 
     lists = [list_1, list_2, list_3]
 
+
+    print('two search')
+    for each_list in lists:
+        print('{0}'.format(each_list))
+
+
+    """
     for coord in list_1:
         this_row, this_col = (coord)
+    """
     return
 
 
