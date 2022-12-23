@@ -31,10 +31,12 @@ def check_swordfish(self):
 
 
     # testing
+    """
     print('list of swordfish cands after elimination')
     for poss_val in swordfish_cands.keys():
         print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
     print()
+    """
 
 
 
@@ -160,7 +162,7 @@ def find_swordfish(self, swordfish_cands):
                 col_tracker[this_row] = [this_col]
 
 
-        # look for a 9x9 setup, with either poss_val or a solved value in those spots.
+        # Look for a 9x9 setup, with either poss_val or a solved value in those spots.
         # i, j, k are generic counters for keeping track of three lists for comparison.
         num_of_rows = len(col_tracker.keys())
         col_tracker_keys = list(col_tracker.keys())
@@ -196,13 +198,13 @@ def find_swordfish(self, swordfish_cands):
                     print()
                     """
 
-                    # now search for a 2-2-2 combination
-                    self.two_search(col_list_0, col_list_1, col_list_2)
+                    # Search for a 2-2-2 combination.
+                    sf_list = self.two_search(col_list_0, col_list_1, col_list_2)
 
 
 
 
-        """
+                    """
                     # swordfish found?
                     # remake the list of coordinates.
                     if len(intersection) == 3:
@@ -220,7 +222,7 @@ def find_swordfish(self, swordfish_cands):
 
 
                         sf_found[poss_val] = sf_coords
-            """
+                    """
 
 
 
@@ -228,18 +230,12 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def intersection_of_three(self, list_1, list_2, list_3):
-    """
-    Returns the intersection of list_1, list_2, and list_3 in a list.
-    """
-    return list(set(list_1) & set(list_2) & set(list_3))
-
 
 
 def two_search(self, list_1, list_2, list_3):
     """
     Given three lists, find a 2-2-2 pattern,
-    where the third spot is filled inwith a solved value.
+    where the third spot is filled with a solved value.
     """
     row_tracker = {}  # row_tracker[col_num] = [row numbers]
 
@@ -250,11 +246,12 @@ def two_search(self, list_1, list_2, list_3):
     for each_list in lists:
         print('{0}'.format(each_list))
 
+        """
+        for coord in each_list:
+            this_row, this_col = (coord)
+        """
 
-    """
-    for coord in list_1:
-        this_row, this_col = (coord)
-    """
+
     return
 
 

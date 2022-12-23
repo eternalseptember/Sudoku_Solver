@@ -16,8 +16,8 @@ class Sudoku_Solver():
     from strats.naked_subset_ import check_naked_sets, check_naked_cols, \
         check_naked_rows, check_naked_boxes, check_naked_box
     
-    from strats.naked_subset_util import set_missing_val_table, find_matches, \
-        remove_naked_in_box, in_which_box, clean_naked_sets
+    from strats.naked_subset_util import set_missing_val_table, \
+        find_naked_matches, remove_naked_in_box, in_which_box, clean_naked_sets
 
 
     # Intersections
@@ -36,11 +36,11 @@ class Sudoku_Solver():
     # Hidden Subset
     from strats.hidden_subset_ import check_hidden_subsets, \
         check_hidden_sub_cols, check_hidden_sub_rows, check_hidden_sub_boxes, \
-        check_hidden_sub_box, find_hidden_subset, clean_hidden_col, \
-        clean_hidden_row, clean_hidden_box
+        check_hidden_sub_box
         
     from strats.hidden_subset_util import format_hidden_subset_info, \
-        clean_hidden_subset
+        find_hidden_subset, clean_hidden_col, clean_hidden_row, \
+        clean_hidden_box, clean_hidden_subset
 
 
     # Naked Triple
@@ -65,8 +65,7 @@ class Sudoku_Solver():
 
     # Swordfish
     from strats.swordfish import check_swordfish, check_sf_cands, \
-        reduce_sf_list, find_swordfish, clean_swordfish, intersection_of_three,\
-        two_search
+        reduce_sf_list, find_swordfish, clean_swordfish, two_search
 
 
 

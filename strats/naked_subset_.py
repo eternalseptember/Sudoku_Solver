@@ -23,7 +23,7 @@ def check_naked_cols(self):
             self.set_missing_val_table(this_cell, col_missing_vals)
 
         # Search this col's tally for pair/triplet matches.
-        matches_vals, matches_locs = self.find_matches(col_missing_vals)
+        matches_vals, matches_locs = self.find_naked_matches(col_missing_vals)
 
         # If there are matching sets, remove values as possibilities in other
         # boxes outside the set/pair/triplet.
@@ -55,7 +55,7 @@ def check_naked_rows(self):
             self.set_missing_val_table(this_cell, row_missing_vals)
 
         # Search this row's tally for pair/triplet matches.
-        matches_vals, matches_locs = self.find_matches(row_missing_vals)
+        matches_vals, matches_locs = self.find_naked_matches(row_missing_vals)
 
         # If there are matching sets, remove values as possibilities in other
         # boxes outside the set/pair/triplet.
@@ -105,7 +105,7 @@ def check_naked_box(self, coord):
             self.set_missing_val_table(this_cell, box_missing_vals)
 
     # Search for pair/triplet matches.
-    matches_vals, matches_locs = self.find_matches(box_missing_vals)
+    matches_vals, matches_locs = self.find_naked_matches(box_missing_vals)
 
     # If there are matching sets, remove those vals as poss_vals from the rest of the box.
     if len(matches_vals) > 0:

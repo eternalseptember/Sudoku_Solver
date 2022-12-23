@@ -19,7 +19,7 @@ def set_missing_val_table(self, coord, missing_val_dict):
 
 
 
-def find_matches(self, missing_val_dict):
+def find_naked_matches(self, missing_val_dict):
     """
     Search the dictionary of missing values for matches between
     possible values in a cell and
