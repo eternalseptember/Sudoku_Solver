@@ -17,7 +17,7 @@ def check_swordfish(self):
         # End of row.
         self.check_sf_cands(val_lookup_row)
 
-        # Compile dict of potential swordfish rows.
+        # Merge info from this row into dict for all rows.
         for poss_val in val_lookup_row.keys():
             if poss_val in swordfish_cands:
                 swordfish_cands[poss_val].extend(val_lookup_row[poss_val])
@@ -145,14 +145,13 @@ def find_swordfish(self, swordfish_cands):
     sf_found = {}  # sf_found[poss_val] = [swordfish coords]
 
 
-    # simplifying for testing
     # for poss_val in swordfish_cands.keys():
-    for poss_val in [9]:
+    for poss_val in [9]:  # simplifying for testing
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
 
 
-        # first, sort the list of coords
+        # First, break the list of coords down by rows.
         for poss_coord in poss_coords:
             this_row, this_col = poss_coord
 
@@ -168,7 +167,10 @@ def find_swordfish(self, swordfish_cands):
         col_tracker_keys = list(col_tracker.keys())
 
 
+        # testing
         print('col_tracker list for poss_val: {0}'.format(poss_val))
+        print('coords: {0}'.format(poss_coords))
+        print()
         for item in col_tracker_keys:
             print('{0} - {1}'.format(item, col_tracker[item]))
         print()
@@ -189,6 +191,11 @@ def find_swordfish(self, swordfish_cands):
                     col_list_1 = col_tracker[row_1]
                     col_list_2 = col_tracker[row_2]
 
+                    rows_list = [row_0, row_1, row_2]
+                    cols_lists = [col_list_0, col_list_1, col_list_2]
+                    sf_search_dict = dict(zip(rows_list, cols_lists))
+
+
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
@@ -199,30 +206,15 @@ def find_swordfish(self, swordfish_cands):
                     """
 
                     # Search for a 2-2-2 combination.
-                    sf_list = self.two_search(col_list_0, col_list_1, col_list_2)
+                    sf_list = self.two_search(sf_search_dict)
 
 
 
 
-                    """
+
                     # swordfish found?
-                    # remake the list of coordinates.
-                    if len(intersection) == 3:
-                        sf_coords = []
-                        sf_rows = [row_0, row_1, row_2]
+                    # sf_found[poss_val] = sf_coords
 
-                        for this_row in sf_rows:
-                            for this_col in intersection:
-                                this_coord = (this_row, this_col)
-                                sf_coords.append(this_coord)
-
-
-                        # print('sf coords: ', end=' ')
-                        # print(sf_coords)
-
-
-                        sf_found[poss_val] = sf_coords
-                    """
 
 
 
@@ -232,24 +224,15 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def two_search(self, list_1, list_2, list_3):
+def two_search(self, sf_search_dict):
     """
-    Given three lists, find a 2-2-2 pattern,
-    where the third spot is filled with a solved value.
+    sf_search_dict[row_num] = [cols_list]
+    Find a 2-2-2 pattern, where the third spot is filled with a solved value.
     """
-    row_tracker = {}  # row_tracker[col_num] = [row numbers]
-
-    lists = [list_1, list_2, list_3]
-
 
     print('two search')
-    for each_list in lists:
-        print('{0}'.format(each_list))
 
-        """
-        for coord in each_list:
-            this_row, this_col = (coord)
-        """
+
 
 
     return
