@@ -231,6 +231,9 @@ def two_search(self, sf_search_dict):
     """
 
     print('two search')
+    print('sf search dict')
+    for poss_val in sf_search_dict.keys():
+        print('{0} - {1}'.format(poss_val, sf_search_dict[poss_val]))
 
 
 
