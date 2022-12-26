@@ -191,9 +191,9 @@ def find_swordfish(self, swordfish_cands):
                     col_list_1 = col_tracker[row_1]
                     col_list_2 = col_tracker[row_2]
 
-                    rows_list = [row_0, row_1, row_2]
-                    cols_lists = [col_list_0, col_list_1, col_list_2]
-                    sf_search_dict = dict(zip(rows_list, cols_lists))
+                    row_list = [row_0, row_1, row_2]
+                    cols_list = [col_list_0, col_list_1, col_list_2]
+
 
 
                     """
@@ -206,7 +206,7 @@ def find_swordfish(self, swordfish_cands):
                     """
 
                     # Search for a 2-2-2 combination.
-                    sf_list = self.two_search(sf_search_dict)
+                    sf_list = self.two_search(row_list, cols_list)
 
 
 
@@ -224,16 +224,18 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def two_search(self, sf_search_dict):
+def two_search(self, row_list, cols_list):
     """
-    sf_search_dict[row_num] = [cols_list]
     Find a 2-2-2 pattern, where the third spot is filled with a solved value.
     """
 
     print('two search')
-    print('sf search dict')
-    for poss_val in sf_search_dict.keys():
-        print('{0} - {1}'.format(poss_val, sf_search_dict[poss_val]))
+    print('row list', end=' ')
+    print(row_list)
+    print('cols list', end=' ')
+    print(cols_list)
+
+
 
 
 
