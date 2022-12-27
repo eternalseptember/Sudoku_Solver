@@ -194,8 +194,6 @@ def find_swordfish(self, swordfish_cands):
                     row_list = [row_0, row_1, row_2]
                     cols_list = [col_list_0, col_list_1, col_list_2]
 
-
-
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
@@ -230,10 +228,12 @@ def two_search(self, row_list, cols_list):
     """
 
     print('two search')
-    print('row list', end=' ')
-    print(row_list)
-    print('cols list', end=' ')
-    print(cols_list)
+    row_0 = row_list[0]
+    col_list_0 = cols_list[0]
+    row_1 = row_list[1]
+    col_list_1 = cols_list[1]
+    row_2 = row_list[2]
+    col_list_2 = cols_list[2]
 
 
 
