@@ -235,6 +235,10 @@ def two_search(self, row_list, cols_list):
     row_2 = row_list[2]
     col_list_2 = cols_list[2]
 
+    print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
+    print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
+    print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+
 
 
 
