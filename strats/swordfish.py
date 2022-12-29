@@ -204,7 +204,7 @@ def find_swordfish(self, swordfish_cands):
                     """
 
                     # Search for a 2-2-2 combination.
-                    sf_list = self.two_search(row_list, cols_list)
+                    sf_list = self.two_search(poss_val, row_list, cols_list)
 
 
 
@@ -222,12 +222,13 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def two_search(self, row_list, cols_list):
+def two_search(self, poss_val, row_list, cols_list):
     """
-    Find a 2-2-2 pattern, where the third spot is filled with a solved value.
+    Find a 2-2-2 pattern, where the third spot is either a solved value
+    or it doesn't have the candidate as a possible value.
     """
 
-    print('two search')
+    print('two search: {0}'.format(poss_val))
     row_0 = row_list[0]
     col_list_0 = cols_list[0]
     row_1 = row_list[1]
@@ -244,12 +245,9 @@ def two_search(self, row_list, cols_list):
 
 
 
+
+
     return
-
-
-
-
-
 
 
 
