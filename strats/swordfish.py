@@ -240,6 +240,10 @@ def two_search(self, poss_val, row_list, cols_list):
     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
 
+    # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
+    # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
+    # then check the third spot.
+
 
 
 
@@ -252,6 +256,8 @@ def two_search(self, poss_val, row_list, cols_list):
 
 
 
+def intersection_of_two(self, list_1, list_2):
+    return sorted(list(set(list_1) & set(list_2)))
 
 
 

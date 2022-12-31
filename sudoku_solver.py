@@ -65,7 +65,8 @@ class Sudoku_Solver():
 
     # Swordfish
     from strats.swordfish import check_swordfish, check_sf_cands, \
-        reduce_sf_list, find_swordfish, two_search, clean_swordfish
+        reduce_sf_list, find_swordfish, two_search, clean_swordfish, \
+        intersection_of_two
 
 
 
