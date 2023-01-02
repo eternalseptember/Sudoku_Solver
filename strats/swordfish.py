@@ -244,6 +244,7 @@ def two_search(self, poss_val, row_list, cols_list):
     # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
     # then check the third spot.
     intersection_1 = self.intersection_of_two(col_list_0, col_list_1)
+    intersection_2 = self.intersection_of_two(col_list_0, col_list_2)
 
 
 
