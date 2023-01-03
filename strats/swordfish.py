@@ -245,6 +245,7 @@ def two_search(self, poss_val, row_list, cols_list):
     # then check the third spot.
     intersection_1 = self.intersection_of_two(col_list_0, col_list_1)
     intersection_2 = self.intersection_of_two(col_list_0, col_list_2)
+    intersection_3 = self.intersection_of_two(col_list_1, col_list_2)
 
 
 
