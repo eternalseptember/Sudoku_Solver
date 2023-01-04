@@ -264,6 +264,14 @@ def intersection_of_two(self, list_1, list_2):
 
 
 
+def sf_check_naked_pair(self, coord_1, coord_2):
+    return None
+
+
+
+
+
+
 
 
 
