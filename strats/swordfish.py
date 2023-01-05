@@ -247,6 +247,10 @@ def two_search(self, poss_val, row_list, cols_list):
     intersection_2 = self.intersection_of_two(col_list_0, col_list_2)
     intersection_3 = self.intersection_of_two(col_list_1, col_list_2)
 
+    print('\tintersection 1: {0}'.format(intersection_1))
+    print('\tintersection 2: {0}'.format(intersection_2))
+    print('\tintersection 3: {0}'.format(intersection_3))
+    print()
 
 
 
