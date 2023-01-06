@@ -29,17 +29,6 @@ def check_swordfish(self):
     self.reduce_sf_list(swordfish_cands)
 
 
-
-    # testing
-    """
-    print('list of swordfish cands after elimination')
-    for poss_val in swordfish_cands.keys():
-        print('{0} - {1}'.format(poss_val, swordfish_cands[poss_val]))
-    print()
-    """
-
-
-
     # Then check each dict entry to see if there's a swordfish
     # within its list of coords.
     sf_found_dict = self.find_swordfish(swordfish_cands)
@@ -183,23 +172,23 @@ def find_swordfish(self, swordfish_cands):
 
                 k_init = j + 1
                 for k in range(k_init, num_of_rows):
-                    row_0 = col_tracker_keys[i]
-                    row_1 = col_tracker_keys[j]
-                    row_2 = col_tracker_keys[k]
+                    row_1 = col_tracker_keys[i]
+                    row_2 = col_tracker_keys[j]
+                    row_3 = col_tracker_keys[k]
 
-                    col_list_0 = col_tracker[row_0]
                     col_list_1 = col_tracker[row_1]
                     col_list_2 = col_tracker[row_2]
+                    col_list_3 = col_tracker[row_3]
 
-                    row_list = [row_0, row_1, row_2]
-                    cols_list = [col_list_0, col_list_1, col_list_2]
+                    row_list = [row_1, row_2, row_3]
+                    cols_list = [col_list_1, col_list_2, col_list_3]
 
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
-                    print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
                     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+                    print('row numbers: {0} \t list: {1}'.format(row_3, col_list_3))
                     print()
                     """
 
@@ -229,28 +218,33 @@ def two_search(self, poss_val, row_list, cols_list):
     """
 
     print('two search: {0}'.format(poss_val))
-    row_0 = row_list[0]
-    col_list_0 = cols_list[0]
-    row_1 = row_list[1]
-    col_list_1 = cols_list[1]
-    row_2 = row_list[2]
-    col_list_2 = cols_list[2]
+    row_1 = row_list[0]
+    col_list_1 = cols_list[0]
+    row_2 = row_list[1]
+    col_list_2 = cols_list[1]
+    row_3 = row_list[2]
+    col_list_3 = cols_list[2]
 
-    print('row numbers: {0} \t list: {1}'.format(row_0, col_list_0))
     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
     print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
+    print('row numbers: {0} \t list: {1}'.format(row_3, col_list_3))
 
     # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
     # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
     # then check the third spot.
-    intersection_1 = self.intersection_of_two(col_list_0, col_list_1)
-    intersection_2 = self.intersection_of_two(col_list_0, col_list_2)
-    intersection_3 = self.intersection_of_two(col_list_1, col_list_2)
+    intersection_1 = self.intersection_of_two(col_list_1, col_list_2)
+    intersection_2 = self.intersection_of_two(col_list_1, col_list_3)
+    intersection_3 = self.intersection_of_two(col_list_2, col_list_3)
 
     print('\tintersection 1: {0}'.format(intersection_1))
     print('\tintersection 2: {0}'.format(intersection_2))
     print('\tintersection 3: {0}'.format(intersection_3))
     print()
+
+
+    for ints_col in intersection_1:
+        coord_1 = (row_1, ints_col)
+        coord_2 = (row_2, ints_col)
 
 
 
