@@ -219,10 +219,11 @@ def two_search(self, poss_val, row_list, cols_list):
 
     print('two search: {0}'.format(poss_val))
     row_1 = row_list[0]
-    col_list_1 = cols_list[0]
     row_2 = row_list[1]
-    col_list_2 = cols_list[1]
     row_3 = row_list[2]
+
+    col_list_1 = cols_list[0]
+    col_list_2 = cols_list[1]
     col_list_3 = cols_list[2]
 
     print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
@@ -241,7 +242,11 @@ def two_search(self, poss_val, row_list, cols_list):
     print('\tintersection 3: {0}'.format(intersection_3))
     print()
 
+    # if any of them are empty, then skip
 
+
+    # check if there's a naked pair that could be part of a swordfish. 
+    naked_pairs = []
     for ints_col in intersection_1:
         coord_1 = (row_1, ints_col)
         coord_2 = (row_2, ints_col)
