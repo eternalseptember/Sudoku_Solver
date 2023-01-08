@@ -186,9 +186,9 @@ def find_swordfish(self, swordfish_cands):
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
-                    print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
-                    print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
-                    print('row numbers: {0} \t list: {1}'.format(row_3, col_list_3))
+                    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
+                    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
+                    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
                     print()
                     """
 
@@ -226,9 +226,9 @@ def two_search(self, poss_val, row_list, cols_list):
     col_list_2 = cols_list[1]
     col_list_3 = cols_list[2]
 
-    print('row numbers: {0} \t list: {1}'.format(row_1, col_list_1))
-    print('row numbers: {0} \t list: {1}'.format(row_2, col_list_2))
-    print('row numbers: {0} \t list: {1}'.format(row_3, col_list_3))
+    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
+    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
+    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
 
     # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
     # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
@@ -250,6 +250,7 @@ def two_search(self, poss_val, row_list, cols_list):
     for ints_col in intersection_1:
         coord_1 = (row_1, ints_col)
         coord_2 = (row_2, ints_col)
+        self.sf_check_naked_pair(coord_1, coord_2)
 
 
 
