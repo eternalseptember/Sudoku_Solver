@@ -180,9 +180,6 @@ def find_swordfish(self, swordfish_cands):
                     col_list_2 = col_tracker[row_2]
                     col_list_3 = col_tracker[row_3]
 
-                    row_list = [row_1, row_2, row_3]
-                    cols_list = [col_list_1, col_list_2, col_list_3]
-
                     """
                     print('indices: ',end=' ')
                     print('{0}, {1}, {2}'.format(i, j, k))
@@ -193,6 +190,8 @@ def find_swordfish(self, swordfish_cands):
                     """
 
                     # Search for a 2-2-2 combination.
+                    row_list = [row_1, row_2, row_3]
+                    cols_list = [col_list_1, col_list_2, col_list_3]
                     sf_list = self.two_search(poss_val, row_list, cols_list)
 
 
@@ -217,7 +216,6 @@ def two_search(self, poss_val, row_list, cols_list):
     or it doesn't have the candidate as a possible value.
     """
 
-    print('two search: {0}'.format(poss_val))
     row_1 = row_list[0]
     row_2 = row_list[1]
     row_3 = row_list[2]
@@ -226,28 +224,35 @@ def two_search(self, poss_val, row_list, cols_list):
     col_list_2 = cols_list[1]
     col_list_3 = cols_list[2]
 
-    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
-    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
-    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
 
     # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
     # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
     # then check the third spot.
-    intersection_1 = self.intersection_of_two(col_list_1, col_list_2)
-    intersection_2 = self.intersection_of_two(col_list_1, col_list_3)
-    intersection_3 = self.intersection_of_two(col_list_2, col_list_3)
+    ints_1 = self.intersection_of_two(col_list_1, col_list_2)
+    ints_2 = self.intersection_of_two(col_list_1, col_list_3)
+    ints_3 = self.intersection_of_two(col_list_2, col_list_3)
 
-    print('\tintersection 1: {0}'.format(intersection_1))
-    print('\tintersection 2: {0}'.format(intersection_2))
-    print('\tintersection 3: {0}'.format(intersection_3))
-    print()
 
     # if any of them are empty, then skip
+    if (len(ints_1) == 0) or (len(ints_2) == 0) or (len(ints_3) == 0):
+        return []
+
+    print('two search: {0}'.format(poss_val))
+    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
+    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
+    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
+
+    print('\tintersection 1: {0}'.format(ints_1))
+    print('\tintersection 2: {0}'.format(ints_2))
+    print('\tintersection 3: {0}'.format(ints_3))
+    print()
+
+
 
 
     # check if there's a naked pair that could be part of a swordfish. 
     naked_pairs = []
-    for ints_col in intersection_1:
+    for ints_col in ints_1:
         coord_1 = (row_1, ints_col)
         coord_2 = (row_2, ints_col)
         self.sf_check_naked_pair(coord_1, coord_2)
@@ -269,6 +274,7 @@ def intersection_of_two(self, list_1, list_2):
 
 
 def sf_check_naked_pair(self, coord_1, coord_2):
+    
     return None
 
 
