@@ -255,7 +255,7 @@ def two_search(self, poss_val, row_list, cols_list):
     for ints_col in ints_1:
         coord_1 = (row_1, ints_col)
         coord_2 = (row_2, ints_col)
-        self.sf_check_naked_pair(coord_1, coord_2)
+        is_naked_pair = self.sf_check_naked_pair(coord_1, coord_2)
 
         # what if multiple naked pairs?
 
@@ -278,7 +278,7 @@ def intersection_of_two(self, list_1, list_2):
 def sf_check_naked_pair(self, coord_1, coord_2):
     poss_vals_1 = self.possible_values[coord_1]
     poss_vals_2 = self.possible_values[coord_2]
-    return None
+    return (poss_vals_1 == poss_vals_2)
 
 
 
