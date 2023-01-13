@@ -265,7 +265,11 @@ def two_search(self, poss_val, row_list, cols_list):
 
 
 
+    # check third spot
 
+
+    print('naked pairs:', end=' ')
+    print(naked_pairs)
 
 
 
