@@ -245,7 +245,6 @@ def two_search(self, poss_val, row_list, cols_list):
     print('\tintersection 1: {0}'.format(ints_1))
     print('\tintersection 2: {0}'.format(ints_2))
     print('\tintersection 3: {0}'.format(ints_3))
-    print()
 
 
 
@@ -262,15 +261,19 @@ def two_search(self, poss_val, row_list, cols_list):
 
 
         # what if multiple naked pairs?
+    
+    for ints_col in ints_2:
+        coord_1 = (row_1, ints_col)
+        coord_3 = (row_3, ints_col)
 
 
 
     # check third spot
 
 
-    print('naked pairs:', end=' ')
+    print('\tnaked pairs:', end=' ')
     print(naked_pairs)
-
+    print()
 
 
     return
