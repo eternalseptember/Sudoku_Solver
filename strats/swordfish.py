@@ -271,8 +271,12 @@ def two_search(self, poss_val, row_list, cols_list):
             naked_pairs.extend((coord_1, coord_3))
 
 
+    for ints_col in ints_3:
+        coord_2 = (row_2, ints_col)
+        coord_3 = (row_3, ints_col)
 
-    # check third spot
+
+
 
 
     print('\tnaked pairs:', end=' ')
