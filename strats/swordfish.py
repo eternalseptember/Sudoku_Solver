@@ -277,6 +277,9 @@ def two_search(self, poss_val, row_list, cols_list):
 
         is_naked_pair = self.sf_check_naked_pair(coord_2, coord_3)
 
+        if is_naked_pair:
+            naked_pairs.extend((coord_2, coord_3))
+
 
 
 
