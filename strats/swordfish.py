@@ -233,7 +233,7 @@ def two_search(self, poss_val, row_list, cols_list):
     ints_3 = self.intersection_of_two(col_list_2, col_list_3)
 
 
-    # if any of them are empty, then skip
+    # If any of them are empty, then skip.
     if (len(ints_1) == 0) or (len(ints_2) == 0) or (len(ints_3) == 0):
         return []
 
@@ -280,6 +280,12 @@ def two_search(self, poss_val, row_list, cols_list):
         if is_naked_pair:
             naked_pairs.extend((coord_2, coord_3))
 
+    
+    # tally up coords to look at third spot
+    sf_rows = []
+    sf_cols = []
+    
+
 
 
 
@@ -300,6 +306,10 @@ def intersection_of_two(self, list_1, list_2):
 
 
 def sf_check_naked_pair(self, coord_1, coord_2):
+    """
+    This isn't entirely correct.
+    (2, 7) and (8, 7) are part of triples, but 9 can only be in those two locs.
+    """
     poss_vals_1 = self.possible_values[coord_1]
     poss_vals_2 = self.possible_values[coord_2]
     return (poss_vals_1 == poss_vals_2)
