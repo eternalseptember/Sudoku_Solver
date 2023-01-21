@@ -284,6 +284,8 @@ def two_search(self, poss_val, row_list, cols_list):
     # tally up coords to look at third spot
     sf_rows = []
     sf_cols = []
+    for pair in naked_pairs:
+        row, col = (pair)
     
 
 
