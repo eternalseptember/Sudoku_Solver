@@ -286,6 +286,11 @@ def two_search(self, poss_val, row_list, cols_list):
     sf_cols = []
     for pair in naked_pairs:
         row, col = (pair)
+
+        if row not in sf_rows:
+            sf_rows.append(row)
+
+        # sort
     
 
 
