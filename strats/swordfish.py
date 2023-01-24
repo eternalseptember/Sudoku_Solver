@@ -293,8 +293,9 @@ def two_search(self, poss_val, row_list, cols_list):
         if col not in sf_cols:
             sf_cols.append(col)
 
-        # sort
-    
+    # sort
+    sf_rows.sort()
+    sf_cols.sort()
 
 
 
