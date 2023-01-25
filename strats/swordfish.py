@@ -212,8 +212,7 @@ def find_swordfish(self, swordfish_cands):
 
 def two_search(self, poss_val, row_list, cols_list):
     """
-    Find a 2-2-2 pattern, where the third spot is either a solved value
-    or it doesn't have the candidate as a possible value.
+    Find a 2-2-2 pattern.
     """
 
     row_1 = row_list[0]
@@ -280,7 +279,7 @@ def two_search(self, poss_val, row_list, cols_list):
         if is_naked_pair:
             naked_pairs.extend((coord_2, coord_3))
 
-    
+    """
     # tally up coords to look at third spot
     sf_rows = []
     sf_cols = []
@@ -296,7 +295,7 @@ def two_search(self, poss_val, row_list, cols_list):
     # sort
     sf_rows.sort()
     sf_cols.sort()
-
+    """
 
 
 
@@ -306,7 +305,7 @@ def two_search(self, poss_val, row_list, cols_list):
     print()
 
 
-    return
+    return naked_pairs
 
 
 
