@@ -325,6 +325,10 @@ def sf_check_naked_pair(self, coord_1, coord_2):
     return (poss_vals_1 == poss_vals_2)
 
 
+def sf_check_loop(self, poss_val, coords):
+    return None
+
+
 
 
 
