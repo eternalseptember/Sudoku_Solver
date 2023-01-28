@@ -192,8 +192,10 @@ def find_swordfish(self, swordfish_cands):
                     # Search for a 2-2-2 combination.
                     row_list = [row_1, row_2, row_3]
                     cols_list = [col_list_1, col_list_2, col_list_3]
-                    sf_list = self.two_search(poss_val, row_list, cols_list)
 
+                    # testing one of these ways of looking for a swordfish
+                    # sf_list = self.two_search(poss_val, row_list, cols_list)
+                    sf_list = self.sf_check_loop(poss_val, row_list, cols_list)
 
 
 
@@ -244,7 +246,6 @@ def two_search(self, poss_val, row_list, cols_list):
     print('\tintersection 1: {0}'.format(ints_1))
     print('\tintersection 2: {0}'.format(ints_2))
     print('\tintersection 3: {0}'.format(ints_3))
-
 
 
 
@@ -304,7 +305,7 @@ def two_search(self, poss_val, row_list, cols_list):
     print(naked_pairs)
     print()
 
-
+    # this is probably not right
     return naked_pairs
 
 
@@ -325,8 +326,13 @@ def sf_check_naked_pair(self, coord_1, coord_2):
     return (poss_vals_1 == poss_vals_2)
 
 
-def sf_check_loop(self, poss_val, coords):
-    return None
+
+def sf_check_loop(self, poss_val, row_list, cols_list):
+    sf_loop_coords = []
+
+
+
+    return sf_loop_coords
 
 
 
