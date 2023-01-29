@@ -330,6 +330,8 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 def sf_check_loop(self, poss_val, row_list, cols_list):
     sf_loop_coords = []
 
+    loop_begin = (row_list[0], cols_list[0])
+
 
 
     return sf_loop_coords
