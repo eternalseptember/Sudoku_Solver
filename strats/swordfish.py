@@ -332,6 +332,9 @@ def sf_check_loop(self, poss_val, row_list, cols_list):
 
     loop_begin = (row_list[0], cols_list[0])
 
+    # check across
+    across_list = []
+
 
 
     return sf_loop_coords
