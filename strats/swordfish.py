@@ -328,12 +328,21 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 
 
 def sf_check_loop(self, poss_val, row_list, cols_list):
+    # list possible coords to check for loop
+    poss_loop = []
+
+
+
+
+
     loop_begin = (row_list[0], cols_list[0])
 
     sf_loop_coords = [loop_begin]
 
     # check across
-    next_coord = (row_list[0], cols_list[1])	
+    next_coord = (row_list[0], cols_list[1])
+
+    # piece together the coords and check if they're in poss_loop
 
 
 
