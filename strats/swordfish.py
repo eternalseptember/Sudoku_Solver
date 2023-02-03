@@ -331,6 +331,10 @@ def sf_check_loop(self, poss_val, row_list, cols_list):
     # list possible coords to check for loop
     poss_loop = []
 
+    for this_row in row_list:
+        for this_col in cols_list:
+            this_coord = (this_row, this_col)
+
 
 
 
