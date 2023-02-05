@@ -159,12 +159,13 @@ def find_swordfish(self, swordfish_cands):
         # testing
         print('col_tracker list for poss_val: {0}'.format(poss_val))
         print('coords: {0}'.format(poss_coords))
-        print()
+        print('organized list: row - cols')
         for item in col_tracker_keys:
             print('{0} - {1}'.format(item, col_tracker[item]))
         print()
 
 
+        # three lists for comparison
         for i in range(0, num_of_rows-2):
 
             j_init = i + 1
@@ -189,13 +190,33 @@ def find_swordfish(self, swordfish_cands):
                     print()
                     """
 
-                    # Search for a 2-2-2 combination.
-                    row_list = [row_1, row_2, row_3]
-                    cols_list = [col_list_1, col_list_2, col_list_3]
+                    # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
+                    # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
+                    # then check the third spot.
+                    ints_1 = self.intersection_of_two(col_list_1, col_list_2)
+                    ints_2 = self.intersection_of_two(col_list_1, col_list_3)
+                    ints_3 = self.intersection_of_two(col_list_2, col_list_3)
+
+
+                    # If any of them are empty, then skip.
+                    if (len(ints_1) == 0) or (len(ints_2) == 0) or (len(ints_3) == 0):
+                        continue
+
+                    print('two search: {0}'.format(poss_val))
+                    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
+                    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
+                    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
+
+                    print('\tintersection 1: {0}'.format(ints_1))
+                    print('\tintersection 2: {0}'.format(ints_2))
+                    print('\tintersection 3: {0}'.format(ints_3))
+
+
 
                     # testing one of these ways of looking for a swordfish
-                    # sf_list = self.two_search(poss_val, row_list, cols_list)
-                    sf_list = self.sf_check_loop(poss_val, row_list, cols_list)
+                    row_list = [row_1, row_2, row_3]
+                    sf_list = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
+                    # sf_list = self.sf_check_loop(poss_val)
 
 
 
@@ -212,42 +233,13 @@ def find_swordfish(self, swordfish_cands):
 
 
 
-def two_search(self, poss_val, row_list, cols_list):
+def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     """
     Find a 2-2-2 pattern.
     """
-
     row_1 = row_list[0]
     row_2 = row_list[1]
     row_3 = row_list[2]
-
-    col_list_1 = cols_list[0]
-    col_list_2 = cols_list[1]
-    col_list_3 = cols_list[2]
-
-
-    # naked pairs in (6, 1) and (8, 1); (2, 4) and (6, 4).
-    # in row 7, 9 is a valid candidate only in (2, 7) and (8, 7).
-    # then check the third spot.
-    ints_1 = self.intersection_of_two(col_list_1, col_list_2)
-    ints_2 = self.intersection_of_two(col_list_1, col_list_3)
-    ints_3 = self.intersection_of_two(col_list_2, col_list_3)
-
-
-    # If any of them are empty, then skip.
-    if (len(ints_1) == 0) or (len(ints_2) == 0) or (len(ints_3) == 0):
-        return []
-
-    print('two search: {0}'.format(poss_val))
-    print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
-    print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
-    print('row numbers: {0} \t cols: {1}'.format(row_3, col_list_3))
-
-    print('\tintersection 1: {0}'.format(ints_1))
-    print('\tintersection 2: {0}'.format(ints_2))
-    print('\tintersection 3: {0}'.format(ints_3))
-
-
 
     # check if there's a naked pair that could be part of a swordfish. 
     naked_pairs = []
@@ -280,6 +272,7 @@ def two_search(self, poss_val, row_list, cols_list):
         if is_naked_pair:
             naked_pairs.extend((coord_2, coord_3))
 
+
     """
     # tally up coords to look at third spot
     sf_rows = []
@@ -299,8 +292,6 @@ def two_search(self, poss_val, row_list, cols_list):
     """
 
 
-
-
     print('\tnaked pairs:', end=' ')
     print(naked_pairs)
     print()
@@ -310,8 +301,10 @@ def two_search(self, poss_val, row_list, cols_list):
 
 
 
-
 def intersection_of_two(self, list_1, list_2):
+    """
+    Return a sorted list of the intersection of two lists.
+    """
     return sorted(list(set(list_1) & set(list_2)))
 
 
@@ -327,30 +320,26 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 
 
 
-def sf_check_loop(self, poss_val, row_list, cols_list):
-    # list possible coords to check for loop
-    poss_loop = []
+def sf_check_loop(self, poss_val):
+    """
+    Piece together the coords and check if they're in a loop.
+    """
 
-    for this_row in row_list:
-        for this_col in cols_list:
-            this_coord = (this_row, this_col)
-            poss_loop.append(this_coord)
+    print('check loop for poss_val: {0}'.format(poss_val))
 
+    sf_loop_coords = []
 
-
-
-
-    loop_begin = poss_loop[0]
-
-
-    # check across
-    next_coord = (row_list[0], cols_list[1])
-
-    # piece together the coords and check if they're in poss_loop
+    # find where the loop begins
 
 
 
-    return
+
+
+
+
+
+
+    return sf_loop_coords
 
 
 
