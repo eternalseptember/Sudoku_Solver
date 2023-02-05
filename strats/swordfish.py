@@ -340,9 +340,8 @@ def sf_check_loop(self, poss_val, row_list, cols_list):
 
 
 
-    loop_begin = (row_list[0], cols_list[0])
+    loop_begin = poss_loop[0]
 
-    sf_loop_coords = [loop_begin]
 
     # check across
     next_coord = (row_list[0], cols_list[1])
@@ -351,7 +350,7 @@ def sf_check_loop(self, poss_val, row_list, cols_list):
 
 
 
-    return sf_loop_coords
+    return
 
 
 
