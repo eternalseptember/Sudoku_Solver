@@ -35,6 +35,14 @@ def check_swordfish(self):
 
 
 
+    # testing
+    print()
+    print('sf found?')
+    for item in sf_found_dict.keys():
+        print('{0} - {1}'.format(item, sf_found_dict[item]))
+
+
+
 
     # Commenting this out to rework for imperfect sworfish.
     """
@@ -202,6 +210,7 @@ def find_swordfish(self, swordfish_cands):
                     if (len(ints_1) == 0) or (len(ints_2) == 0) or (len(ints_3) == 0):
                         continue
 
+                    print()
                     print('two search: {0}'.format(poss_val))
                     print('row numbers: {0} \t cols: {1}'.format(row_1, col_list_1))
                     print('row numbers: {0} \t cols: {1}'.format(row_2, col_list_2))
@@ -215,14 +224,14 @@ def find_swordfish(self, swordfish_cands):
 
                     # testing one of these ways of looking for a swordfish
                     row_list = [row_1, row_2, row_3]
-                    sf_list = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
-                    # sf_list = self.sf_check_loop(poss_val)
+                    sf_coords = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
+                    # sf_coords = self.sf_check_loop(poss_val)
 
 
 
 
                     # swordfish found?
-                    # sf_found[poss_val] = sf_coords
+                    sf_found[poss_val] = sf_coords
 
 
 
@@ -231,11 +240,19 @@ def find_swordfish(self, swordfish_cands):
 
 
 
+def intersection_of_two(self, list_1, list_2):
+    """
+    Return a sorted list of the intersection of two lists.
+    """
+    return sorted(list(set(list_1) & set(list_2)))
+
 
 
 def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     """
-    Find a 2-2-2 pattern.
+    Find a 2-2-2 pattern with naked pairs.
+    Every possible coord has poss_val.
+    By definition, there can't be multiple naked pairs with poss_val.
     """
     row_1 = row_list[0]
     row_2 = row_list[1]
@@ -251,7 +268,6 @@ def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
         if is_naked_pair:
             naked_pairs.extend((coord_1, coord_2))
 
-        # what if multiple naked pairs?
     
     for ints_col in ints_2:
         coord_1 = (row_1, ints_col)
@@ -291,21 +307,13 @@ def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     sf_cols.sort()
     """
 
-
-    print('\tnaked pairs:', end=' ')
-    print(naked_pairs)
-    print()
-
     # this is probably not right
-    return naked_pairs
-
-
-
-def intersection_of_two(self, list_1, list_2):
-    """
-    Return a sorted list of the intersection of two lists.
-    """
-    return sorted(list(set(list_1) & set(list_2)))
+    if len(naked_pairs) == 6:
+        print('\tnaked pairs:', end=' ')
+        print(naked_pairs)
+        return naked_pairs
+    else:
+        return []
 
 
 
@@ -330,11 +338,6 @@ def sf_check_loop(self, poss_val):
     sf_loop_coords = []
 
     # find where the loop begins
-
-
-
-
-
 
 
 
