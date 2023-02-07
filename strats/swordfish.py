@@ -231,7 +231,8 @@ def find_swordfish(self, swordfish_cands):
 
 
                     # swordfish found?
-                    sf_found[poss_val] = sf_coords
+                    if len(sf_coords) == 6:
+                        sf_found[poss_val] = sf_coords
 
 
 
