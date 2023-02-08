@@ -231,7 +231,8 @@ def find_swordfish(self, swordfish_cands):
 
 
                     # swordfish found?
-                    if len(sf_coords) == 6:
+                    # what if it found more than one set?
+                    if len(sf_coords) >= 6:
                         sf_found[poss_val] = sf_coords
 
 
@@ -259,7 +260,7 @@ def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     row_2 = row_list[1]
     row_3 = row_list[2]
 
-    # check if there's a naked pair that could be part of a swordfish. 
+    # Check if there's a naked pair that could be part of a swordfish. 
     naked_pairs = []
     for ints_col in ints_1:
         coord_1 = (row_1, ints_col)
@@ -309,7 +310,7 @@ def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     """
 
     # this is probably not right
-    if len(naked_pairs) == 6:
+    if len(naked_pairs) >= 6:
         print('\tnaked pairs:', end=' ')
         print(naked_pairs)
         return naked_pairs
@@ -342,8 +343,10 @@ def sf_check_loop(self, poss_val):
 
 
 
-
-    return sf_loop_coords
+    if len(sf_loop_coords) >= 6:
+        return sf_loop_coords
+    else:
+        return []
 
 
 
@@ -370,7 +373,7 @@ def clean_swordfish(self, sf_dict):
         print('cleaning swordfish val: {0}'.format(sf_val))
         print('coords: {0}'.format(sf_coords))
 
-        # get lists of swordfish rows and cols.
+        # Get lists of swordfish rows and cols.
         for this_coord in sf_coords:
             this_row, this_col = this_coord
 
@@ -381,20 +384,20 @@ def clean_swordfish(self, sf_dict):
                 col_list.append(this_col)
         
 
-        # go through each cell.
-        # if cell is in the same row or col as the swordfish set,
+        # Go through each cell.
+        # If cell is in the same row or col as the swordfish set,
         # but it's not part of the sf set, then remove sf_val from its
         # list of possibilities.
         for row_step in range(9):
             for col_step in range(9):
                 this_cell = (row_step, col_step)
 
-                # skip over solved cells.
+                # Skip over solved cells.
                 if this_cell not in self.possible_values:
                     continue
 
 
-                # check if this cell is in swordfish row or col.
+                # Check if this cell is in swordfish row or col.
                 if row_step in row_list:
                     in_sf_row = True
                 else:
@@ -406,8 +409,10 @@ def clean_swordfish(self, sf_dict):
                     in_sf_col = False
 
 
-                # if in row or col of a swordfish cell, then check if it's a swordfish cell.
-                # if it's not a sf cell, remove sf_val from its list of possible cells.
+                # If in row or col of a swordfish cell, 
+                #     then check if it's a swordfish cell.
+                # If it's not a sf cell,
+                #     remove sf_val from its list of possible cells.
                 if this_cell in sf_coords:
                     continue
                 elif in_sf_row or in_sf_col:
