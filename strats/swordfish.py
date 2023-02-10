@@ -224,8 +224,9 @@ def find_swordfish(self, swordfish_cands):
 
                     # testing one of these ways of looking for a swordfish
                     row_list = [row_1, row_2, row_3]
-                    # sf_coords = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
-                    sf_coords = self.sf_check_loop(poss_val, row_list, ints_1, ints_2, ints_3)
+                    ints_list = [ints_1, ints_2, ints_3]
+                    # sf_coords = self.two_search(poss_val, row_list, ints_list)
+                    sf_coords = self.sf_check_loop(poss_val, row_list, ints_list)
 
 
 
@@ -250,7 +251,7 @@ def intersection_of_two(self, list_1, list_2):
 
 
 
-def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
+def two_search(self, poss_val, row_list, ints_list):
     """
     Find a 2-2-2 pattern with naked pairs.
     Every possible coord has poss_val.
@@ -259,6 +260,11 @@ def two_search(self, poss_val, row_list, ints_1, ints_2, ints_3):
     row_1 = row_list[0]
     row_2 = row_list[1]
     row_3 = row_list[2]
+
+    ints_1 = ints_list[0]
+    ints_2 = ints_list[1]
+    ints_3 = ints_list[2]
+
 
     # Check if there's a naked pair that could be part of a swordfish. 
     naked_pairs = []
@@ -330,7 +336,7 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 
 
 
-def sf_check_loop(self, poss_val, row_list, ints_1, ints_2, ints_3):
+def sf_check_loop(self, poss_val, ints_list):
     """
     Piece together the coords and check if they're in a loop.
     """
