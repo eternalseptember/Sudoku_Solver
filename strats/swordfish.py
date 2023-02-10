@@ -224,8 +224,8 @@ def find_swordfish(self, swordfish_cands):
 
                     # testing one of these ways of looking for a swordfish
                     row_list = [row_1, row_2, row_3]
-                    sf_coords = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
-                    # sf_coords = self.sf_check_loop(poss_val)
+                    # sf_coords = self.two_search(poss_val, row_list, ints_1, ints_2, ints_3)
+                    sf_coords = self.sf_check_loop(poss_val, row_list, ints_1, ints_2, ints_3)
 
 
 
@@ -330,7 +330,7 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 
 
 
-def sf_check_loop(self, poss_val):
+def sf_check_loop(self, poss_val, row_list, ints_1, ints_2, ints_3):
     """
     Piece together the coords and check if they're in a loop.
     """
