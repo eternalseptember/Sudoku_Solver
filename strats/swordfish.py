@@ -336,7 +336,7 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 
 
 
-def sf_check_loop(self, poss_val, ints_list):
+def sf_check_loop(self, poss_val, row_list, ints_list):
     """
     Piece together the coords and check if they're in a loop.
     """
@@ -344,6 +344,14 @@ def sf_check_loop(self, poss_val, ints_list):
     print('check loop for poss_val: {0}'.format(poss_val))
 
     sf_loop_coords = []
+
+    row_1 = row_list[0]
+    row_2 = row_list[1]
+    row_3 = row_list[2]
+
+    ints_1 = ints_list[0]
+    ints_2 = ints_list[1]
+    ints_3 = ints_list[2]
 
     # find where the loop begins
 
