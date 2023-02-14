@@ -359,9 +359,16 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         coord_1 = (row_1, ints_col)
         coord_2 = (row_2, ints_col)
 
-        # if there is only one item, then there is a line that connects the two points
+        # if there is only one item, then there is a line down that connects the two points
         if len(ints_1) == 1:
             sf_loop_coords.append(coord_1, coord_2)
+    
+
+    for ints_col in ints_2:
+        coord_1 = (row_1, ints_col)
+
+    
+
 
 
 
