@@ -366,6 +366,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     for ints_col in ints_2:
         coord_1 = (row_1, ints_col)
+        coord_2 = (row_2, ints_col)
 
     
 
