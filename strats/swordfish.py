@@ -368,7 +368,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         coord_1 = (row_1, ints_col)
         coord_3 = (row_3, ints_col)
 
-    
+
+
+    for ints_col in ints_3:
+        coord_2 = (row_2, ints_col)
 
 
     
