@@ -351,28 +351,15 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     ints_2 = ints_list[1]
     ints_3 = ints_list[2]
 
+    # piece together the coordinates
+    poss_coords = []
+
+
+
+
+
     # find where the loop begins
     sf_loop_coords = []
-
-
-    for ints_col in ints_1:
-        coord_1 = (row_1, ints_col)
-        coord_2 = (row_2, ints_col)
-
-        # if there is only one item, then there is a line down that connects the two points
-        if len(ints_1) == 1:
-            sf_loop_coords.append(coord_1, coord_2)
-    
-
-    for ints_col in ints_2:
-        coord_1 = (row_1, ints_col)
-        coord_3 = (row_3, ints_col)
-
-
-
-    for ints_col in ints_3:
-        coord_2 = (row_2, ints_col)
-
 
     
 
