@@ -1,5 +1,7 @@
 # Info
 
+* Coordinates are formatted in this order: (row, col)
+* Index range is [0, 8], where (0, 0) is the top left corner.
 * Folder root contains the most basic core of solving and printing the sudoku board to the terminal.
 * More advanced strategies are in the strats folder.
 * Executable tests are in the test folder. Text files of test boards are in the test_boards folder.
