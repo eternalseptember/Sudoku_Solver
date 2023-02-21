@@ -362,6 +362,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 poss_coords.append(coord)
 
 
+    for ints_col in ints_2:
+        these_coords = []
+
 
 
 
