@@ -363,7 +363,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     for ints_col in ints_2:
-        these_coords = [(row_1, ints_col), (row_2, ints_col)]
+        these_coords = [(row_1, ints_col), (row_3, ints_col)]
 
         for coord in these_coords:
             if coord not in poss_coords:
@@ -371,7 +371,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     for ints_col in ints_3:
-        these_coords = []
+        these_coords = [(row_2, ints_col), (row_3, ints_col)]
 
 
 
