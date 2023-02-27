@@ -225,8 +225,8 @@ def find_swordfish(self, swordfish_cands):
                     # testing one of these ways of looking for a swordfish
                     row_list = [row_1, row_2, row_3]
                     ints_list = [ints_1, ints_2, ints_3]
-                    sf_coords = self.two_search(poss_val, row_list, ints_list)
-                    # sf_coords = self.sf_check_loop(poss_val, row_list, ints_list)
+                    # sf_coords = self.two_search(poss_val, row_list, ints_list)
+                    sf_coords = self.sf_check_loop(poss_val, row_list, ints_list)
 
 
 
@@ -341,7 +341,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     Piece together the coords and check if they're in a loop.
     """
 
-    print('check loop for poss_val: {0}'.format(poss_val))
+    print('check for loop for poss_val: {0}'.format(poss_val))
 
     row_1 = row_list[0]
     row_2 = row_list[1]
@@ -376,6 +376,11 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         for coord in these_coords:
             if coord not in poss_coords:
                 poss_coords.append(coord)
+
+    
+    # check list of coords
+    print('checking list of coords:', end=' ')
+    print(poss_coords)
 
 
 
