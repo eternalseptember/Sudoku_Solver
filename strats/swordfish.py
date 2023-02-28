@@ -383,6 +383,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     print(poss_coords)
 
 
+    # break the list of coords down by rows
+    sf_loop_tracker = []
+
 
 
     # find where the loop begins
