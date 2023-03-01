@@ -384,7 +384,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     # break the list of coords down by rows
-    sf_loop_tracker = []
+    sf_loop_tracker = {}  # sf_loop_tracker[row] = [list of cols]
+    for coord in poss_coords:
+        this_row, this_col = coord
+
 
 
 
