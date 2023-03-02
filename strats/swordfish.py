@@ -388,6 +388,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     for coord in poss_coords:
         this_row, this_col = coord
 
+        if this_row not in sf_loop_tracker:
+            sf_loop_tracker[this_row] = [this_col]
+
 
 
 
