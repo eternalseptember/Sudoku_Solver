@@ -378,6 +378,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 poss_coords.append(coord)
 
     
+
+
     # check list of coords
     print('checking list of coords:', end=' ')
     print(poss_coords)
@@ -392,10 +394,14 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             sf_loop_tracker[this_row] = [this_col]
 
 
-
-
     # find where the loop begins
     sf_loop_coords = []
+    for row_key in sf_loop_tracker.keys():
+        
+        # if there's only two, then it should be part of the sf?
+        cols = sf_loop_tracker[row_key]
+
+    
 
     
 
