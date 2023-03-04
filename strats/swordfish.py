@@ -401,6 +401,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         # if there's only two, then it should be part of the sf?
         cols = sf_loop_tracker[row_key]
 
+        if len(cols) == 2:
+            sf_loop_coords.extend(cols)
+
     
 
     
