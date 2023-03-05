@@ -392,6 +392,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
         if this_row not in sf_loop_tracker:
             sf_loop_tracker[this_row] = [this_col]
+    
+
+    # check sf_loop_tracker
+
 
 
     # find where the loop begins
@@ -403,6 +407,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
         if len(cols) == 2:
             sf_loop_coords.extend(cols)
+            continue
 
     
 
