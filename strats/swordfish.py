@@ -396,6 +396,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     # check sf_loop_tracker
     print('checking sf_loop_tracker')
+    for row in sf_loop_tracker.keys():
+        print('{0} - {1}'.format(row, sf_loop_tracker[row]))
 
 
 
