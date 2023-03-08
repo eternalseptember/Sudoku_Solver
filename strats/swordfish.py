@@ -392,6 +392,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
         if this_row not in sf_loop_tracker:
             sf_loop_tracker[this_row] = [this_col]
+        else:
+            sf_loop_tracker[this_row].append(this_col)
     
 
     # check sf_loop_tracker
@@ -405,7 +407,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     sf_loop_coords = []
     for row_key in sf_loop_tracker.keys():
         
-        # if there's only two, then it should be part of the sf?
+        # if there's only two,
+        # and sf_loop_coords is empty???
+        # then it should be part of the sf?
         cols = sf_loop_tracker[row_key]
 
         if len(cols) == 2:
