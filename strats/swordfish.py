@@ -399,7 +399,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     # check sf_loop_tracker
     print('checking sf_loop_tracker')
     for row in sf_loop_tracker.keys():
-        print('{0} - {1}'.format(row, sf_loop_tracker[row]))
+        print('row {0}: cols {1}'.format(row, sf_loop_tracker[row]))
 
 
 
@@ -412,7 +412,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         # then it should be part of the sf?
         cols = sf_loop_tracker[row_key]
 
-        if len(cols) == 2:
+        if len(cols) == 2 and len(sf_loop_coords) == 0:
             sf_loop_coords.extend(cols)
             continue
 
