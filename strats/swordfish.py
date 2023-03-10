@@ -397,24 +397,24 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     
 
     # check sf_loop_tracker
-    print('checking sf_loop_tracker')
+    print('checking sf_loop_tracker:')
     for row in sf_loop_tracker.keys():
-        print('row {0}: cols {1}'.format(row, sf_loop_tracker[row]))
+        print('\trow {0}: cols {1}'.format(row, sf_loop_tracker[row]))
 
 
 
     # find where the loop begins
+    sf_rows = sf_loop_tracker.keys()
     sf_loop_coords = []
-    for row_key in sf_loop_tracker.keys():
-        
-        # if there's only two,
-        # and sf_loop_coords is empty???
-        # then it should be part of the sf?
-        cols = sf_loop_tracker[row_key]
 
-        if len(cols) == 2 and len(sf_loop_coords) == 0:
-            sf_loop_coords.extend(cols)
-            continue
+
+    # if the first row only has two cols, then start the list with this line:
+    if sf_rows[0] == 2:
+        sf_loop_coords.extend(sf_loop_tracker[sf_rows[0]])
+
+        
+
+
 
     
 
