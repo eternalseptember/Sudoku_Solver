@@ -407,14 +407,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     sf_rows = list(sf_loop_tracker.keys())
     sf_loop_coords = []
 
-    print('sf_rows: {0}'.format(sf_rows))
-
 
 
     # if the first row only has two cols, then start the list with this line:
-    # if len(sf_rows[0]) == 2:
-    # 	sf_loop_coords.extend(sf_loop_tracker[sf_rows[0]])
-
+    print('row at index 0: {0}'.format(sf_rows[0]))
 
     # else
 
