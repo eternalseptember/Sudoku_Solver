@@ -410,7 +410,13 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     # if the first row only has two cols, then start the list with this line:
-    print('row at index 0: {0}'.format(sf_rows[0]))
+    sf_row_0 = sf_rows[0]
+    sf_cols_0 = sf_loop_tracker[sf_row_0]
+
+    print('row at index 0: {0}'.format(sf_row_0))
+    print('cols at this row: {0}'.format(sf_cols_0))
+
+    
 
     # else
 
