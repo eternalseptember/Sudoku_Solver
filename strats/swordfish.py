@@ -351,7 +351,13 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     ints_2 = ints_list[1]
     ints_3 = ints_list[2]
 
-    # piece together the coordinates
+    # sort coordinates information by rows
+    poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
+
+
+
+
+    """
     poss_coords = []
 
     for ints_col in ints_1:
@@ -361,14 +367,12 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             if coord not in poss_coords:
                 poss_coords.append(coord)
 
-
     for ints_col in ints_2:
         these_coords = [(row_1, ints_col), (row_3, ints_col)]
 
         for coord in these_coords:
             if coord not in poss_coords:
                 poss_coords.append(coord)
-
 
     for ints_col in ints_3:
         these_coords = [(row_2, ints_col), (row_3, ints_col)]
@@ -378,43 +382,48 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 poss_coords.append(coord)
 
     
-
-
     # check list of coords
     print('checking list of coords:', end=' ')
     print(poss_coords)
 
 
     # break the list of coords down by rows
-    sf_loop_tracker = {}  # sf_loop_tracker[row] = [list of cols]
+    poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
     for coord in poss_coords:
         this_row, this_col = coord
 
-        if this_row not in sf_loop_tracker:
-            sf_loop_tracker[this_row] = [this_col]
+        if this_row not in poss_sf_coords:
+            poss_sf_coords[this_row] = [this_col]
         else:
-            sf_loop_tracker[this_row].append(this_col)
-    
+            poss_sf_coords[this_row].append(this_col)
+    """
 
-    # check sf_loop_tracker
-    print('checking sf_loop_tracker:')
-    for row in sf_loop_tracker.keys():
-        print('\trow {0}: cols {1}'.format(row, sf_loop_tracker[row]))
+
+
+    # check poss_sf_coords
+    print('checking poss_sf_coords:')
+    for row in poss_sf_coords.keys():
+        print('\trow {0}: cols {1}'.format(row, poss_sf_coords[row]))
+
+
+
+
 
 
 
     # find where the loop begins
-    sf_rows = list(sf_loop_tracker.keys())
-    sf_loop_coords = []
+    sf_rows = list(poss_sf_coords.keys())
+    sf_loop_tracker = {}
 
 
 
     # if the first row only has two cols, then start the list with this line:
     sf_row_0 = sf_rows[0]
-    sf_cols_0 = sf_loop_tracker[sf_row_0]
+    sf_cols_0 = poss_sf_coords[sf_row_0]
 
     print('row at index 0: {0}'.format(sf_row_0))
     print('cols at this row: {0}'.format(sf_cols_0))
+
 
     
 
