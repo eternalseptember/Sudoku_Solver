@@ -173,7 +173,7 @@ def find_swordfish(self, swordfish_cands):
         print()
 
 
-        # three lists for comparison
+        # Three lists for comparison.
         for i in range(0, num_of_rows-2):
 
             j_init = i + 1
@@ -353,6 +353,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     # sort coordinates information by rows
     poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
+
+    cols_1 = list(set(ints_1, ints_2))
+    cols_2 = list(set(ints_1, ints_3))
+    cols_3 = list(set(ints_2, ints_3))
 
 
 
