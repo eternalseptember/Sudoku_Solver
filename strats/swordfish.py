@@ -354,9 +354,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     # sort coordinates information by rows
     poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
 
-    cols_1 = list(set(ints_1, ints_2))
-    cols_2 = list(set(ints_1, ints_3))
-    cols_3 = list(set(ints_2, ints_3))
+    poss_sf_coords[row_1] = sorted(set(ints_1 + ints_2))
+    poss_sf_coords[row_2] = sorted(set(ints_1 + ints_3))
+    poss_sf_coords[row_3] = sorted(set(ints_2 + ints_3))
 
 
 
@@ -414,7 +414,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
 
-
+    """
     # find where the loop begins
     sf_rows = list(poss_sf_coords.keys())
     sf_loop_tracker = {}
@@ -427,7 +427,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     print('row at index 0: {0}'.format(sf_row_0))
     print('cols at this row: {0}'.format(sf_cols_0))
-
+    """
 
     
 
@@ -445,12 +445,15 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
 
-
+    # if there are at least six coordinates, return the list of coords.
+    # otherwise, return an empty list
+    """
     if len(sf_loop_coords) >= 6:
         return sf_loop_coords
     else:
         return []
-
+    """
+    return []
 
 
 

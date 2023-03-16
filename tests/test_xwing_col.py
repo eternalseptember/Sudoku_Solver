@@ -1,25 +1,25 @@
 """
-	xwing_row_test_1:
+    xwing_row_test_1:
 7 is locked to rows [1, 5] and cols [3, 7].
 7 as a possible value is removed from:
-	(0, 3)
-	(4, 3)
-	(7, 3) and (7, 7)
-	(8, 3) and (8, 7)
+    (0, 3)
+    (4, 3)
+    (7, 3) and (7, 7)
+    (8, 3) and (8, 7)
 
 Separate test file for col test because extra steps are needed to find the
 second xwing.
 
-	xwing_col_test_1:
+    xwing_col_test_1:
 2 is only in rows [4, 8] and cols [4, 7].
 2 as a possible value is removed from:
-	(4, 1); (4, 2); (4, 6); (4, 8)
-	(8, 3) and (8, 8)
+    (4, 1); (4, 2); (4, 6); (4, 8)
+    (8, 3) and (8, 8)
 
 3 is only in rows [4, 8] and cols [1, 7].
 3 as a possible value is removed from:
-	(row 4; cols 0, 2, 6, 8)
-	(row 8; cols 2, 3, 5, 8)
+    (row 4; cols 0, 2, 6, 8)
+    (row 8; cols 2, 3, 5, 8)
 """
 
 

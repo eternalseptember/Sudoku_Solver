@@ -1,5 +1,5 @@
 """
-	xwing_test_1:
+    xwing_test_1:
 4 is locked to rows [2, 4] and cols [1, 4].
 4 as a possible value is removed from:
     (0, 1) and (0, 4)
@@ -7,18 +7,18 @@
     (5, 1) and (5, 4)
 
 
-	xwing_test_2: multiple xwing sets
+    xwing_test_2: multiple xwing sets
 8 is locked to rows [1, 3] and cols [4, 6].
 8 as a possible value is removed from:
-	(2, 6) and (4, 4)
+    (2, 6) and (4, 4)
 
 8 is locked to rows [2, 4] and cols [3, 7].
 
 
-	xwing_test_3: rotated xwing_test_2
+    xwing_test_3: rotated xwing_test_2
 8 is locked to rows [4, 6] and cols [5, 7].
 8 as a possible value is removed from:
-	(4, 4) and (6, 6)
+    (4, 4) and (6, 6)
 
 8 is locked to rows [3, 7] and cols [4, 6].
 
