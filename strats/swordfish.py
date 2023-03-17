@@ -359,51 +359,6 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     poss_sf_coords[row_3] = sorted(set(ints_2 + ints_3))
 
 
-
-
-    """
-    poss_coords = []
-
-    for ints_col in ints_1:
-        these_coords = [(row_1, ints_col), (row_2, ints_col)]
-
-        for coord in these_coords:
-            if coord not in poss_coords:
-                poss_coords.append(coord)
-
-    for ints_col in ints_2:
-        these_coords = [(row_1, ints_col), (row_3, ints_col)]
-
-        for coord in these_coords:
-            if coord not in poss_coords:
-                poss_coords.append(coord)
-
-    for ints_col in ints_3:
-        these_coords = [(row_2, ints_col), (row_3, ints_col)]
-
-        for coord in these_coords:
-            if coord not in poss_coords:
-                poss_coords.append(coord)
-
-    
-    # check list of coords
-    print('checking list of coords:', end=' ')
-    print(poss_coords)
-
-
-    # break the list of coords down by rows
-    poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
-    for coord in poss_coords:
-        this_row, this_col = coord
-
-        if this_row not in poss_sf_coords:
-            poss_sf_coords[this_row] = [this_col]
-        else:
-            poss_sf_coords[this_row].append(this_col)
-    """
-
-
-
     # check poss_sf_coords
     print('checking poss_sf_coords:')
     for row in poss_sf_coords.keys():
@@ -413,25 +368,20 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
 
-
-    """
     # find where the loop begins
+    sf_loop_tracker = {}  # poss_sf_coords[row] = [list of cols]
     sf_rows = list(poss_sf_coords.keys())
-    sf_loop_tracker = {}
 
 
 
     # if the first row only has two cols, then start the list with this line:
-    sf_row_0 = sf_rows[0]
-    sf_cols_0 = poss_sf_coords[sf_row_0]
+    sf_row_1 = sf_rows[0]
+    sf_cols_1 = poss_sf_coords[sf_row_1]
 
-    print('row at index 0: {0}'.format(sf_row_0))
-    print('cols at this row: {0}'.format(sf_cols_0))
-    """
+    if len(sf_cols_1) == 2:
+        sf_loop_tracker[sf_row_1] = sf_cols_1
 
-    
-
-    # else
+    # otherwise, start keeping track of which cols to remove if a loop hasn't been found
 
 
 
@@ -440,20 +390,18 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     
 
-    
-
+    # piece the loop coords together into sf_loop_coords
+    sf_loop_coords = []
 
 
 
     # if there are at least six coordinates, return the list of coords.
     # otherwise, return an empty list
-    """
     if len(sf_loop_coords) >= 6:
         return sf_loop_coords
     else:
         return []
-    """
-    return []
+
 
 
 
