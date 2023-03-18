@@ -373,15 +373,19 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     sf_rows = list(poss_sf_coords.keys())
 
 
-
-    # if the first row only has two cols, then start the list with this line:
     sf_row_1 = sf_rows[0]
     sf_cols_1 = poss_sf_coords[sf_row_1]
 
-    if len(sf_cols_1) == 2:
-        sf_loop_tracker[sf_row_1] = sf_cols_1
 
-    # otherwise, start keeping track of which cols to remove if a loop hasn't been found
+    # if the first row only has two cols, then start the list with this line, maybe...
+    # if len(sf_cols_1) == 2:
+    #	sf_loop_tracker[sf_row_1] = sf_cols_1
+
+    # start keeping track of which cols to remove if a loop hasn't been found
+    cols_to_remove = []
+
+    # if there are less than two cols with a match in other rows, then not an xwing loop
+
 
 
 
