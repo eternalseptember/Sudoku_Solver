@@ -378,6 +378,11 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     # start keeping track of which cols to remove if a loop hasn't been found
     cols_to_remove = []
 
+    for col in sf_cols_1:
+        # look for this col in row 2 or 3
+        row_2_found = False
+        row_3_found = False
+
 
 
     # if there are less than two cols with a match in other rows, then not an xwing loop
