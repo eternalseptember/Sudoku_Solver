@@ -383,6 +383,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         row_2_found = False
         row_3_found = False
 
+        if col in sf_cols_2:
+            row_2_found = True
+        
+
 
 
     # if there are less than two cols with a match in other rows, then not an xwing loop
