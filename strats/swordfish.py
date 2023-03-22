@@ -385,7 +385,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
         if col in sf_cols_2:
             row_2_found = True
+        if col in sf_cols_3:
+            row_3_found = True
         
+        # if the col is not in sf_cols_2 or sf_cols_3, then remove it
 
 
 
