@@ -389,6 +389,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             row_3_found = True
         
         # if the col is not in sf_cols_2 or sf_cols_3, then remove it
+        if (row_2_found is False) and (row_3_found is False):
+            cols_to_remove.append(col)
 
 
 
