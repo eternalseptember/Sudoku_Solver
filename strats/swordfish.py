@@ -397,6 +397,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     # if there are less than two cols with a match in other rows, then not an xwing loop
     for col in cols_1_to_remove:
         sf_cols_1.remove(col)
+    if len(sf_cols_1) < 2:
+        sf_loop_coords = []
 
 
 
