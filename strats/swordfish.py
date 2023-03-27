@@ -380,13 +380,13 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     cols_1_to_remove = []
 
     # check two cols at a time
-    """
-    not complete. if sf_cols_1 is [3, 4, 5], this will check [3,4] and [4,5], but not [3,5]
-    """
     for i in range(0, len_col_1-1):
-        sf_col_1 = sf_cols_1[i]
-        sf_col_2 = sf_cols_1[i+1]
-        print('sf_col_1: {0}, {1}'.format(sf_col_1, sf_col_2))
+
+        j_init = i+1
+        for j in range(j_init, len_col_1):
+            sf_col_1 = sf_cols_1[i]
+            sf_col_2 = sf_cols_1[j]
+            print('sf_col_1: {0}, {1}'.format(sf_col_1, sf_col_2))
 
 
 
