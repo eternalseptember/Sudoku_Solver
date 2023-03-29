@@ -388,8 +388,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             sf_col_2 = sf_cols_1[j]
             print('sf_col_1: {0}, {1}'.format(sf_col_1, sf_col_2))
 
-            col_1_found = False
-            col_2_found = False
+            col_1_row_2_found = False
+            col_2_row_2_found = False
+            col_1_row_3_found = False
+            col_2_row_3_found = False
 
 
 
