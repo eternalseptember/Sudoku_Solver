@@ -393,6 +393,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             col_1_row_3_found = False
             col_2_row_3_found = False
 
+            if sf_col_1 in sf_cols_2:
+                col_1_row_2_found = True
+
 
 
 
