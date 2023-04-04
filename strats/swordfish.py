@@ -339,6 +339,7 @@ def sf_check_naked_pair(self, coord_1, coord_2):
 def sf_check_loop(self, poss_val, row_list, ints_list):
     """
     Piece together the coords and check if they're in a loop.
+    ints_list contains values found in the intersection of two rows.
     """
 
     print('check for loop for poss_val: {0}'.format(poss_val))
@@ -404,8 +405,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             
 
             # then look if there is a col that is in row 2 and 3 only
+            # If a col is in both rows 2 and 3, then no new information learned.
             if (col_1_row_2_found is True) and (col_1_row_3_found is True):
-                # col is in both rows 2 and 3, so no new information learned
+                continue
+            if (col_2_row_2_found is True) and (col_2_row_3_found is True):
                 continue
 
 
