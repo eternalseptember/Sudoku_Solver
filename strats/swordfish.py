@@ -404,6 +404,11 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 col_2_row_3_found = True
             
 
+            # checking things
+            print('col_1_row_2_found: {0}'.format(col_1_row_2_found))
+
+
+
             # then look if there is a col that is in row 2 and 3 only
             # If a col is in both rows 2 and 3, then no new information learned.
             if (col_1_row_2_found is True) and (col_1_row_3_found is True):
