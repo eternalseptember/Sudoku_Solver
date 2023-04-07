@@ -407,6 +407,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             # checking things
             print('col_1_row_2_found: {0}'.format(col_1_row_2_found))
             print('col_1_row_3_found: {0}'.format(col_1_row_3_found))
+            print('col_2_row_2_found: {0}'.format(col_2_row_2_found))
 
 
 
