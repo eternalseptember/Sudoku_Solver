@@ -414,10 +414,15 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
             # then look if there is a col that is in row 2 and 3 only
             # If a col is in both rows 2 and 3, then no new information learned.
+            # Can't be false in both rows because those got filtered out by earlier steps.
             if (col_1_row_2_found is True) and (col_1_row_3_found is True):
                 continue
             if (col_2_row_2_found is True) and (col_2_row_3_found is True):
                 continue
+
+            if (col_1_row_2_found is True) and (col_1_row_3_found is False):
+                print()
+                # flip the boolean
 
 
 
