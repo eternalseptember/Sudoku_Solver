@@ -421,8 +421,14 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 continue
 
             if (col_1_row_2_found is True) and (col_1_row_3_found is False):
+                # check if col_2 is both true or vice versa
                 print()
-                # flip the boolean
+
+            elif (col_2_row_2_found is True) and (col_2_row_3_found is False):
+                # check if col_1 is both true or vice versa
+                print()
+
+            
 
 
 
