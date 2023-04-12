@@ -415,23 +415,16 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             # then look if there is a col that is in row 2 and 3 only
             # If a col is in both rows 2 and 3, then no new information learned.
             # Can't be false in both rows because those got filtered out by earlier steps.
-            if (col_1_row_2_found is True) and (col_1_row_3_found is True):
-                continue
-            if (col_2_row_2_found is True) and (col_2_row_3_found is True):
-                continue
-
             if (col_1_row_2_found is True) and (col_1_row_3_found is False):
-                # check if col_2 is both true or vice versa
+                # check if col_2 and look for the third coord
                 if (col_2_row_2_found is True) and (col_2_row_3_found is False):
-                    # look for the third coord???
                     print()
 
-
-
-
-            elif (col_2_row_2_found is True) and (col_2_row_3_found is False):
-                # check if col_1 is both true or vice versa
+            if (col_1_row_2_found is False) and (col_1_row_3_found is True):
+                # check col_2
                 print()
+
+
 
             
 
