@@ -387,42 +387,44 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         for j in range(j_init, len_col_1):
             sf_col_1 = sf_cols_1[i]
             sf_col_2 = sf_cols_1[j]
-            print('sf_col_1: {0}, {1}'.format(sf_col_1, sf_col_2))
+            print('sf_col_1: {0}, sf_col_2: {1}'.format(sf_col_1, sf_col_2))
 
-            col_1_row_2_found = False
-            col_1_row_3_found = False
-            col_2_row_2_found = False
-            col_2_row_3_found = False
+            col_1_in_row_2 = False
+            col_1_in_row_3 = False
+            col_2_in_row_2 = False
+            col_2_in_row_3 = False
 
             if sf_col_1 in sf_cols_2:
-                col_1_row_2_found = True
+                col_1_in_row_2 = True
             if sf_col_1 in sf_cols_3:
-                col_1_row_3_found = True
+                col_1_in_row_3 = True
             if sf_col_2 in sf_cols_2:
-                col_2_row_2_found = True
+                col_2_in_row_2 = True
             if sf_col_2 in sf_cols_3:
-                col_2_row_3_found = True
+                col_2_in_row_3 = True
             
 
             # checking things
-            print('col_1_row_2_found: {0}'.format(col_1_row_2_found))
-            print('col_1_row_3_found: {0}'.format(col_1_row_3_found))
-            print('col_2_row_2_found: {0}'.format(col_2_row_2_found))
-            print('col_2_row_3_found: {0}'.format(col_2_row_3_found))
+            print('\tcol_1_in_row_2: {0}'.format(col_1_in_row_2))
+            print('\tcol_1_in_row_3: {0}'.format(col_1_in_row_3))
+            print('\tcol_2_in_row_2: {0}'.format(col_2_in_row_2))
+            print('\tcol_2_in_row_3: {0}'.format(col_2_in_row_3))
 
 
 
             # then look if there is a col that is in row 2 and 3 only
             # If a col is in both rows 2 and 3, then no new information learned.
             # Can't be false in both rows because those got filtered out by earlier steps.
-            if (col_1_row_2_found is True) and (col_1_row_3_found is False):
+            """
+            if (col_1_in_row_2 is True) and (col_1_in_row_3 is False):
                 # check if col_2 and look for the third coord
-                if (col_2_row_2_found is True) and (col_2_row_3_found is False):
+                if (col_2_in_row_2 is True) and (col_2_in_row_3 is False):
                     print()
 
-            if (col_1_row_2_found is False) and (col_1_row_3_found is True):
+            if (col_1_in_row_2 is False) and (col_1_in_row_3 is True):
                 # check col_2
                 print()
+            """
 
 
 
