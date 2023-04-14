@@ -225,7 +225,6 @@ def find_swordfish(self, swordfish_cands):
                     # testing one of these ways of looking for a swordfish
                     row_list = [row_1, row_2, row_3]
                     ints_list = [ints_1, ints_2, ints_3]
-                    # sf_coords = self.two_search(poss_val, row_list, ints_list)
                     sf_coords = self.sf_check_loop(poss_val, row_list, ints_list)
 
 
@@ -248,91 +247,6 @@ def intersection_of_two(self, list_1, list_2):
     Return a sorted list of the intersection of two lists.
     """
     return sorted(list(set(list_1) & set(list_2)))
-
-
-
-def two_search(self, poss_val, row_list, ints_list):
-    """
-    Find a 2-2-2 pattern with naked pairs.
-    Every possible coord has poss_val.
-    By definition, there can't be multiple naked pairs with poss_val.
-    """
-    row_1 = row_list[0]
-    row_2 = row_list[1]
-    row_3 = row_list[2]
-
-    ints_1 = ints_list[0]
-    ints_2 = ints_list[1]
-    ints_3 = ints_list[2]
-
-
-    # Check if there's a naked pair that could be part of a swordfish. 
-    naked_pairs = []
-    for ints_col in ints_1:
-        coord_1 = (row_1, ints_col)
-        coord_2 = (row_2, ints_col)
-        is_naked_pair = self.sf_check_naked_pair(coord_1, coord_2)
-
-        if is_naked_pair:
-            naked_pairs.extend((coord_1, coord_2))
-
-    
-    for ints_col in ints_2:
-        coord_1 = (row_1, ints_col)
-        coord_3 = (row_3, ints_col)
-
-        is_naked_pair = self.sf_check_naked_pair(coord_1, coord_3)
-
-        if is_naked_pair:
-            naked_pairs.extend((coord_1, coord_3))
-
-
-    for ints_col in ints_3:
-        coord_2 = (row_2, ints_col)
-        coord_3 = (row_3, ints_col)
-
-        is_naked_pair = self.sf_check_naked_pair(coord_2, coord_3)
-
-        if is_naked_pair:
-            naked_pairs.extend((coord_2, coord_3))
-
-
-    """
-    # tally up coords to look at third spot
-    sf_rows = []
-    sf_cols = []
-    for pair in naked_pairs:
-        row, col = (pair)
-
-        if row not in sf_rows:
-            sf_rows.append(row)
-        
-        if col not in sf_cols:
-            sf_cols.append(col)
-
-    # sort
-    sf_rows.sort()
-    sf_cols.sort()
-    """
-
-    # this is probably not right
-    if len(naked_pairs) >= 6:
-        print('\tnaked pairs:', end=' ')
-        print(naked_pairs)
-        return naked_pairs
-    else:
-        return []
-
-
-
-def sf_check_naked_pair(self, coord_1, coord_2):
-    """
-    This isn't entirely correct.
-    (2, 7) and (8, 7) are part of triples, but 9 can only be in those two locs.
-    """
-    poss_vals_1 = self.possible_values[coord_1]
-    poss_vals_2 = self.possible_values[coord_2]
-    return (poss_vals_1 == poss_vals_2)
 
 
 
@@ -366,41 +280,36 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         print('\trow {0}: cols {1}'.format(row, poss_sf_coords[row]))
 
 
-
-
-
-    # find where the loop begins
-    sf_loop_tracker = {}  # poss_sf_coords[row] = [list of cols]
+    # organize information for loop finding
+    sf_loop_tracker = {}  # sf_loop_tracker[row] = [list of cols]
     sf_cols_1 = poss_sf_coords[row_1]
     sf_cols_2 = poss_sf_coords[row_2]
     sf_cols_3 = poss_sf_coords[row_3]
     len_col_1 = len(sf_cols_1)
 
 
-    # start keeping track of which cols to remove if a loop hasn't been found
-    cols_1_to_remove = []
-
-    # check two cols at a time
+    # row_1 is already connected.
+    # check whether poss_val is in other rows connected to row_1 by shared cols.
     for i in range(0, len_col_1-1):
 
         j_init = i+1
         for j in range(j_init, len_col_1):
-            sf_col_1 = sf_cols_1[i]
-            sf_col_2 = sf_cols_1[j]
-            print('sf_col_1: {0}, sf_col_2: {1}'.format(sf_col_1, sf_col_2))
+            sf_row_1_col_1 = sf_cols_1[i]
+            sf_row_1_col_2 = sf_cols_1[j]
+            print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
 
             col_1_in_row_2 = False
             col_1_in_row_3 = False
             col_2_in_row_2 = False
             col_2_in_row_3 = False
 
-            if sf_col_1 in sf_cols_2:
+            if sf_row_1_col_1 in sf_cols_2:
                 col_1_in_row_2 = True
-            if sf_col_1 in sf_cols_3:
+            if sf_row_1_col_1 in sf_cols_3:
                 col_1_in_row_3 = True
-            if sf_col_2 in sf_cols_2:
+            if sf_row_1_col_2 in sf_cols_2:
                 col_2_in_row_2 = True
-            if sf_col_2 in sf_cols_3:
+            if sf_row_1_col_2 in sf_cols_3:
                 col_2_in_row_3 = True
             
 
@@ -452,9 +361,17 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
 
+def sf_check_naked_pair(self, coord_1, coord_2):
+    """
+    Check for naked pair: matching possible values of length 2.
+    """
+    poss_vals_1 = self.possible_values[coord_1]
+    poss_vals_2 = self.possible_values[coord_2]
 
-
-
+    if (len(poss_vals_1) == 2) and (len(poss_vals_2) == 2):
+        return (poss_vals_1 == poss_vals_2)
+    else:
+        return False
 
 
 
