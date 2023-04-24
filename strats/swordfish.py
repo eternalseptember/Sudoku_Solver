@@ -342,6 +342,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                 # check col_2
                 if (col_2_in_row_2 is True) and (col_2_in_row_3 is False):
                     sf_cols_1_reduced = sf_cols_1.copy()
+                    sf_cols_2_reduced = sf_cols_2.copy()
 
 
 
