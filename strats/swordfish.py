@@ -350,6 +350,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_reduced.remove(sf_row_1_col_2) # ??
                     sf_cols_3_reduced.remove(sf_row_1_col_1) # ??
 
+                    print('sf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
+
 
 
 
