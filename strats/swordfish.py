@@ -352,6 +352,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
                     print('sf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
                     print('sf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
+                    print('sf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
 
 
 
