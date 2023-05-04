@@ -334,13 +334,13 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
                     sf_cols_1_reduced.remove(sf_row_1_col_1)
                     sf_cols_1_reduced.remove(sf_row_1_col_2)
-                    sf_cols_2_reduced.remove(sf_row_1_col_1) # ??
-                    sf_cols_3_reduced.remove(sf_row_1_col_2) # ??
+                    sf_cols_2_reduced.remove(sf_row_1_col_1)
+                    sf_cols_3_reduced.remove(sf_row_1_col_2)
 
-                    print('col_1_in_row_2 is True and col_1_in_row_3 is False')
-                    print('sf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
-                    print('sf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
-                    print('sf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
+                    print('\tcol_1_in_row_2 is True and col_1_in_row_3 is False')
+                    print('\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
+                    print('\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
+                    print('\tsf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
 
 
             elif (col_1_in_row_2 is False) and (col_1_in_row_3 is True):
@@ -352,13 +352,16 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
                     sf_cols_1_reduced.remove(sf_row_1_col_1)
                     sf_cols_1_reduced.remove(sf_row_1_col_2)
-                    sf_cols_2_reduced.remove(sf_row_1_col_2) # ??
-                    sf_cols_3_reduced.remove(sf_row_1_col_1) # ??
+                    sf_cols_2_reduced.remove(sf_row_1_col_2)
+                    sf_cols_3_reduced.remove(sf_row_1_col_1)
 
-                    print('col_1_in_row_2 is False and col_1_in_row_3 is True')
-                    print('sf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
-                    print('sf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
-                    print('sf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
+                    print('\tcol_1_in_row_2 is False and col_1_in_row_3 is True')
+                    print('\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
+                    print('\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
+                    print('\tsf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
+
+                    # piece together the third set of coords
+                    sf_cols_2_3 = intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
 
 
 
