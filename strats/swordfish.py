@@ -342,6 +342,13 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     print('\t\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
                     print('\t\tsf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
 
+                    # check whether reduced cols are still valid lists
+
+
+                    # piece together the third set of coords
+                    sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
+                    print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
+
 
 
 
