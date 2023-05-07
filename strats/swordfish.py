@@ -261,14 +261,12 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     row_1 = row_list[0]
     row_2 = row_list[1]
     row_3 = row_list[2]
-
     ints_1 = ints_list[0]
     ints_2 = ints_list[1]
     ints_3 = ints_list[2]
 
     # sort coordinates information by rows
     poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
-
     poss_sf_coords[row_1] = sorted(set(ints_1 + ints_2))
     poss_sf_coords[row_2] = sorted(set(ints_1 + ints_3))
     poss_sf_coords[row_3] = sorted(set(ints_2 + ints_3))
@@ -296,7 +294,6 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
         for j in range(j_init, len_col_1):
             sf_row_1_col_1 = sf_cols_1[i]
             sf_row_1_col_2 = sf_cols_1[j]
-            print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
 
             col_1_in_row_2 = False
             col_1_in_row_3 = False
@@ -314,10 +311,12 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             
 
             # checking things
+            """
             print('\tcol_1_in_row_2: {0}'.format(col_1_in_row_2))
             print('\tcol_1_in_row_3: {0}'.format(col_1_in_row_3))
             print('\tcol_2_in_row_2: {0}'.format(col_2_in_row_2))
             print('\tcol_2_in_row_3: {0}'.format(col_2_in_row_3))
+            """
 
 
 
@@ -337,6 +336,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_reduced.remove(sf_row_1_col_1)
                     sf_cols_3_reduced.remove(sf_row_1_col_2)
 
+
+                    print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
                     print('\tcol_1_in_row_2 is True and col_1_in_row_3 is False')
                     print('\t\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
                     print('\t\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
@@ -364,6 +365,8 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_reduced.remove(sf_row_1_col_2)
                     sf_cols_3_reduced.remove(sf_row_1_col_1)
 
+
+                    print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
                     print('\tcol_1_in_row_2 is False and col_1_in_row_3 is True')
                     print('\t\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
                     print('\t\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
