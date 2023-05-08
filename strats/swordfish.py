@@ -379,6 +379,11 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
                     print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
 
+                    for this_col in sf_cols_2_3:
+                        # sf_row_1_col_1
+                        # sf_row_1_col_2
+                        print()
+
 
 
 
