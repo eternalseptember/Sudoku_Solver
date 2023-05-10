@@ -381,7 +381,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
                     for this_col in sf_cols_2_3:
                         coord_2 = (sf_row_1_col_1, this_col)
-                        # sf_row_1_col_2
+                        coord_3 = (sf_row_1_col_2, this_col)
                         print()
 
 
