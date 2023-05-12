@@ -323,10 +323,12 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             # then look if there is a col that is in row 2 and 3 only
             # If a col is in both rows 2 and 3, then no new information learned.
             # Can't be false in both rows because those got filtered out by earlier steps.
+            check_sf_cols_3 = False
 
             if (col_1_in_row_2 is True) and (col_1_in_row_3 is False):
                 # check if col_2 and look for the third coord
                 if (col_2_in_row_2 is False) and (col_2_in_row_3 is True):
+                    check_sf_cols_3 = True
                     sf_cols_1_reduced = sf_cols_1.copy()
                     sf_cols_2_reduced = sf_cols_2.copy()
                     sf_cols_3_reduced = sf_cols_3.copy()
@@ -336,26 +338,17 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_reduced.remove(sf_row_1_col_1)
                     sf_cols_3_reduced.remove(sf_row_1_col_2)
 
-
                     print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
                     print('\tcol_1_in_row_2 is True and col_1_in_row_3 is False')
                     print('\t\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
                     print('\t\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
                     print('\t\tsf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
 
-                    # check whether reduced cols are still valid lists
-
-
-                    # piece together the third set of coords
-                    sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
-                    print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
-
-
-
 
             elif (col_1_in_row_2 is False) and (col_1_in_row_3 is True):
                 # check col_2
                 if (col_2_in_row_2 is True) and (col_2_in_row_3 is False):
+                    check_sf_cols_3 = True
                     sf_cols_1_reduced = sf_cols_1.copy()
                     sf_cols_2_reduced = sf_cols_2.copy()
                     sf_cols_3_reduced = sf_cols_3.copy()
@@ -365,24 +358,26 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     sf_cols_2_reduced.remove(sf_row_1_col_2)
                     sf_cols_3_reduced.remove(sf_row_1_col_1)
 
-
                     print('sf_row_1_col_1: {0}, sf_row_1_col_2: {1}'.format(sf_row_1_col_1, sf_row_1_col_2))
                     print('\tcol_1_in_row_2 is False and col_1_in_row_3 is True')
                     print('\t\tsf_cols_1_reduced: {0}'.format(sf_cols_1_reduced))
                     print('\t\tsf_cols_2_reduced: {0}'.format(sf_cols_2_reduced))
                     print('\t\tsf_cols_3_reduced: {0}'.format(sf_cols_3_reduced))
 
-                    # check whether reduced cols are still valid lists
 
 
-                    # piece together the third set of coords
-                    sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
-                    print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
+            if check_sf_cols_3 is True:
+                # check whether reduced cols are still valid lists
 
-                    for this_col in sf_cols_2_3:
-                        coord_2 = (sf_row_1_col_1, this_col)
-                        coord_3 = (sf_row_1_col_2, this_col)
-                        print('checking cols 2 and 3: {0} and {1}'.format(coord_2, coord_3))
+
+                # piece together the third set of coords
+                sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
+                print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
+
+                for this_col in sf_cols_2_3:
+                    coord_2 = (sf_row_1_col_1, this_col)
+                    coord_3 = (sf_row_1_col_2, this_col)
+                    print('\t\t\tchecking cols 2 and 3: {0} and {1}'.format(coord_2, coord_3))
 
 
 
