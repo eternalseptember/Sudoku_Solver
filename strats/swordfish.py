@@ -367,17 +367,20 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
             if check_sf_cols_3 is True:
-                # check whether reduced cols are still valid lists
+                # check whether reduced cols are still valid lists?
 
 
                 # piece together the third set of coords
                 sf_cols_2_3 = self.intersection_of_two(sf_cols_2_reduced, sf_cols_3_reduced)
+                naked_pairs = []  # naked_pairs[[(coord_1), (coord_2)]]
                 print('\t\t\tintersection of cols 2 and 3: {0}'.format(sf_cols_2_3))
 
                 for this_col in sf_cols_2_3:
                     coord_2 = (sf_row_1_col_1, this_col)
                     coord_3 = (sf_row_1_col_2, this_col)
                     print('\t\t\tchecking cols 2 and 3: {0} and {1}'.format(coord_2, coord_3))
+
+                    is_naked_pair = self.sf_check_naked_pair(coord_2, coord_3)
 
 
 
