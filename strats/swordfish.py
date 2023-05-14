@@ -381,6 +381,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     print('\t\t\tchecking cols 2 and 3: {0} and {1}'.format(coord_2, coord_3))
 
                     is_naked_pair = self.sf_check_naked_pair(coord_2, coord_3)
+                    print('\t\t\tis naked pair: {0}'.format(is_naked_pair))
 
 
 
