@@ -1,68 +1,6 @@
-def check_swordfish(self):
-    """
-    Row and col versions not necessary.
-    """
-    # First, fill a dict of all possible coord pairs.
-    swordfish_cands = {}  # for all rows
-
-    for row_step in range(9):
-        val_lookup_row = {}  # for each row
-
-        for col_step in range(9):
-            this_cell = (row_step, col_step)
-
-            if this_cell in self.possible_values:
-                self.set_lookup_table(this_cell, val_lookup_row)
-
-        # End of row.
-        self.check_sf_cands(val_lookup_row)
-
-        # Merge info from this row into dict for all rows.
-        for poss_val in val_lookup_row.keys():
-            if poss_val in swordfish_cands:
-                swordfish_cands[poss_val].extend(val_lookup_row[poss_val])
-            else:
-                swordfish_cands[poss_val] = val_lookup_row[poss_val]
-    
-
-    # Eliminate poss_vals that can't be part of a swordfish.
-    self.reduce_sf_list(swordfish_cands)
-
-
-    # Then check each dict entry to see if there's a swordfish
-    # within its list of coords.
-    sf_found_dict = self.find_swordfish(swordfish_cands)
-
-
-
-    # testing
-    print()
-    print('sf found?')
-    for item in sf_found_dict.keys():
-        print('{0} - {1}'.format(item, sf_found_dict[item]))
-
-
-
-
-    # Commenting this out to rework for imperfect sworfish.
-    """
-    # Clean any swordfish found.
-    # print('swordfish found:')
-    if len(sf_found_dict) > 0:
-        self.clean_swordfish(sf_found_dict)
-    """
-
-    # Check if anything's been solved.
-    # self.solve_queue()
-
-
-
-
-
-
-# #######################################
 # General swordfish functions
-# #######################################
+
+
 def check_sf_cands(self, lookup_dict):
     """
     Conditions: for 2-2-2, at least 2 possible locations per row.
@@ -142,7 +80,9 @@ def find_swordfish(self, swordfish_cands):
     sf_found = {}  # sf_found[poss_val] = [swordfish coords]
 
 
+    # #####
     # for poss_val in swordfish_cands.keys():
+    # #####
     for poss_val in [9]:  # simplifying for testing
         poss_coords = swordfish_cands[poss_val]
         col_tracker = {}  # col_tracker[row_num] = [col numbers]
@@ -279,7 +219,6 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     # organize information for loop finding
-    sf_loop_tracker = {}  # sf_loop_tracker[row] = [list of cols]
     sf_cols_1 = poss_sf_coords[row_1]
     sf_cols_2 = poss_sf_coords[row_2]
     sf_cols_3 = poss_sf_coords[row_3]
@@ -287,7 +226,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
 
     # row_1 is already connected.
-    # check whether poss_val is in other rows connected to row_1 by shared cols.
+    # check whether poss_val in other rows is connected to row_1 by shared cols.
     for i in range(0, len_col_1-1):
 
         j_init = i+1
@@ -324,6 +263,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
             # If a col is in both rows 2 and 3, then no new information learned.
             # Can't be false in both rows because those got filtered out by earlier steps.
             check_sf_cols_3 = False
+            sf_cols_3_pairs = []  # stores lists of coord pairs
 
             if (col_1_in_row_2 is True) and (col_1_in_row_3 is False):
                 # check if col_2 and look for the third coord
@@ -381,7 +321,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                     print('\t\t\tchecking cols 2 and 3: {0} and {1}'.format(coord_2, coord_3))
 
                     is_naked_pair = self.sf_check_naked_pair(coord_2, coord_3)
-                    print('\t\t\tis naked pair: {0}'.format(is_naked_pair))
+                    
+                    if is_naked_pair:
+                        sf_cols_3_pairs.append([coord_2, coord_3])
+                        print('\t\t\tis naked pair: {0}'.format(is_naked_pair))
 
 
 
@@ -485,24 +428,6 @@ def clean_swordfish(self, sf_dict):
                 elif in_sf_row or in_sf_col:
                     self.possible_vals_check(this_cell, sf_val)
                 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
 
