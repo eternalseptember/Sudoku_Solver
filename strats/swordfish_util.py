@@ -206,23 +206,19 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     ints_3 = ints_list[2]
 
     # sort coordinates information by rows
-    poss_sf_coords = {}  # poss_sf_coords[row] = [list of cols]
-    poss_sf_coords[row_1] = sorted(set(ints_1 + ints_2))
-    poss_sf_coords[row_2] = sorted(set(ints_1 + ints_3))
-    poss_sf_coords[row_3] = sorted(set(ints_2 + ints_3))
+    sf_cols_1 = sorted(set(ints_1 + ints_2))
+    sf_cols_2 = sorted(set(ints_1 + ints_3))
+    sf_cols_3 = sorted(set(ints_2 + ints_3))
+    len_col_1 = len(sf_cols_1)
 
 
     # check poss_sf_coords
     print('checking poss_sf_coords:')
-    for row in poss_sf_coords.keys():
-        print('\trow {0}: cols {1}'.format(row, poss_sf_coords[row]))
+    print('\trow {0}: cols {1}'.format(row_1, sf_cols_1))
+    print('\trow {0}: cols {1}'.format(row_2, sf_cols_2))
+    print('\trow {0}: cols {1}'.format(row_3, sf_cols_3))
 
 
-    # organize information for loop finding
-    sf_cols_1 = poss_sf_coords[row_1]
-    sf_cols_2 = poss_sf_coords[row_2]
-    sf_cols_3 = poss_sf_coords[row_3]
-    len_col_1 = len(sf_cols_1)
 
 
     # row_1 is already connected.
@@ -324,7 +320,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
             # checking stuff
             if len(sf_cols_3_pairs) > 0:
-                print('sf_cols_3_pairs: {0}'.format(sf_cols_3_pairs))
+                print('\t\t\tsf_cols_3_pairs: {0}'.format(sf_cols_3_pairs))
 
             
 
