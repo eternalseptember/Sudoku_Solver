@@ -212,6 +212,10 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
     len_col_1 = len(sf_cols_1)
 
 
+    # piece the loop coords together into sf_loop_coords
+    sf_loop_coords = []
+
+
     # check poss_sf_coords
     print('checking poss_sf_coords:')
     print('\trow {0}: cols {1}'.format(row_1, sf_cols_1))
@@ -316,6 +320,9 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
                         sf_cols_3_pairs.append([coord_2, coord_3])
                         print('\t\t\tnaked pair: {0}, {1}'.format(coord_2, coord_3))
 
+                        # what were the first four coordinates?
+                        sf_coord_1 = (sf_row_1_col_1)  # other coordinate?
+
             
 
             # checking stuff
@@ -331,8 +338,7 @@ def sf_check_loop(self, poss_val, row_list, ints_list):
 
     
 
-    # piece the loop coords together into sf_loop_coords
-    sf_loop_coords = []
+
 
 
 
